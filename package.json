@@ -40,7 +40,7 @@
     "govuk-frontend": "^4.1.0",
     "gray-matter": "^4.0.3",
     "inquirer": "^8.2.0",
-    "lbcamden-frontend": "^0.0.1",
+    "lbcamden-frontend": "^0.0.2",
     "lodash": "^4.17.21",
     "marked": "^4.0.10",
     "nodemon": "^2.0.15",
