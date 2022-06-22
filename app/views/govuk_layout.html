@@ -1,7 +1,7 @@
 {#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
 {%- set assetPath = '/govuk/assets' -%}
 
-{% extends "lbcamden/template.njk" %}
+{% extends "govuk/template.njk" %}
 
 {% from "govuk/components/accordion/macro.njk"           import govukAccordion %}
 {% from "govuk/components/back-link/macro.njk"           import govukBackLink %}
@@ -36,12 +36,12 @@
 {% endblock %}
 
 {% block pageTitle %}
-  CAMDEN.GOV.UK Prototype Kit
+  GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
   {# Set serviceName in config.js. #}
-  {{ LBCamdenHeader({
+  {{ govukHeader({
     homepageUrl: "/",
     serviceName: serviceName,
     serviceUrl: "/",
@@ -49,11 +49,11 @@
   }) }}
 {% endblock %}
 
-{% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing govuk-width-container") %}
+{% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
 {% if useAutoStoreData %}
   {% block footer %}
-    {{ LBCamdenFooter({
+    {{ govukFooter({
       meta: {
         items: [
           {
