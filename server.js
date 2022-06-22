@@ -148,6 +148,7 @@ app.use('/public', express.static(path.join(projectDir, '/public')))
 
 // Serve govuk-frontend in from node_modules (so not to break pre-extensions prototype kits)
 app.use('/node_modules/govuk-frontend', express.static(path.join(__dirname, '/node_modules/govuk-frontend')))
+app.use('/node_modules/lbcamden-frontend', express.static(path.join(__dirname, '/node_modules/lbcamden-frontend')))
 
 // Set up documentation app
 if (useDocumentation) {
@@ -327,7 +328,7 @@ app.use(function (err, req, res, next) {
   res.send(err.message)
 })
 
-console.log('\nGOV.UK Prototype Kit v' + releaseVersion)
+console.log('\nCAMDEN.GOV.UK Prototype Kit - built on GOV.UK Prototype Kit v' + releaseVersion)
 console.log('\nNOTICE: the kit is for building prototypes, do not use it for production services.')
 
 module.exports = app
