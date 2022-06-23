@@ -146,6 +146,7 @@ describe('The Prototype Kit', () => {
     it.each(sassFiles)('%s renders to CSS without errors', async (file) => {
       return new Promise((resolve, reject) => {
         sass.render({
+          includePaths: [buildConfig.paths.nodeModules],
           file,
           quietDeps: true
         }, (err, result) => {
