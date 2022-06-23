@@ -10,7 +10,6 @@ const publicStylesheet = 'public/stylesheets/application.css'
 const backupAppStylesheet = path.join(Cypress.env('tempFolder'), 'temp-application.scss')
 
 const RED = 'rgb(255, 0, 0)'
-const BLACK = 'rgb(11, 12, 12)'
 const PLUM = 'rgb(174, 9, 78)'
 
 describe('watch sass files', () => {

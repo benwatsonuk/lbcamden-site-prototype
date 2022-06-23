@@ -9,7 +9,6 @@ const publicStylesheet = 'public/stylesheets/custom.css'
 
 const GREEN = 'rgb(0, 255, 0)'
 const PLUM = 'rgb(174, 9, 78)'
-const BLACK = 'rgb(11, 12, 12)'
 
 describe('watch custom sass files', () => {
   describe(`sass file ${customStyleFile} should be created and linked within ${appHeadView} and accessible from the browser as /${publicStylesheet}`, () => {
