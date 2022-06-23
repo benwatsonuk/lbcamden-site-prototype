@@ -8,12 +8,13 @@ const backupHeadView = path.join(Cypress.env('tempFolder'), 'temp-head.html')
 const publicStylesheet = 'public/stylesheets/custom.css'
 
 const GREEN = 'rgb(0, 255, 0)'
+const PLUM = 'rgb(174, 9, 78)'
 const BLACK = 'rgb(11, 12, 12)'
 
 describe('watch custom sass files', () => {
   describe(`sass file ${customStyleFile} should be created and linked within ${appHeadView} and accessible from the browser as /${publicStylesheet}`, () => {
     const cssStatement = `
-    .govuk-header { background: ${GREEN}; }
+    .LBCamden-Header { background: ${GREEN}; }
     `
 
     before(() => {
@@ -29,13 +30,13 @@ describe('watch custom sass files', () => {
       // delete temporary files
       cy.task('deleteFile', { filename: path.join(Cypress.env('projectFolder'), publicStylesheet) })
       cy.task('deleteFile', { filename: customStyleFile })
-      cy.get('.govuk-header', { timeout: 20000 }).should('have.css', 'background-color', BLACK)
+      cy.get('.LBCamden-Header', { timeout: 20000 }).should('have.css', 'background-color', PLUM)
       cy.task('deleteFile', { filename: backupHeadView })
     })
 
     it('The colour of the header should be changed to green then back to black', () => {
-      cy.task('log', 'The colour of the header should be black')
-      cy.get('.govuk-header', { timeout: 20000 }).should('have.css', 'background-color', BLACK)
+      cy.task('log', 'The colour of the header should be plum')
+      cy.get('.LBCamden-Header', { timeout: 20000 }).should('have.css', 'background-color', PLUM)
 
       cy.task('log', `Create ${customStyleFile}`)
       cy.task('createFile', {
@@ -54,7 +55,7 @@ describe('watch custom sass files', () => {
       })
 
       cy.task('log', 'The colour of the header should be changed to green')
-      cy.get('.govuk-header', { timeout: 20000 }).should('have.css', 'background-color', GREEN)
+      cy.get('.LBCamden-Header', { timeout: 20000 }).should('have.css', 'background-color', GREEN)
     })
   })
 })
