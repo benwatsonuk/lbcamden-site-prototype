@@ -149,6 +149,7 @@ app.use('/public', express.static(path.join(projectDir, '/public')))
 // Serve govuk-frontend in from node_modules (so not to break pre-extensions prototype kits)
 app.use('/node_modules/govuk-frontend', express.static(path.join(__dirname, '/node_modules/govuk-frontend')))
 app.use('/node_modules/lbcamden-frontend', express.static(path.join(__dirname, '/node_modules/lbcamden-frontend')))
+app.use('/lbcamden/assets', express.static(path.join(__dirname, '/node_modules/lbcamden-frontend/lbcamden/assets')))
 
 // Set up documentation app
 if (useDocumentation) {
