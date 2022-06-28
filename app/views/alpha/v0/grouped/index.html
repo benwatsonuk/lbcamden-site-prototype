@@ -28,8 +28,25 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-            <h1>Grouped items - {{ groupedItem.title }}</h1>
+            <h1>Report an issue</h1>
 
+            <p class="govuk-body-lead">Find out how to report an issue to Camden Council.</p>
+
+            <h2 class="govuk-heading-s">Contents</h2>
+
+            <ul class="LBCamden-List LBCamden-List--dash">
+                {% for item in groupedItem.items %}
+                    <li><a href="#link{{ loop.index }}">{{ item.title }}</a></li>
+                {% endfor %}
+            </ul>
+
+            {% for item in groupedItem.items %}
+                <h2 id="link{{ loop.index }}">{{ item.title }}</h2>
+                {% for subItem in item.items %}
+                    <h3 class="govuk-!-margin-bottom-0"><a href="#">{{ subItem.title }}</a></h3>
+                    <p>{{ subItem.description }}</p>
+                {% endfor %}
+            {% endfor %}
 
         </div>
     </div>
