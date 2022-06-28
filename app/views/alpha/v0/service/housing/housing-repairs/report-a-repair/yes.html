@@ -1,0 +1,30 @@
+{% extends '../../../../template.html' %}
+
+{% block beforeContent %}
+    <div class="govuk-width-container">
+        {{ govukBackLink({
+            text: "Back",
+            href: "../report-a-repair/"
+        }) }}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+            <h1>Report emergency repairs on our phone line</h1>
+
+            <p>Call <a href="tel:020 7974 4444">020 7974 4444</a> 24 hours a day, 7 days a week</p>
+
+            <p class="govuk-!-font-weight-bold">The call handler will discuss your repair and confirm if it’s an
+                emergency.</p>
+
+            <p>Non-emergency repairs need to be reported using this online form.</p>
+
+            <p>Emergency repairs are when there is an immediate threat to your (or other residents’) health, safety,
+                security or to your home.</p>
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends '../../../../template.html' %}
+
+{% block beforeContent %}
+    <div class="govuk-width-container">
+        {{ govukBackLink({
+            text: "Back",
+            href: "javascript:history.back(-1)"
+        }) }}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+            <form method='get' action='./2'>
+                {{ govukRadios({
+                    idPrefix: "emergency",
+                    name: "emergency",
+                    classes: "govuk-radios--inline",
+                    fieldset: {
+                        legend: {
+                            text: "Are you having an emergency?",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--xl"
+                        }
+                    },
+                    hint: {
+                        text: "Emergency repairs are when there is an immediate threat to your (or other residents’) health, safety, security or to your home."
+                    },
+                    items: [
+                        {
+                            value: "yes",
+                            text: "Yes",
+                            hint: {
+                            text: ""
+                        }
+                        },
+                        {
+                            value: "no",
+                            text: "No",
+                            hint: {
+                            text: ""
+                        }
+                        }
+                    ]
+                }) }}
+
+                {{ govukDetails({
+                    summaryText: 'Examples of emergencies',
+                    html: '
+
+                <p>Fire and gas safety</p>
+                <ul>
+                <li>I can smell gas in or near the property</li>
+                <li>My carbon monoxide or smoke alarm is beeping</li>
+                </ul>
+                <p><br></p><p>Mains supply</p>
+                <ul>
+                <li>I have no gas, or I have no electricity</li>
+                <li>I have no drinking water</li>
+                <li>I have no hot water during winter (31 October to 31 May)</li>
+                </ul>
+                <p><br></p><p>Heating</p>
+                <ul>
+                <li>I have no heating during winter (31 October to 31 May)</li>
+                </ul><p><br></p>
+
+                <p>Electrical safety</p>
+                <ul>
+                <li>I have sparking power sockets or electrical fittings, or exposed wires</li>
+                </ul>
+                <p><br></p><p>Plumbing emergencies</p>
+                <ul>
+                <li>I have a burst pipe or leak I can\'t contain</li>
+                <li>The only toilet at home is blocked</li>
+                <li>I have dirty water coming up through a plug hole, toilet or drain</li>
+                </ul>
+
+                <p><br></p><p>Security emergencies</p>
+                <ul>
+                <li>I have doors or windows I can\'t secure, or fire doors I can\'t close</li>
+                </ul><p><br></p>
+
+                <p>Structural emergencies</p>
+                <ul>
+                <li>I have badly damaged ceilings, boundary walls or roofing</li>
+                </ul>
+                <p><br></p><p>Mobility and access</p>
+                <ul>
+                <li>I have a property mobility aid that is broken (e.g stair lift)</li>
+                <li>Someone\'s stuck in a lift</li>
+                </ul><p><br></p>
+                <p>Communal hygiene</p>
+                <ul><li>I have a blocked rubbish chute</li>
+                </ul>
+                    '
+                }) }}
+
+                {{ govukButton({
+                    classes: 'LBCamden-Button',
+                    text: 'Continue'
+                }) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}
