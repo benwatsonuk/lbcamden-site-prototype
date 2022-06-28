@@ -199,7 +199,18 @@ module.exports = [
     title: 'Environmental issues',
     slug: 'environmental-issues',
     description: 'Advice on climate change and pollution, and how to report environmental issues',
-    items: []
+    items: [
+      {
+        title: 'Noise',
+        slug: 'noise',
+        items: [
+          {
+            title: 'Report an issue with noise',
+            slug: 'report-an-issue-with-noise'
+          }
+        ]
+      }
+    ]
   },
   {
     title: 'Housing',

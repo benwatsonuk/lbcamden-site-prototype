@@ -56,10 +56,11 @@ module.exports = [
       },
       {
         title: 'Environmental and street issues',
+        slug: 'environmental-issues',
         items: [
           {
             title: 'Issue with noise',
-            href: '#',
+            href: '/noise/report-an-issue-with-noise',
             description: 'Report a noise complaint and find out more about noise pollution.'
           },
           {

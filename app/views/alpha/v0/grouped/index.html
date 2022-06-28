@@ -43,7 +43,7 @@
             {% for item in groupedItem.items %}
                 <h2 id="link{{ loop.index }}">{{ item.title }}</h2>
                 {% for subItem in item.items %}
-                    <h3 class="govuk-!-margin-bottom-0"><a href="#">{{ subItem.title }}</a></h3>
+                    <h3 class="govuk-!-margin-bottom-0"><a href="/alpha/{{ versionDirectory }}/article/{{ item.slug }}{{ subItem.href }}">{{ subItem.title }}</a></h3>
                     <p>{{ subItem.description }}</p>
                 {% endfor %}
             {% endfor %}
