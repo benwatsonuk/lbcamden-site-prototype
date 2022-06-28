@@ -12,14 +12,14 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-three-quarters">
-            <form method="get" action="./part">
+            <form method="get" action="./flooding">
                 {{ govukRadios({
-                    idPrefix: "what",
-                    name: "what",
+                    idPrefix: "part",
+                    name: "part",
                     classes: "govuk-radios--small",
                     fieldset: {
                         legend: {
-                            text: "Where is the problem?",
+                            text: "Which part needs repairing?",
                             isPageHeading: true,
                             classes: "govuk-fieldset__legend--xl"
                         }
@@ -30,31 +30,71 @@
                     items: [
                         {
                             value: "1",
-                            text: "Bath"
+                            text: "Blocked toilet"
                         },
                         {
                             value: "2",
-                            text: "Electricals"
+                            text: "Cracked or loose toilet pan"
                         },
                         {
                             value: "3",
-                            text: "Flooring"
+                            text: "Toilet does not flush"
                         },
                         {
                             value: "4",
-                            text: "Shower"
+                            text: "Toilet leaks"
                         },
                         {
                             value: "5",
-                            text: "Toilet"
+                            text: "Toilet pan does not fully drain"
                         },
                         {
                             value: "6",
-                            text: "Wash basin / sink"
+                            text: "Cistern and lid"
                         },
                         {
                             value: "7",
-                            text: "Window"
+                            text: "Floor waste pipe (S trap)"
+                        },
+                        {
+                            value: "7",
+                            text: "Flush / chain"
+                        },
+                        {
+                            value: "7",
+                            text: "Isolation valve"
+                        },
+                        {
+                            value: "7",
+                            text: "Overflow pipe"
+                        },
+                        {
+                            value: "7",
+                            text: "Supply pipe"
+                        },
+                        {
+                            value: "7",
+                            text: "Toilet pan"
+                        },
+                        {
+                            value: "7",
+                            text: "Wall waste pipe (P trap)"
+                        },
+                        {
+                            divider: "or"
+                        },
+                        {
+                            value: "7",
+                            text: "I’m not sure / something else",
+                            conditional: {
+                            html: '
+                                <h3>We’ll review your request and call you</h3>
+
+<p>We need to understand more about the repair to know which tradesperson to book, and what they need to bring with them.</p>
+
+<p>Continue this form. Then we’ll phone you within 24 hours to discuss and book an appointment for a tradesperson to visit.</p>
+'
+                        }
                         }
                     ]
                 }) }}

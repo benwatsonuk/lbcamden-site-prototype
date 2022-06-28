@@ -1,0 +1,23 @@
+{% extends '../../../../template.html' %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+
+            {{ govukPanel({
+                titleText: "Repair request successfully submitted",
+                html: "Your reference number is <strong>2057180/4</strong>"
+            }) }}
+
+            <p>Confirmation has been sent to <strong>{{ data['phone'] | default('0782746492') }}</strong> and <strong>sam.rafiq@email.com</strong></p>
+
+            <h2>What happens next </h2>
+
+            <p>We’ll call you within 24 hours on <strong>0782746492</strong> once we’ve reviewed what you’ve told us. We’ll discuss the repair and book an appointment for a tradesperson visit.</p>
+
+            <p><a href="#">Report another repair</a></p>
+
+        </div>
+    </div>
+
+{% endblock %}

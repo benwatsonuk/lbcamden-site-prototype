@@ -1,0 +1,47 @@
+{% extends '../../../../template.html' %}
+
+{% block beforeContent %}
+    <div class="govuk-width-container">
+        {{ govukBackLink({
+            text: "Back",
+            href: "javascript:history.back(-1)"
+        }) }}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+            <h1>Check you answers</h1>
+
+            {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: [
+                    {
+                        key: {
+                        text: "Name"
+                    },
+                        value: {
+                        text: "Sarah Philips"
+                    },
+                        actions: {
+                        items: [
+                            {
+                                href: "#",
+                                text: "Change",
+                                visuallyHiddenText: "name"
+                            }
+                        ]
+                    }
+                    }
+                ]
+            }) }}
+
+            {{ govukButton({
+                text: 'Submit',
+                href: './complete'
+            }) }}
+        </div>
+    </div>
+
+{% endblock %}
