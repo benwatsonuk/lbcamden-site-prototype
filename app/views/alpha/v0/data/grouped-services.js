@@ -6,10 +6,11 @@ module.exports = [
     items: [
       {
         title: 'Housing',
+        slug: 'housing',
         items: [
           {
             title: 'Housing repairs',
-            href: '#',
+            href: '/housing-repairs/report-a-repair',
             description: 'Report a repair online for your council home.'
           },
           {

@@ -216,7 +216,18 @@ module.exports = [
     title: 'Housing',
     slug: 'housing',
     description: 'Apply for council housing, report a repair, homelessness information. Guidance for leaseholders homeowners and private tenants',
-    items: []
+    items: [
+      {
+        title: 'Housing repairs',
+        slug: 'housing-repairs',
+        items: [
+          {
+            title: 'Report a repair',
+            slug: 'report-a-repair'
+          }
+        ]
+      }
+    ]
   },
   {
     title: 'Jobs and skills',

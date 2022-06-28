@@ -50,14 +50,12 @@ module.exports = function (router) {
     const theGroup = serviceItems.find(x => (x.slug === theGroupSlug))
     let theArticle = theGroup.items.find(x => (x.slug === theArticleSlug))
     let theFilePath = null
+    // Check if content file exists
     if (theGroup2Slug != null) {
-      // console.log(theGroup2Slug)
       const group2 = theGroup.items.find(x => (x.slug === theGroup2Slug))
-      // console.log(group2)
       theArticle = group2.items.find(x => x.slug === theArticleSlug)
       const filePath = theGroupSlug + '/' + theGroup2Slug + '/' + theArticleSlug + '.html'
       const path = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + filePath)
-      console.log(path)
       if (Fs.existsSync(path)) {
         fileFound = true
         theFilePath = filePath
@@ -65,15 +63,11 @@ module.exports = function (router) {
     } else {
       const filePath = theGroupSlug + '/' + theArticleSlug + '.html'
       const path = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + filePath)
-      console.log(path)
       if (Fs.existsSync(path)) {
         fileFound = true
         theFilePath = filePath
       }
     }
-    // Check if content file exists
-    console.log(fileFound)
-    console.log(theFilePath)
     res.render('alpha/' + versionDirectory + '/article/index.html', {
       theGroup: theGroup,
       theArticle: theArticle,

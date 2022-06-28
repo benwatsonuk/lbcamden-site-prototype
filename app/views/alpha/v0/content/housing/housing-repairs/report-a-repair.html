@@ -1,0 +1,51 @@
+<p class="govuk-body-lead">Use this service to report non-emergency repairs to us</p>
+
+{{ govukInsetText({
+    html: '
+    <h2 class="govuk-heading-s">If your repair is an emergency</h2>
+    <p>Call <a href="tel:020 7974 4444">020 7974 4444</a> 24 hours a day, 7 days a week</p>
+    '
+}) }}
+
+{{ govukDetails({
+    summaryText: 'What\'s an emergency repair?',
+    html: '
+    <p>Emergency repairs are when there is an immediate threat to your (or other residents’) health, safety, security or to your home.</p>
+    '
+}) }}
+
+<h2>Before reporting a repair</h2>
+
+<h3>Who can report a repair</h3>
+<p>Residents living with vulnerable conditions can report repairs online, as well as on the phone.</p>
+
+<p>Telephone: <br/>
+    Monday to Friday, 9am to 5pm</p>
+
+<p><a href="#">Find out about call charges</a></p>
+
+{{ govukDetails({
+    summaryText: 'Repairs that tenants are responsible for',
+    html: '
+    <ul><li style=""><span>Unblocking sinks and drains</span></li><li style=""><span>Inside doors (apart from your kitchen door)</span></li><li style=""><span>Front door numbers</span></li><li style=""><span>Security chains, additional locks, lost or damaged keys</span></li><li style=""><span>Carpets or flooring except in bathrooms</span></li><li style=""><span>Light bulbs or fuses</span></li><li style=""><span>Plugs and chains on baths, basins and sinks</span></li><li style=""><span>Curtain rails, hooks and shelves</span></li><li style=""><span>Surface cracks in wall surfaces and plasterwork</span></li><li style=""><span>Kitchen worktops, handles, drawers and cupboards (unless fair wear and tear – if you’re not sure, the best thing to do is contact us on webchat where you can upload pictures of your repair)</span></li><li style=""><span>Tiles around baths and sinks</span></li><li style=""><span>Minor drainage blockages</span></li><li style=""><span>Internal decorations</span></li><li style=""><span>Your private garden</span></li><li style=""><span>Toilet seats</span></li></ul>
+    '
+}) }}
+
+{{ govukDetails({
+    summaryText: 'Repairs that leaseholders are responsible for',
+    html: '
+    <p>As well as the tenant responsibilities, leaseholders are also responsible for:</p>
+    <ul><li style=""><span>All fixtures and fittings within their property (kitchen cupboards, baths, sinks, showers, toilets, taps etc.)</span></li><li style=""><span>Glass in windows (including the putty or seal), front/back door and frame and window and door furniture such as handles and locks.&nbsp; However note we are currently replacing leaseholders front doors for free when doing FRA works (30 min fire door set)</span></li><li style=""><span>Tanks and pipe work that relates solely to the property such as a leaking waste pipe, trap etc.</span></li><li style=""><span>Unblocking of toilets/wash hand basins/baths/kitchen sinks/waste pipes/traps inside in leaseholders property</span></li><li style=""><span>The heating system within their property if not connected to a communal heating/hot water system.</span></li><li style=""><span>Floors, stairs, ceilings, doors, woodwork, partitions inside the property.</span></li><li style=""><span>All internal decorations to their property.</span></li></ul>
+    '
+}) }}
+
+<h3>Waiting times</h3>
+<p>Our target is to look at non-emergency repairs within 20 days. We are 95% successful in meeting this target.</p>
+
+{{ govukButton({
+    classes: 'LBCamden-Button',
+    isStartButton: true,
+    text: 'Report a non-emergency repair'
+}) }}
+
+<p><a href="#">Track a communal repair</a></p>
