@@ -16,6 +16,50 @@ module.exports = [
     slug: 'business',
     complex: true,
     description: 'Advice and support for businesses in Camden. Licensing information, guidance on paying your business rates and more',
+    popular: [
+      {
+        title: 'Paying your business rates',
+        slug: '#'
+      },
+      {
+        title: 'Camden\'s new e-invoicing service',
+        slug: '#'
+      },
+      {
+        title: 'Search the licensing public register',
+        slug: '#'
+      },
+      {
+        title: 'Discounts and exemptions for business rates',
+        slug: '#'
+      },
+      {
+        title: 'Pavement licensing',
+        slug: '#'
+      },
+      {
+        title: 'Alcohol premises licensing',
+        slug: '#'
+      }
+    ],
+    related: [
+      {
+        title: 'Business rates',
+        slug: '#'
+      },
+      {
+        title: 'Apply for business and trade parking permits',
+        slug: '#'
+      },
+      {
+        title: 'Advertisements and signs and planning permission',
+        slug: '#'
+      },
+      {
+        title: 'Estate agent boards and planning permission',
+        slug: '#'
+      }
+    ],
     items: [
       {
         title: 'Business rates',

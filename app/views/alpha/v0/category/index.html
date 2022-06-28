@@ -17,6 +17,10 @@
             {
                 text: "Home",
                 href: "/alpha/" + versionDirectory + "/home/"
+            },
+            {
+                text: "Services",
+                href: "/alpha/" + versionDirectory + "/all-services/"
             }
         ]
     }) }}
@@ -29,13 +33,20 @@
 
             <p class="govuk-body-l">{{ service.description }}</p>
 
-            {% if service.complex %}
-                <p>Complex</p>
-            {% else %}
-                <p>Simple</p>
-            {% endif %}
-
         </div>
+
+        {% if service.complex %}
+            {% include './includes/complex.html' %}
+        {% else %}
+            {% include './includes/simple.html' %}
+        {% endif %}
+
     </div>
 
+{% endblock %}
+
+{% block afterContent %}
+    {% if service.related %}
+        {% include './includes/related.html' %}
+    {% endif %}
 {% endblock %}
