@@ -12,71 +12,39 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-three-quarters">
-            <form method="get" action="./3">
-            <h1>COVID-19 status of people at the property</h1>
-                {{ govukRadios({
-                    idPrefix: "positive",
-                    name: "positive",
-                    classes: "govuk-radios--inline",
-                    fieldset: {
-                        legend: {
-                            text: "Has anyone at the property tested positive for COVID-19, or had COVID-19 symptoms, in the last 10 days?",
-                            isPageHeading: false,
-                            classes: "govuk-fieldset__legend--m"
-                        }
+            <form method="get" action="./address-2">
+            <h1>What’s the property address?</h1>
+
+                <p>Enter the address of the council property needing a repair.</p>
+
+                {{ govukInput({
+                    label: {
+                        text: 'Building number or name'
                     },
                     hint: {
-                        stext: ""
+                        text: 'For example, Flat 20A'
                     },
-                    items: [
-                        {
-                            value: "yes",
-                            text: "Yes",
-                            hint: {
-                            text: ""
-                        }
-                        },
-                        {
-                            value: "no",
-                            text: "No",
-                            hint: {
-                            text: ""
-                        }
-                        }
-                    ]
+                    id: "address-line-1",
+                    name: "address-line-1",
+                    autocomplete: "address-line1"
                 }) }}
 
-                {{ govukRadios({
-                    idPrefix: "isolate",
-                    name: "isolate",
-                    classes: "govuk-radios--inline",
-                    fieldset: {
-                        legend: {
-                            text: "Has anyone at the property been asked to self-isolate by NHS or Public Health England in the last 10 days?",
-                            isPageHeading: false,
-                            classes: "govuk-fieldset__legend--m"
-                        }
+                {{ govukInput({
+                    label: {
+                        text: "Postcode"
                     },
-                    hint: {
-                        stext: ""
-                    },
-                    items: [
-                        {
-                            value: "yes",
-                            text: "Yes",
-                            hint: {
-                            text: ""
-                        }
-                        },
-                        {
-                            value: "no",
-                            text: "No",
-                            hint: {
-                            text: ""
-                        }
-                        }
-                    ]
+                    classes: "govuk-input--width-10",
+                    id: "address-postcode",
+                    name: "address-postcode",
+                    autocomplete: "postal-code"
                 }) }}
+
+                {{ govukButton({
+                    classes: 'LBCamden-Button',
+                    text: 'Continue'
+                }) }}
+
+                <p><a href="#">Enter the address manually</a></p>
             </form>
         </div>
     </div>
