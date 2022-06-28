@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Home – CAMDEN.GOV.UK Prototype Kit
+  Alpha Sprint 11 – CAMDEN.GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -9,34 +9,35 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-       Example of content page
-        <span class="govuk-caption-xl">{{releaseVersion}}</span>
-      </h1>{{releaseVersion | log }}
-      <p>
-        This kit lets you rapidly create HTML prototypes of GOV.UK services.
+       Sprint 11
+        <span class="govuk-caption-xl">16 June 2022 - 29 June 2022</span>
+      </h1>
+      <p class="govuk-body-l">
+        The key goal for this sprint was to produce initial artefacts that represent what has been designed to date within Figma and make them interactive.
       </p>
 
-      <p>
-        It contains all you need to prototype anything from simple static pages to complex, data-driven transactions.
-      </p>
+      <p>The purpose of this goal is to have tangible, responsive pages to share and discuss. The following page types will require better semantics and are a starting point to aid discussion and iteration.</p>
 
-      <h2 class="govuk-heading-m">About this page</h2>
+      <h2 class="govuk-heading-m">Page types</h2>
 
-      <p>We recommend you add links to your prototype to this page, rather than delete it.
-        You'll find this page in the kit at '/app/views/index.html'.</p>
-
-      <p>You can change the service name by editing the file '/app/config.js'.</p>
-
-      <h2 class="govuk-heading-m">Examples and documentation</h2>
-
-      <ul class="govuk-list govuk-list--bullet">
+      <ul>
         <li>
-          <a href="/docs/tutorials-and-examples">Tutorials and templates</a>
+          <a href="./category/">Category (simple) page</a>
         </li>
         <li>
-          <a href="https://design-system.service.gov.uk">GOV.UK Design System</a>
+          <a href="./category/">Category (with sub-categories) page</a>
+        </li>
+        <li>
+          <a href="./all-services/">Services page</a>
+        </li>
+        <li>
+          <a href="./article/">Article page</a>
+        </li>
+        <li>
+          <a href="./grouped/">'Report' page</a>
         </li>
       </ul>
+
     </div>
   </div>
 
