@@ -29,7 +29,11 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds-from-desktop">
             <h1>{{ theArticle.title }}</h1>
-            {% include '../content/' + theGroupSlug + '/' + theArticleSlug + '.html' %}
+            {% if fileFound %}
+                {% include '../content/' + filePath %}
+            {% else %}
+                <p>There's nothing here for that right now</p>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

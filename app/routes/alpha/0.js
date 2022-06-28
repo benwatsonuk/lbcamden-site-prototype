@@ -1,3 +1,5 @@
+const Fs = require('fs')
+const Path = require('path')
 const version = '0'
 const versionDirectory = 'v' + version
 const serviceItems = require('../../views/alpha/' + versionDirectory + '/data/services')
@@ -44,20 +46,41 @@ module.exports = function (router) {
     const theGroupSlug = req.params.groupSlug
     const theGroup2Slug = req.params.group2Slug
     const theArticleSlug = req.params.articleSlug
+    let fileFound = false
     const theGroup = serviceItems.find(x => (x.slug === theGroupSlug))
     let theArticle = theGroup.items.find(x => (x.slug === theArticleSlug))
+    let theFilePath = null
     if (theGroup2Slug != null) {
-      console.log(theGroup2Slug)
+      // console.log(theGroup2Slug)
       const group2 = theGroup.items.find(x => (x.slug === theGroup2Slug))
-      console.log(group2)
+      // console.log(group2)
       theArticle = group2.items.find(x => x.slug === theArticleSlug)
+      const filePath = theGroupSlug + '/' + theGroup2Slug + '/' + theArticleSlug + '.html'
+      const path = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + filePath)
+      console.log(path)
+      if (Fs.existsSync(path)) {
+        fileFound = true
+        theFilePath = filePath
+      }
+    } else {
+      const filePath = theGroupSlug + '/' + theArticleSlug + '.html'
+      const path = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + filePath)
+      console.log(path)
+      if (Fs.existsSync(path)) {
+        fileFound = true
+        theFilePath = filePath
+      }
     }
     // Check if content file exists
+    console.log(fileFound)
+    console.log(theFilePath)
     res.render('alpha/' + versionDirectory + '/article/index.html', {
       theGroup: theGroup,
       theArticle: theArticle,
       theGroupSlug: theGroupSlug,
-      theArticleSlug: theArticleSlug
+      theArticleSlug: theArticleSlug,
+      fileFound: fileFound,
+      filePath: theFilePath
     })
   })
 }
