@@ -1,4 +1,4 @@
-export const groupedServices = [
+module.exports = [
   {
     title: 'Report',
     description: 'Housing repairs, problems, complaints and more',

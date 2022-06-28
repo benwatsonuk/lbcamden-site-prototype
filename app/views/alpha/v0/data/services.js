@@ -1,4 +1,4 @@
-export const services = [
+module.exports = [
   {
     title: 'Benefits and support',
     slug: '',

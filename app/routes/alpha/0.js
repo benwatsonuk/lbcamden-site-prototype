@@ -5,7 +5,7 @@ const groupedItems = require('../../views/alpha/' + versionDirectory + '/data/gr
 const sortServicesBy = 'alphabetical' // alphabetical, orderValue, none
 
 if (sortServicesBy === 'alphabetical') {
-  serviceItems.sort((a, b) => a.serviceTitle.localeCompare(b.serviceTitle))
+  serviceItems.sort((a, b) => a.title.localeCompare(b.title))
 }
 if (sortServicesBy === 'orderValue') {
   serviceItems.sort((a, b) => a.position - b.position)

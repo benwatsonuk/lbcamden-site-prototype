@@ -1,0 +1,19 @@
+{% extends "../template.html" %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% set pageTitle = "Home" %}
+{% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
+
+{% block header %}
+    {{ LBCamdenHeader({
+
+    }) }}
+{% endblock %}
+
+{% block content %}
+    <h1>Home page placeholder</h1>
+
+    <a href="/alpha/{{versionDirectory}}/all-services/">All services</a>
+{% endblock %}

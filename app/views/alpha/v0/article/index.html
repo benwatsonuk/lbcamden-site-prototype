@@ -1,4 +1,4 @@
-{% extends "template.njk" %}
+{% extends "layout.html" %}
 
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
@@ -17,7 +17,7 @@
         items: [
             {
                 text: "Home",
-                href: "#/"
+                href: "/alpha/" + versionDirectory + "/home/"
             },
             {
                 text: "Births, deaths, marriages and citizenship",

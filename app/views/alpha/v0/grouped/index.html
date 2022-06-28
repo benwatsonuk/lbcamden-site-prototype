@@ -1,0 +1,36 @@
+{% extends "../template.html" %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% set pageTitle = "Grouped" %}
+{% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
+
+{% block header %}
+    {{ LBCamdenHeader({
+
+    }) }}
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBreadcrumbs({
+        items: [
+            {
+                text: "Home",
+                href: "/alpha/" + versionDirectory + "/home/"
+            },
+            {
+                text: "Services",
+                href: "/alpha/" + versionDirectory + "/all-services/"
+            }
+        ]
+    }) }}
+{% endblock %}
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds-from-desktop">
+            <h1>Grouped items</h1>
+
+        </div>
+    </div>
+{% endblock %}
