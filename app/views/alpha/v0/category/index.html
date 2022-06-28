@@ -22,5 +22,20 @@
     }) }}
 {% endblock %}
 {% block content %}
-    <h1>Category page - {{ service.title }}</h1>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds-from-desktop">
+
+            <h1 class="govuk-heading-xl">{{ service.title }}</h1>
+
+            <p class="govuk-body-l">{{ service.description }}</p>
+
+            {% if service.complex %}
+                <p>Complex</p>
+            {% else %}
+                <p>Simple</p>
+            {% endif %}
+
+        </div>
+    </div>
+
 {% endblock %}
