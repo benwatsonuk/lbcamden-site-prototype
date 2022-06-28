@@ -38,4 +38,26 @@ module.exports = function (router) {
       groupedItem: theGroup
     })
   })
+
+  // Article page
+  router.get(['/alpha/' + versionDirectory + '/article/:groupSlug/:articleSlug', '/alpha/' + versionDirectory + '/article/:groupSlug/:group2Slug/:articleSlug'], (req, res) => {
+    const theGroupSlug = req.params.groupSlug
+    const theGroup2Slug = req.params.group2Slug
+    const theArticleSlug = req.params.articleSlug
+    const theGroup = serviceItems.find(x => (x.slug === theGroupSlug))
+    let theArticle = theGroup.items.find(x => (x.slug === theArticleSlug))
+    if (theGroup2Slug != null) {
+      console.log(theGroup2Slug)
+      const group2 = theGroup.items.find(x => (x.slug === theGroup2Slug))
+      console.log(group2)
+      theArticle = group2.items.find(x => x.slug === theArticleSlug)
+    }
+    // Check if content file exists
+    res.render('alpha/' + versionDirectory + '/article/index.html', {
+      theGroup: theGroup,
+      theArticle: theArticle,
+      theGroupSlug: theGroupSlug,
+      theArticleSlug: theArticleSlug
+    })
+  })
 }

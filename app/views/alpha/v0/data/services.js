@@ -63,50 +63,110 @@ module.exports = [
     items: [
       {
         title: 'Business rates',
-        links: [
-          'Business rates explained',
-          'Discounts and exemptions for business rates',
-          'Paying your business rates'
+        slug: 'business-rates',
+        items: [
+          {
+            title: 'Business rates explained',
+            slug: 'business-rates-explained'
+          },
+          {
+            title: 'Discounts and exemptions for business rates',
+            slug: 'discounts-and-exemptions-for-business-rates'
+          },
+          {
+            title: 'Paying your business rates',
+            slug: 'paying-your-business-rates'
+          }
         ]
       },
       {
         title: 'Markets',
-        links: [
-          'Visit Camden’s markets',
-          'Apply to trade in Camden',
-          'Market news'
+        slug: 'markets',
+        items: [
+          {
+            title: 'Visit Camden’s markets',
+            slug: 'visit-camdens-markets'
+          },
+          {
+            title: 'Apply to trade in Camden',
+            slug: 'apply-to-trade-in-camden'
+          },
+          {
+            title: 'Market news',
+            slug: 'market-news'
+          }
         ]
       },
       {
         title: 'Licensing',
-        links: [
-          'Alcohol and entertainment',
-          'Other licenses and permits',
-          'Search the licensing public register'
+        slug: 'licensing',
+        items: [
+          {
+            title: 'Alcohol and entertainment',
+            slug: ''
+          },
+          {
+            title: 'Other licenses and permits',
+            slug: ''
+          },
+          {
+            title: 'Search the licensing public register',
+            slug: ''
+          }
         ]
       },
       {
         title: 'Doing business in Camden',
-        links: [
-          'Starting or growing your business',
-          'Business rates, licensing and permits',
-          'Trading standards'
+        slug: '',
+        items: [
+          {
+            title: 'Starting or growing your business',
+            slug: ''
+          },
+          {
+            title: 'Business rates, licensing and permits',
+            slug: ''
+          },
+          {
+            title: 'Trading standards',
+            slug: ''
+          }
         ]
       },
       {
         title: 'Food business',
-        links: [
-          'Registering a food business',
-          'Food and hygiene information',
-          'Food safety training'
+        slug: 'food-business',
+        items: [
+          {
+            title: 'Registering a food business',
+            slug: ''
+          },
+          {
+            title: 'Food and hygiene information',
+            slug: ''
+          },
+          {
+            title: 'Food safety training',
+            slug: ''
+          }
         ]
       },
       {
         title: 'Getting paid by Camden',
-        links: [
-          'Camden\'s Accounts Payable Policy',
-          'Camden\'s new e-invoicing service',
-          'e-invoicing Support'
+        slug: 'getting-paid-by-camden',
+        items: [
+          {
+            title: 'Camden\'s Accounts Payable Policy',
+            slug: ''
+          },
+          {
+            title: 'Camden\'s new e-invoicing service',
+            slug: ''
+          },
+          {
+            title: 'e-invoicing Support',
+            slug: ''
+          }
         ]
       }
     ]

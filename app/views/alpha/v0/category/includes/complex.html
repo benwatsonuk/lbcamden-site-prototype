@@ -21,10 +21,10 @@
             {% for item in service.items %}
                 <li class="{{ widthClass }}">
                     <h3 class="govuk-heading-m">{{ item.title }}</h3>
-                    {% if item.links %}
+                    {% if item.items %}
                         <ul class="govuk-list LBCamden-List--dash">
-                            {% for link in item.links %}
-                                <li><a href="#">{{ link }}</a></li>
+                            {% for link in item.items %}
+                                <li><a href="/alpha/{{ versionDirectory }}/article/{{ service.slug }}/{{ item.slug }}/{{ link.slug }}">{{ link.title }}</a></li>
                             {% endfor %}
                         </ul>
                     {% endif %}
