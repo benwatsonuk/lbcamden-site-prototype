@@ -20,6 +20,10 @@ module.exports = function (router) {
     res.locals.versionDirectory = versionDirectory
     res.locals.serviceItems = serviceItems
     res.locals.groupedItems = groupedItems
+    if (req.query.theme) {
+      req.session.theme = req.query.theme || 0
+    }
+    res.locals.theme = req.session.theme || 0
     res.locals.orderedServiceItems = [...serviceItems].sort((a, b) => a.position - b.position)
     next()
   })

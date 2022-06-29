@@ -26,6 +26,11 @@ $lbcamden-assets-path: '/lbcamden/assets/';
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
+// Themes - these are used to experiment with different 'look and feel' concepts
+@import "themes/1";
+@import "themes/2";
+@import "themes/3";
+
 // Quick fix, needs to be address in the source LBCamden Frontend package
 .govuk-panel--confirmation {
   .govuk-panel__title {
