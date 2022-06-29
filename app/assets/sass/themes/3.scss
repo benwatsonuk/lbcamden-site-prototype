@@ -17,8 +17,20 @@
     }
   }
 
+  .LBCamden-Card_Wrapper--popular {
+    background: #ecece7;
+    @include govuk-responsive-padding($lbc-default-spacing, "all");
+    .LBCamden-Card {
+      background: lbcamden-colour("white");
+      border-radius: 5px;
+      box-shadow: 0 1px 2px rgb(0 0 0 / 40%);
+      //border: 1px solid lbcamden-colour("black");
+    }
+  }
+
   .govuk-breadcrumbs {
-    background: rgba(lbcamden-colour("govuk-brand-teal-1-colour"), .25);
+    background: rgba(lbcamden-colour("govuk-brand-teal-1-colour"), .25) url('../images/new-header.png') no-repeat;
+    background-size: cover;
     margin: 0;
     max-width: initial;
     @include govuk-responsive-padding($lbc-default-spacing--small, "top");
@@ -31,5 +43,10 @@
     .govuk-breadcrumbs__list {
       @extend .govuk-width-container;
     }
+  }
+
+  .LBCamden-Button {
+    background: #ead95b;
+    color: lbcamden-colour("black");
   }
 }
