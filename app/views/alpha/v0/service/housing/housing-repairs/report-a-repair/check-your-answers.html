@@ -107,7 +107,7 @@
                         text: "Risk of flooding"
                     },
                     value: {
-                        html: "No"
+                    html: data['flooding'] | default('No', true)
                     },
                     actions: {
                     items: [

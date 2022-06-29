@@ -14,8 +14,8 @@
         <div class="govuk-grid-column-three-quarters">
             <form method="get" action="./more">
                 {{ govukRadios({
-                    idPrefix: "part",
-                    name: "part",
+                    idPrefix: "flooding",
+                    name: "flooding",
                     classes: "govuk-radios--inline",
                     fieldset: {
                         legend: {
@@ -31,6 +31,7 @@
                         {
                             value: "yes",
                             text: "Yes",
+                            checked: checked('flooding', 'yes'),
                             hint: {
                             text: ""
                         }
@@ -38,6 +39,7 @@
                         {
                             value: "no",
                             text: "No",
+                            checked: checked('flooding', 'no'),
                             hint: {
                             text: ""
                         }

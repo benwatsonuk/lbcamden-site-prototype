@@ -13,9 +13,40 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-three-quarters">
             <form method="get" action="./communal">
-            <h1>Select the address</h1>
 
-                <p>1 address found for 20b and NW1 9NN <a href="#">Change</a></p>
+                {{ govukRadios({
+                    idPrefix: "correct",
+                    name: "correct",
+                    classes: "govuk-radios--inline",
+                    fieldset: {
+                        legend: {
+                            text: "Is this the correct address?",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--xl"
+                        }
+                    },
+                    hint: {
+                        html: "Flat 20b Church Road <br /> Camden <br /> London <br /> NW1 9NN"
+                    },
+                    items: [
+                        {
+                            value: "yes",
+                            text: "Yes",
+                            checked: checked('positive', 'yes'),
+                            hint: {
+                            text: ""
+                        }
+                        },
+                        {
+                            value: "no",
+                            text: "No",
+                            checked: checked('positive', 'no'),
+                            hint: {
+                            text: ""
+                        }
+                        }
+                    ]
+                }) }}
 
                 <p><a href="#">I can't find my address in the list</a></p>
 

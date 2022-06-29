@@ -14,8 +14,8 @@
         <div class="govuk-grid-column-three-quarters">
             <form method="get" action="./where-is-the-issue">
                 {{ govukRadios({
-                    idPrefix: "communcal",
-                    name: "communcal",
+                    idPrefix: "communal",
+                    name: "communal",
                     classes: "govuk-radios--inline",
                     fieldset: {
                         legend: {
@@ -31,13 +31,15 @@
                         {
                             value: "yes",
                             text: "Yes",
+                            checked: checked('communal', 'yes'),
                             hint: {
-                            text: ""
-                        }
+                                text: ""
+                            }
                         },
                         {
                             value: "no",
                             text: "No",
+                            checked: checked('communal', 'no'),
                             hint: {
                             text: ""
                         }
