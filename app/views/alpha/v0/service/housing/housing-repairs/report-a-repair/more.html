@@ -1,0 +1,52 @@
+{% extends '../../../../template.html' %}
+
+{% block beforeContent %}
+    <div class="govuk-width-container">
+        {{ govukBackLink({
+            text: "Back",
+            href: "javascript:history.back(-1)"
+        }) }}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+            <form method="get" action="./personal-details">
+                <h1>Describe the problem in more detail</h1>
+
+                {{ govukInsetText({
+                    text: 'Report one problem at a time. Make a separate request after this one for any other repairs.'
+                }) }}
+
+                {{ govukTextarea({
+                    name: "more-detail",
+                    id: "more-detail",
+                    label: {
+                        text: "Can you provide more detail?",
+                        classes: "govuk-label--l",
+                        isPageHeading: true
+                    },
+                    hint: {
+                        text: "Please include the size and location of the problem, the source of the problem, when it started, how many items are damaged"
+                    }
+                }) }}
+
+                {{ govukFileUpload({
+                    id: "file-upload-1",
+                    name: "file-upload-1",
+                    label: {
+                        text: "Upload a photo (optional)"
+                    }
+                }) }}
+
+                {{ govukButton({
+                    classes: 'LBCamden-Button',
+                    text: 'Continue'
+                }) }}
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

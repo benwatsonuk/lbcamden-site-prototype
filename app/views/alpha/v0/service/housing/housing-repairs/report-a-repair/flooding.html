@@ -1,0 +1,59 @@
+{% extends '../../../../template.html' %}
+
+{% block beforeContent %}
+    <div class="govuk-width-container">
+        {{ govukBackLink({
+            text: "Back",
+            href: "javascript:history.back(-1)"
+        }) }}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+            <form method="get" action="./more">
+                {{ govukRadios({
+                    idPrefix: "flooding",
+                    name: "flooding",
+                    classes: "govuk-radios--inline",
+                    fieldset: {
+                        legend: {
+                            text: "Is there risk of flooding?",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--xl"
+                        }
+                    },
+                    hint: {
+                        stext: ""
+                    },
+                    items: [
+                        {
+                            value: "yes",
+                            text: "Yes",
+                            checked: checked('flooding', 'yes'),
+                            hint: {
+                            text: ""
+                        }
+                        },
+                        {
+                            value: "no",
+                            text: "No",
+                            checked: checked('flooding', 'no'),
+                            hint: {
+                            text: ""
+                        }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    classes: 'LBCamden-Button',
+                    text: 'Continue'
+                }) }}
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
