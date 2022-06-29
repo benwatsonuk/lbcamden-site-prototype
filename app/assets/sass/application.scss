@@ -25,3 +25,10 @@ $lbcamden-assets-path: '/lbcamden/assets/';
 @import "patterns/task-list";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+// Quick fix, needs to be address in the source LBCamden Frontend package
+.govuk-panel--confirmation {
+  .govuk-panel__title {
+    color: lbcamden-colour("white");
+  }
+}
