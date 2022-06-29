@@ -4,6 +4,7 @@ const version = '0'
 const versionDirectory = 'v' + version
 const serviceItems = require('../../views/alpha/' + versionDirectory + '/data/services')
 const groupedItems = require('../../views/alpha/' + versionDirectory + '/data/grouped-services')
+const collectionItems = require('../../views/alpha/' + versionDirectory + '/data/collections')
 const sortServicesBy = 'alphabetical' // alphabetical, orderValue, none
 
 if (sortServicesBy === 'alphabetical') {
@@ -38,6 +39,15 @@ module.exports = function (router) {
     const theGroup = groupedItems.find(x => (x.slug === theGroupSlug))
     res.render('alpha/' + versionDirectory + '/grouped/index.html', {
       groupedItem: theGroup
+    })
+  })
+
+  // Colections - these tend to be simpler versions of the grouped example above and have no nesting (maybe possible to consolidate in future)
+  router.get(['/alpha/' + versionDirectory + '/collection/:groupSlug'], (req, res) => {
+    const theGroupSlug = req.params.groupSlug
+    const theGroup = collectionItems.find(x => (x.slug === theGroupSlug))
+    res.render('alpha/' + versionDirectory + '/collection/index.html', {
+      collectionItem: theGroup
     })
   })
 

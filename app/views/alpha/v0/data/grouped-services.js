@@ -3,6 +3,8 @@ module.exports = [
     title: 'Report',
     slug: 'report',
     description: 'Housing repairs, problems, complaints and more',
+    pageTitle: 'Report an issue',
+    pageDescription: 'Find out how to report an issue to Camden Council.',
     items: [
       {
         title: 'Housing',
