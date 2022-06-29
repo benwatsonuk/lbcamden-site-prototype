@@ -1,0 +1,35 @@
+.theme-3 {
+  .LBCamden-Header {
+    background: lbcamden-colour("white");
+    margin-bottom: 0;
+
+    .LBCamden-Header__logo {
+      .LBCamden-Header__link {
+        color: lbcamden-colour("black");
+      }
+    }
+  }
+
+  main {
+    a,
+    .govuk-details__summary {
+      color: lbcamden-colour("govuk-brand-teal-1-colour");
+    }
+  }
+
+  .govuk-breadcrumbs {
+    background: rgba(lbcamden-colour("govuk-brand-teal-1-colour"), .25);
+    margin: 0;
+    max-width: initial;
+    @include govuk-responsive-padding($lbc-default-spacing--small, "top");
+    @include govuk-responsive-padding($lbc-default-spacing--small, "bottom");
+    li {
+      a {
+        color: lbcamden-colour("black");
+      }
+    }
+    .govuk-breadcrumbs__list {
+      @extend .govuk-width-container;
+    }
+  }
+}

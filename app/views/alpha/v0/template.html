@@ -2,6 +2,9 @@
 
 {% from "lbcamden/components/card/macro.njk" import LBCamdenCard %}
 
+{% set bodyClasses = 'theme-' + theme %}
+
+
 {% block footer %}
   {{ LBCamdenFooter({
     navigation: [
