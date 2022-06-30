@@ -1,0 +1,5 @@
+{% if data['emergency'] === 'yes' %}
+    {% include './yes.html' %}
+{% else %}
+    {% include './covid-status.html' %}
+{% endif %}

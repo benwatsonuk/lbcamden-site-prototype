@@ -1,0 +1,104 @@
+{% extends '../../../../template.html' %}
+
+{% block beforeContent %}
+    <div class="govuk-width-container">
+        {{ govukBackLink({
+            text: "Back",
+            href: "javascript:history.back(-1)"
+        }) }}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+            <form method="get" action="./check-your-answers">
+                <h1>Your details</h1>
+
+                {{ govukInput({
+                    label: {
+                        text: "First name"
+                    },
+                    id: "first-name",
+                    name: "first-name",
+                    autocomplete: "name",
+                    spellcheck: false
+                }) }}
+
+                {{ govukInput({
+                    label: {
+                        text: "Last name"
+                    },
+                    id: "last-name",
+                    name: "last-name",
+                    autocomplete: "name",
+                    spellcheck: false
+                }) }}
+
+                {{ govukInput({
+                    label: {
+                        text: "Phone number"
+                    },
+                    id: "phone",
+                    name: "phone",
+                    type: "tel",
+                    autocomplete: "tel"
+                }) }}
+
+                {{ govukInput({
+                    label: {
+                        text: "Email address"
+                    },
+                    hint: {
+                        text: "We’ll only use this to send you confirmation of your repair request"
+                    },
+                    id: "email",
+                    name: "email",
+                    type: "email",
+                    autocomplete: "email",
+                    spellcheck: false
+                }) }}
+
+                {{ govukRadios({
+                    idPrefix: "resident",
+                    name: "resident",
+                    classes: "govuk-radios--inline",
+                    fieldset: {
+                        legend: {
+                            text: "Do you live at the property?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--s"
+                        }
+                    },
+                    hint: {
+                        stext: ""
+                    },
+                    items: [
+                        {
+                            value: "yes",
+                            text: "Yes",
+                            hint: {
+                            text: ""
+                        }
+                        },
+                        {
+                            value: "no",
+                            text: "No",
+                            hint: {
+                            text: ""
+                        }
+                        }
+                    ]
+                }) }}
+
+
+                {{ govukButton({
+                    classes: 'LBCamden-Button',
+                    text: 'Continue'
+                }) }}
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

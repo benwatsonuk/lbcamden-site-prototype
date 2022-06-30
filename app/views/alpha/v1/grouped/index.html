@@ -1,0 +1,53 @@
+{% extends "../template.html" %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set pageTitle = "Grouped" %}
+{% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
+
+{% block header %}
+    {{ LBCamdenHeader({
+
+    }) }}
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBreadcrumbs({
+        items: [
+            {
+                text: "Home",
+                href: "/alpha/" + versionDirectory + "/home/"
+            },
+            {
+                text: "Services",
+                href: "/alpha/" + versionDirectory + "/all-services/"
+            }
+        ]
+    }) }}
+{% endblock %}
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <h1>{{ groupedItem.pageTitle }}</h1>
+
+            <p class="govuk-body-lead">{{ groupedItem.pageDescription }}</p>
+
+            <h2 class="govuk-heading-s">Contents</h2>
+
+            <ul class="LBCamden-List LBCamden-List--dash">
+                {% for item in groupedItem.items %}
+                    <li><a href="#link{{ loop.index }}">{{ item.title }}</a></li>
+                {% endfor %}
+            </ul>
+
+            {% for item in groupedItem.items %}
+                <h2 id="link{{ loop.index }}">{{ item.title }}</h2>
+                {% for subItem in item.items %}
+                    <h3 class="govuk-!-margin-bottom-0"><a href="/alpha/{{ versionDirectory }}/article/{{ item.slug }}{{ subItem.href }}">{{ subItem.title }}</a></h3>
+                    <p>{{ subItem.description }}</p>
+                {% endfor %}
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

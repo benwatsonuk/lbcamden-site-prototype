@@ -1,21 +1,23 @@
-
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-CAMDEN.GOV.UK Prototype Kit
+    CAMDEN.GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        CAMDEN.GOV.UK redesign prototypes
-      </h1>{{releaseVersion | log }}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">
+                CAMDEN.GOV.UK redesign prototypes
+            </h1>
 
-      <h2 class="govuk-heading-m">Alpha concepts</h2>
-      <p><a href="./alpha/v0/">Version 0 - Sprint 11</a></p>
+            <h2 class="govuk-heading-m">Alpha concepts</h2>
+            <ul class="LBCamden-List--dash">
+                <li><a href="./alpha/v1/">Version 1 - Sprint 12</a></li>
+                <li><a href="./alpha/v0/">Version 0 - Sprint 11</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
 
 {% endblock %}
