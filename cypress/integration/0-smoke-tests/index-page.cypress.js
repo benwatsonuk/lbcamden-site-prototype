@@ -1,4 +1,4 @@
 specify('index page', () => {
   cy.visit('/')
-  cy.contains('GOV.UK Prototype Kit')
+  cy.contains('CAMDEN.GOV.UK redesign prototypes')
 })
