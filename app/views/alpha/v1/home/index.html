@@ -1,0 +1,22 @@
+{% extends "../template.html" %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set pageTitle = "Home" %}
+{% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
+
+{% block header %}
+    {{ LBCamdenHeader({
+
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+    {% include './includes/hero.html' %}
+    {% include './includes/grouped-services.html' %}
+    {% include './includes/popular.html' %}
+    {% include './includes/news.html' %}
+    {% include './includes/all-services.html' %}
+
+{% endblock %}

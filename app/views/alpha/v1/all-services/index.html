@@ -1,0 +1,63 @@
+{% extends "../template.html" %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set pageTitle = "All services" %}
+{% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
+
+{% block header %}
+    {{ LBCamdenHeader({
+
+    }) }}
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBreadcrumbs({
+        items: [
+            {
+                text: "Home",
+                href: "/alpha/" + versionDirectory + "/home/"
+            }
+        ]
+    }) }}
+{% endblock %}
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <h1>Services</h1>
+
+            <p class="govuk-body-lead">Services, information and guidance for residents and businesses in Camden.</p>
+
+            <h2>Do it online</h2>
+
+            <div class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--popular govuk-!-margin-bottom-6">
+                {% for item in groupedItems %}
+                    {{ LBCamdenCard({
+                        heading: {
+                            title: item.title,
+                            href: "/alpha/" + versionDirectory + "/grouped/" + item.slug,
+                            headingLevel: 3
+                        },
+                        cardBodyHtml: item.description
+                    }) }}
+                {% endfor %}
+            </div>
+
+            <h2>All services A-Z</h2>
+
+            <div class="LBCamden-Card_Wrapper">
+                {% for item in serviceItems %}
+                    {{ LBCamdenCard({
+                        naked: true,
+                        heading: {
+                            title: item.title,
+                            href: "/alpha/" + versionDirectory + "/category/" + item.slug,
+                            headingLevel: 3
+                        },
+                        cardBodyHtml: item.description
+                    }) }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

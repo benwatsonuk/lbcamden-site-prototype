@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% from "lbcamden/components/card/macro.njk" import LBCamdenCard %}
+
+{% set bodyClasses = 'theme-' + theme %}
+
+
+{% block footer %}
+  {{ LBCamdenFooter({
+    navigation: [
+      {
+        "title": "Single column list",
+        "width": "two-thirds",
+        "columns": 2,
+        "items": [
+        {
+          "href": "/alpha/" + versionDirectory + "/home/",
+          "text": "Home"
+        },
+        {
+          "href": "#2",
+          "text": "Search"
+        },
+        {
+          "href": "/alpha/" + versionDirectory + "/",
+          "text": "Sitemap"
+        },
+        {
+          "href": "#4",
+          "text": "Contact Camden Council"
+        },
+        {
+          "href": "#5",
+          "text": "Accessibility statement"
+        },
+        {
+          "href": "#6",
+          "text": "Freedom of Information Disclaimer"
+        },
+        {
+          "href": "#7",
+          "text": "Privacy Statement & Cookies"
+        },
+        {
+          "href": "#8",
+          "text": "Modern Slavery Statement"
+        }
+      ]
+      }
+    ]
+  }) }}
+{% endblock %}

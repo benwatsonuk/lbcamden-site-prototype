@@ -1,0 +1,14 @@
+<h2>Council services</h2>
+<div class="LBCamden-Card_Wrapper">
+    {% for item in serviceItems %}
+        {{ LBCamdenCard({
+            naked: true,
+            heading: {
+                title: item.title,
+                href: "/alpha/" + versionDirectory + "/category/" + item.slug,
+                headingLevel: 3
+            },
+            cardBodyHtml: item.description
+        }) }}
+    {% endfor %}
+</div>
