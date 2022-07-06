@@ -1,13 +1,25 @@
-<h2>Popular</h2>
-<div class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--popular govuk-!-margin-bottom-6">
-    {% for item in popularItems %}
+<section class="LBCamden-Row">
+
+  <div class="govuk-width-container">
+
+    <h2>Popular</h2>
+    <div class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--popular govuk-!-margin-bottom-6">
+      {% for item in popularItems %}
         {{ LBCamdenCard({
-            heading: {
-                title: item.title,
-                href: "/alpha/" + versionDirectory + "/grouped/" + item.slug,
-                headingLevel: 3
-            },
-            cardBodyHtml: item.description
+          heading: {
+            title: item.title,
+            href: "/alpha/" + versionDirectory + "/grouped/" + item.slug,
+            headingLevel: 3
+          },
+          cardBodyHtml: item.description
         }) }}
-    {% endfor %}
-</div>
+      {% endfor %}
+    </div>
+
+    {{ govukButton({
+      classes: 'LBCamden-Button',
+      text: 'All services',
+      href: '#'
+    }) }}
+  </div>
+</section>
