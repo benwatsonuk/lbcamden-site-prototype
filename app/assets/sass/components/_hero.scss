@@ -1,0 +1,32 @@
+.LBCamden-Home--hero {
+  display: flex;
+  flex-direction: column;
+  @include govuk-media-query($from: desktop) {
+    flex-direction: row;
+  }
+
+  &-image {
+    padding: 0;
+    order: 0;
+    img {
+      max-width: 100%;
+    }
+    @include govuk-media-query($from: desktop) {
+      order: 1;
+    }
+  }
+
+  &-text {
+    order: 1;
+    @include govuk-responsive-padding($lbc-default-spacing, "all");
+    background: $govuk-brand-colour;
+    color: lbcamden-colour("white") !important;
+    @include govuk-media-query($from: desktop) {
+      order: 0;
+    }
+
+    * {
+      color: lbcamden-colour("white") !important;
+    }
+  }
+}

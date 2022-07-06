@@ -31,6 +31,9 @@ $lbcamden-assets-path: '/lbcamden/assets/';
 @import "themes/2";
 @import "themes/3";
 
+// Components
+@import "components/all";
+
 // Quick fix, needs to be address in the source LBCamden Frontend package
 .govuk-panel--confirmation {
   .govuk-panel__title {
