@@ -1,0 +1,18 @@
+.LBCamden-Header {
+  &--nav {
+    background: lbcamden-colour("govuk-bg-bright1-colour");
+  }
+
+  &--upper,
+  &--lower {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &--sign-in {
+    a {
+      color: lbcamden-colour("white");
+    }
+  }
+}

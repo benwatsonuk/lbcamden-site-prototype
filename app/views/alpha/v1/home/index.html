@@ -1,17 +1,11 @@
 {% extends "../template.html" %}
 
-{% set mainClasses = "govuk-main-wrapper govuk-main-wrapper--auto-spacing" %}
+{% set mainClasses = "govuk-main-wrapper govuk-main-wrapper--auto-spacing LBCamden-Home" %}
 
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
 {% set pageTitle = "Home" %}
 {% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
-
-{% block header %}
-    {{ LBCamdenHeader({
-
-    }) }}
-{% endblock %}
 
 {% block content %}
 

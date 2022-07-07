@@ -33,6 +33,7 @@ $lbcamden-assets-path: '/lbcamden/assets/';
 
 // Components
 @import "components/all";
+@import "pages/all";
 
 // Quick fix, needs to be address in the source LBCamden Frontend package
 .govuk-panel--confirmation {
