@@ -1,6 +1,6 @@
 <section class="LBCamden-Row">
     <div class="govuk-width-container">
-        <h2 class="govuk-heading-s">Searching on "food business" found 94 results.</h2>
+        <h2 class="govuk-heading-s">Searching on "{{ searchTerm }}" found {{ searchResults.length }} results.</h2>
         <ul class="govuk-list">
             {% for item in searchItems.results[0].items %}
                 <li class="govuk-!-margin-bottom-6">

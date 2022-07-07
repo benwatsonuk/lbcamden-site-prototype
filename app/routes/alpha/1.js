@@ -114,4 +114,20 @@ module.exports = function (router) {
       filePath: theFilePath
     })
   })
+
+  // Search
+  router.post(['/alpha/' + versionDirectory + '/search/'], (req, res) => {
+    const theSearchTerm = req.body.q
+    const theSearchSlug = 'food' //searchItems.find(x => (x.terms === theSearchTerm))
+    res.redirect('/alpha/' + versionDirectory + '/search/' + theSearchSlug)
+  })
+
+  router.get(['/alpha/' + versionDirectory + '/search', '/alpha/' + versionDirectory + '/search/:searchSlug'], (req, res) => {
+    const theSearchSlug = req.params.searchSlug
+    const theSearchResults = [] //searchItems.results.find(x => (x.slug === theSearchSlug))
+    res.render('alpha/' + versionDirectory + '/search/index.html', {
+      searchResults: theSearchResults,
+      searchTerm: 'Food business'
+    })
+  })
 }
