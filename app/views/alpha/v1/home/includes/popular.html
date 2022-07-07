@@ -5,14 +5,14 @@
     <h2>Popular</h2>
     <div class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--popular govuk-!-margin-bottom-6">
       {% for item in popularItems %}
-        {{ LBCamdenCard({
-          heading: {
-            title: item.title,
-            href: "/alpha/" + versionDirectory + "/grouped/" + item.slug,
-            headingLevel: 3
-          },
-          cardBodyHtml: item.description
-        }) }}
+         <div class="LBCamden-Card LBCamden-Card--clickable"
+             data-module="lbcamden-card">
+          <h3 class="govuk-heading-s">
+            <a href="/alpha/{{ versionDirectory }}/grouped/{{ item.slug }}" >
+              {{ item.title }}
+            </a>
+          </h3>
+        </div>
       {% endfor %}
     </div>
 
