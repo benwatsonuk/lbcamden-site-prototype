@@ -2,7 +2,7 @@
     <div class="govuk-width-container">
         <h2 class="govuk-heading-s">Searching on "{{ searchTerm }}" found {{ searchResults.length }} results.</h2>
         <ul class="govuk-list">
-            {% for item in searchItems.results[0].items %}
+            {% for item in searchResults.items %}
                 <li class="govuk-!-margin-bottom-6">
                     <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><a href="{{ item.slug }}">{{ item.title }}</a></h2>
                     {{ item.content }}

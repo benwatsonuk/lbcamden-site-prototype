@@ -21,8 +21,12 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <h1>Search</h1>
       {% include '../includes/search.html' %}
-      {% if searchResults %}
-        {% include './includes/results.html' %}
+      {% if searchSlug !== 'no-results' %}
+        {% if searchResults %}
+          {% include './includes/results.html' %}
+        {% endif %}
+      {% else %}
+        {% include './includes/no-results.html' %}
       {% endif %}
     </div>
   </div>

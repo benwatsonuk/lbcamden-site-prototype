@@ -117,17 +117,34 @@ module.exports = function (router) {
 
   // Search
   router.post(['/alpha/' + versionDirectory + '/search/'], (req, res) => {
-    const theSearchTerm = req.body.q
-    const theSearchSlug = 'food' //searchItems.find(x => (x.terms === theSearchTerm))
-    res.redirect('/alpha/' + versionDirectory + '/search/' + theSearchSlug)
+    const theSearchTerm = req.body.q || false
+    // const theSearchSlug = searchItems.results.filter(x => (x.terms.contains(theSearchTerm)))
+    let searchResults = []
+    let theSearchSlug = 'no-results'
+    if (theSearchTerm !== false) {
+      // split the query into array
+      const searchArray = theSearchTerm.split(' ')
+      // for each item in query look for contains on searchItems
+      searchArray.forEach(word => {
+        searchItems.results.forEach(searchItem => {
+          if (searchItem.terms.find(item => item === word.toLowerCase())) {
+            theSearchSlug = searchItem.slug
+          }
+        })
+      })
+    }
+    res.redirect('/alpha/' + versionDirectory + '/search/' + theSearchSlug + '?searchTerm=' + theSearchTerm)
   })
 
   router.get(['/alpha/' + versionDirectory + '/search', '/alpha/' + versionDirectory + '/search/:searchSlug'], (req, res) => {
-    const theSearchSlug = req.params.searchSlug
-    const theSearchResults = [] //searchItems.results.find(x => (x.slug === theSearchSlug))
+    const theSearchSlug = req.params.searchSlug || false
+    const theSearchTerm = req.query.searchTerm || false
+    console.log(theSearchTerm)
+    const theSearchResults = searchItems.results.find(x => (x.slug === theSearchSlug))
     res.render('alpha/' + versionDirectory + '/search/index.html', {
       searchResults: theSearchResults,
-      searchTerm: 'Food business'
+      searchSlug: theSearchSlug,
+      searchTerm: theSearchTerm
     })
   })
 }

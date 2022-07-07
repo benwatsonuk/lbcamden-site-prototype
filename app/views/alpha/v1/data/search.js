@@ -60,6 +60,7 @@ module.exports =
       {
         slug: 'food',
         title: 'Food business',
+        terms: ['food', 'food business'],
         items: [
           {
             title: 'Register a food business',
