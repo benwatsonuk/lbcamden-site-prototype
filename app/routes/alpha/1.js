@@ -26,8 +26,19 @@ module.exports = function (router) {
       req.session.theme = req.query.theme || 0
     }
     res.locals.theme = req.session.theme || 0
+    if (req.query.headerType) {
+      req.session.headerType = req.query.headerType || null
+    }
+    res.locals.headerType = req.session.headerType || null
     res.locals.orderedServiceItems = [...serviceItems].sort((a, b) => a.position - b.position)
     next()
+  })
+
+  // Home
+  router.get(['/alpha/' + versionDirectory + '/home'], (req, res) => {
+    res.render('alpha/' + versionDirectory + '/home/index.html', {
+      homePage: true
+    })
   })
 
   // Category

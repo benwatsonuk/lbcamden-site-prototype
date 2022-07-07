@@ -2,7 +2,7 @@
 
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
-{% set pageTitle = "Change you name by deed poll" %}
+{% set pageTitle = "Search" %}
 {% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
 
 {% block beforeContent %}
@@ -11,23 +11,16 @@
             {
                 text: "Home",
                 href: "/alpha/" + versionDirectory + "/home/"
-            },
-            {
-                text: theGroup.title,
-                href: "/alpha/" + versionDirectory + '/category/' + theGroup.slug + "/"
             }
         ]
     }) }}
 {% endblock %}
+
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds-from-desktop">
-            <h1>{{ theArticle.title }}</h1>
-            {% if fileFound %}
-                {% include '../content/' + filePath %}
-            {% else %}
-                <p>There's nothing here for that right now</p>
-            {% endif %}
+            <h1>Search</h1>
+
         </div>
     </div>
 {% endblock %}

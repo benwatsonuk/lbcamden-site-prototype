@@ -1,12 +1,20 @@
-<div class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--popular govuk-!-margin-bottom-6">
-    {% for item in groupedItems %}
-        {{ LBCamdenCard({
-            heading: {
-                title: item.title,
-                href: "/alpha/" + versionDirectory + "/grouped/" + item.slug,
-                headingLevel: 3
-            },
-            cardBodyHtml: item.description
-        }) }}
-    {% endfor %}
-</div>
+<section class="LBCamden-Row">
+  <div class="govuk-width-container">
+    <h2>Services</h2>
+
+    <div class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--popular govuk-!-margin-bottom-6">
+      {% for item in groupedItems %}
+        <div class="LBCamden-Card   LBCamden-Card--naked LBCamden-Card--clickable"
+             data-module="lbcamden-card">
+          <h3 class="govuk-heading-m">
+            <a href="/alpha/{{ versionDirectory }}/grouped/{{ item.slug }}" class="LBCamden-Button LBCamden-Button--action govuk-!-display-block">
+              {{ item.title }}
+            </a>
+          </h3>  <div class="LBCamden-Card__content">
+            <p>{{ item.description }}</p>
+          </div></div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

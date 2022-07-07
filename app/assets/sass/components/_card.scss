@@ -1,0 +1,6 @@
+.LBCamden-Card {
+  img {
+    max-width: 100%;
+    @include govuk-responsive-margin($lbc-default-spacing, "bottom");
+  }
+}

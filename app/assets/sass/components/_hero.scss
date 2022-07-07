@@ -1,0 +1,58 @@
+$border-curve: 4rem;
+
+.LBCamden-Home--hero {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  @include govuk-media-query($from: desktop) {
+    flex-direction: row;
+    border-bottom-left-radius: $border-curve;
+  }
+
+  &-image {
+    padding: 0;
+    order: 0;
+
+    img {
+      //height: 100%;
+      max-width: 100%;
+    }
+
+    @include govuk-media-query($from: desktop) {
+      order: 1;
+      img {
+        height: 100%;
+        border-bottom-left-radius: $border-curve;
+        @include govuk-responsive-margin($lbc-default-spacing, "left");
+      }
+    }
+  }
+
+  &-text {
+    order: 1;
+    @include govuk-responsive-padding($lbc-default-spacing, "all");
+    background: $govuk-brand-colour;
+    color: lbcamden-colour("white") !important;
+    @include govuk-media-query($from: desktop) {
+      order: 0;
+      position: relative;
+      &:after {
+        content: "";
+        position: absolute;
+        right: -4rem;
+        bottom: 0;
+        display: block;
+        height: 4rem;
+        width: 4rem;
+        background: transparent;
+        box-shadow: -40px 40px 0px 10px $govuk-brand-colour;
+        border-radius: $border-curve;
+      }
+    }
+
+    *:not(:focus) {
+      color: lbcamden-colour("white") !important;
+    }
+  }
+}
