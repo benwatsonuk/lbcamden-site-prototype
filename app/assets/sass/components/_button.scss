@@ -1,0 +1,20 @@
+.LBCamden-Button {
+  &--action {
+    border-bottom-right-radius: 0.75rem;
+    position: relative;
+    @include govuk-responsive-padding(3, "all");
+    @include govuk-responsive-padding(8, "right");
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      right: 15px;
+      width: 7px;
+      height: 7px;
+      transform: rotate(45deg);
+      border-top: 3px solid lbcamden-colour("white");
+      border-right: 3px solid lbcamden-colour("white");
+    }
+  }
+}
