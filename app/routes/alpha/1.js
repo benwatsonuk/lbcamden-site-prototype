@@ -34,6 +34,13 @@ module.exports = function (router) {
     next()
   })
 
+  // Home
+  router.get(['/alpha/' + versionDirectory + '/home'], (req, res) => {
+    res.render('alpha/' + versionDirectory + '/home/index.html', {
+      homePage: true
+    })
+  })
+
   // Category
   router.get(['/alpha/' + versionDirectory + '/category/:serviceSlug'], (req, res) => {
     const theServiceSlug = req.params.serviceSlug

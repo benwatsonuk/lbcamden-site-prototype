@@ -2,6 +2,8 @@
   &--action {
     border-bottom-right-radius: 0.75rem;
     position: relative;
+    text-align: left;
+    font-weight: bold;
     @include govuk-responsive-padding(3, "all");
     @include govuk-responsive-padding(8, "right");
 
@@ -15,6 +17,12 @@
       transform: rotate(45deg);
       border-top: 3px solid lbcamden-colour("white");
       border-right: 3px solid lbcamden-colour("white");
+    }
+
+    &:focus {
+      &:after {
+        border-color: lbcamden-colour("black");
+      }
     }
   }
 }
