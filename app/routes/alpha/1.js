@@ -6,6 +6,7 @@ const serviceItems = require('../../views/alpha/' + versionDirectory + '/data/se
 const groupedItems = require('../../views/alpha/' + versionDirectory + '/data/grouped-services')
 const collectionItems = require('../../views/alpha/' + versionDirectory + '/data/collections')
 const popularItems = require('../../views/alpha/' + versionDirectory + '/data/popular')
+const searchItems = require('../../views/alpha/' + versionDirectory + '/data/search')
 const sortServicesBy = 'alphabetical' // alphabetical, orderValue, none
 
 if (sortServicesBy === 'alphabetical') {
@@ -22,6 +23,12 @@ module.exports = function (router) {
     res.locals.serviceItems = serviceItems
     res.locals.groupedItems = groupedItems
     res.locals.popularItems = popularItems
+    res.locals.searchItems = searchItems
+    res.locals.orderedServiceItems = [...serviceItems].sort((a, b) => a.position - b.position)
+    next()
+  })
+
+  router.use((req, res, next) => {
     if (req.query.theme) {
       req.session.theme = req.query.theme || 0
     }
@@ -30,7 +37,10 @@ module.exports = function (router) {
       req.session.headerType = req.query.headerType || null
     }
     res.locals.headerType = req.session.headerType || null
-    res.locals.orderedServiceItems = [...serviceItems].sort((a, b) => a.position - b.position)
+    if (req.query.categoryType) {
+      req.session.categoryType = req.query.categoryType || null
+    }
+    res.locals.categoryType = req.session.categoryType || null
     next()
   })
 
@@ -102,6 +112,36 @@ module.exports = function (router) {
       theArticleSlug: theArticleSlug,
       fileFound: fileFound,
       filePath: theFilePath
+    })
+  })
+
+  // Search
+  router.post(['/alpha/' + versionDirectory + '/search/'], (req, res) => {
+    const theSearchTerm = req.body.q || ''
+    let theSearchSlug = 'no-results'
+    if (theSearchTerm !== false) {
+      // split the query into array
+      const searchArray = theSearchTerm.split(' ')
+      // for each item in query look for contains on searchItems
+      searchArray.forEach(word => {
+        searchItems.results.forEach(searchItem => {
+          if (searchItem.terms.find(item => item === word.toLowerCase())) {
+            theSearchSlug = searchItem.slug
+          }
+        })
+      })
+    }
+    res.redirect('/alpha/' + versionDirectory + '/search/' + theSearchSlug + '?searchTerm=' + theSearchTerm)
+  })
+
+  router.get(['/alpha/' + versionDirectory + '/search', '/alpha/' + versionDirectory + '/search/:searchSlug'], (req, res) => {
+    const theSearchSlug = req.params.searchSlug || false
+    const theSearchTerm = req.query.searchTerm || ''
+    const theSearchResults = searchItems.results.find(x => (x.slug === theSearchSlug))
+    res.render('alpha/' + versionDirectory + '/search/index.html', {
+      searchResults: theSearchResults,
+      searchSlug: theSearchSlug,
+      searchTerm: theSearchTerm
     })
   })
 }

@@ -6,21 +6,34 @@
 {% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
 
 {% block beforeContent %}
-    {{ govukBreadcrumbs({
-        items: [
-            {
-                text: "Home",
-                href: "/alpha/" + versionDirectory + "/home/"
-            }
-        ]
-    }) }}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/alpha/" + versionDirectory + "/home/"
+      }
+    ]
+  }) }}
 {% endblock %}
 
 {% block content %}
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds-from-desktop">
-            <h1>Search</h1>
-
-        </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h1>Search</h1>
+      {% include '../includes/search.html' %}
+      {% if searchSlug !== 'no-results' %}
+        {% if searchResults %}
+          {% include './includes/results.html' %}
+        {% endif %}
+      {% else %}
+        {% if searchTerm !== '' %}
+          {% include './includes/no-results.html' %}
+        {% endif %}
+      {% endif %}
     </div>
+  </div>
+{% endblock %}
+
+{% block afterContent %}
+  {% include './includes/popular-searches.html' %}
 {% endblock %}

@@ -1,8 +1,8 @@
 <section class="LBCamden-Row {% if categoryType !== 'C' %} LBCamden-Row--related{% endif %}">
     <div class="govuk-width-container">
-        <h2 class="govuk-heading-l">Related</h2>
+        <h2 class="govuk-heading-l">Popular searches</h2>
         <ul class="govuk-list LBCamden-List--dash">
-            {% for item in service.related %}
+            {% for item in searchItems.popular %}
                 <li><a href="{{ item.slug }}">{{ item.title }}</a></li>
             {% endfor %}
         </ul>

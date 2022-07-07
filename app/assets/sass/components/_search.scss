@@ -14,7 +14,10 @@
   background-color: $govuk-brand-colour;
   color: lbcamden-colour("white");
   //border: 0;
-  border-color: lbcamden-colour("white");
+  border-color: transparent;
+  .LBCamden-Header & {
+    border-color: lbcamden-colour("white");
+  }
   border-style: solid;
   cursor: pointer;
   appearance: none;
@@ -44,7 +47,9 @@
 
 .gem-c-search__input[type="search"] {
   @extend .govuk-input;
-  border-color: lbcamden-colour("white");
+  .LBCamden-Header & {
+    border-color: lbcamden-colour("white");
+  }
 }
 
 .gem-c-search__icon {
