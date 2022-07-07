@@ -22,6 +22,11 @@ module.exports = function (router) {
     res.locals.serviceItems = serviceItems
     res.locals.groupedItems = groupedItems
     res.locals.popularItems = popularItems
+    res.locals.orderedServiceItems = [...serviceItems].sort((a, b) => a.position - b.position)
+    next()
+  })
+
+  router.use((req, res, next) => {
     if (req.query.theme) {
       req.session.theme = req.query.theme || 0
     }
@@ -30,7 +35,10 @@ module.exports = function (router) {
       req.session.headerType = req.query.headerType || null
     }
     res.locals.headerType = req.session.headerType || null
-    res.locals.orderedServiceItems = [...serviceItems].sort((a, b) => a.position - b.position)
+    if (req.query.categoryType) {
+      req.session.categoryType = req.query.categoryType || null
+    }
+    res.locals.categoryType = req.session.categoryType || null
     next()
   })
 

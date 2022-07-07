@@ -24,7 +24,13 @@
     @include govuk-media-query($until: tablet) {
       @include govuk-responsive-padding($lbc-default-spacing, "bottom");
       @include govuk-responsive-margin($lbc-default-spacing--small, "bottom");
-      border-bottom: 2px solid lbcamden-colour("govuk-bg-bright1-colour");
+      border-bottom: 3px solid lbcamden-colour("govuk-bg-bright1-colour");
     }
+  }
+
+  &--alt {
+    border-top: 3px solid lbcamden-colour("govuk-brand1-2-colour");
+    border-radius: 0 !important;
+    background: lbcamden-colour("white");
   }
 }
