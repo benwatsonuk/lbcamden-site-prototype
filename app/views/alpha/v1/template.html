@@ -2,7 +2,7 @@
 
 {% block header %}
   <header
-          class="LBCamden-Header "
+          class="LBCamden-Header {% if headerType %}LBCamden-Header--type-{{ headerType }}{% endif %}"
           role="banner" data-module="lbcamden-header">
     <div class="govuk-width-container LBCamden-Header--upper">
       <div class="LBCamden-Header__logo">
