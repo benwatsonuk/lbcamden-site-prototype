@@ -3,14 +3,22 @@
         <h2 class="govuk-heading-l">Popular</h2>
         <div class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--popular govuk-!-margin-bottom-6">
             {% for item in service.popular %}
-                {{ LBCamdenCard({
-                    heading: {
-                        title: item.title,
-                        href: "#"
-                    },
-                    clickable: true,
-                    popular: true
-                }) }}
+{#                {{ LBCamdenCard({#}
+{#                    heading: {#}
+{#                        title: item.title,#}
+{#                        href: "#"#}
+{#                    },#}
+{#                    clickable: true,#}
+{#                    popular: true#}
+{#                }) }}#}
+              <div class="LBCamden-Card LBCamden-Card--clickable"
+                   data-module="lbcamden-card">
+                <h3 class="govuk-heading-s">
+                  <a href="/alpha/{{ versionDirectory }}/grouped/{{ item.slug }}" >
+                    {{ item.title }}
+                  </a>
+                </h3>
+              </div>
             {% endfor %}
         </div>
     {% endif %}
@@ -19,7 +27,7 @@
         <h2 class="govuk-heading-l">Contents</h2>
         <ul class="LBCamden-Card_Wrapper">
             {% for item in service.items %}
-                <li class="{{ widthClass }}">
+                <li class="{{ widthClass }} LBCamden-Card--naked">
                     <h3 class="govuk-heading-m">{{ item.title }}</h3>
                     {% if item.items %}
                         <ul class="govuk-list LBCamden-List--dash">

@@ -3,4 +3,28 @@
     max-width: 100%;
     @include govuk-responsive-margin($lbc-default-spacing, "bottom");
   }
+  &:hover {
+    background-color: lbcamden-colour("dark-blue");
+    color: lbcamden-colour("white");
+    *:not(:focus) {
+      color: lbcamden-colour("white");
+    }
+    a {
+      &:before {
+        border-color: lbcamden-colour("white") !important;
+      }
+    }
+  }
+
+  .LBCamden-Card_Wrapper--popular & {
+    border-bottom-right-radius: 1rem;
+  }
+
+  &--naked:not(:last-of-type) {
+    @include govuk-media-query($until: tablet) {
+      @include govuk-responsive-padding($lbc-default-spacing, "bottom");
+      @include govuk-responsive-margin($lbc-default-spacing--small, "bottom");
+      border-bottom: 2px solid lbcamden-colour("govuk-bg-bright1-colour");
+    }
+  }
 }
