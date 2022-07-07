@@ -26,7 +26,9 @@
           {% include './includes/results.html' %}
         {% endif %}
       {% else %}
-        {% include './includes/no-results.html' %}
+        {% if searchTerm !== '' %}
+          {% include './includes/no-results.html' %}
+        {% endif %}
       {% endif %}
     </div>
   </div>
