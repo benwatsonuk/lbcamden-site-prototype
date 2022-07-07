@@ -6,6 +6,7 @@ const serviceItems = require('../../views/alpha/' + versionDirectory + '/data/se
 const groupedItems = require('../../views/alpha/' + versionDirectory + '/data/grouped-services')
 const collectionItems = require('../../views/alpha/' + versionDirectory + '/data/collections')
 const popularItems = require('../../views/alpha/' + versionDirectory + '/data/popular')
+const searchItems = require('../../views/alpha/' + versionDirectory + '/data/search')
 const sortServicesBy = 'alphabetical' // alphabetical, orderValue, none
 
 if (sortServicesBy === 'alphabetical') {
@@ -22,6 +23,7 @@ module.exports = function (router) {
     res.locals.serviceItems = serviceItems
     res.locals.groupedItems = groupedItems
     res.locals.popularItems = popularItems
+    res.locals.searchItems = searchItems
     res.locals.orderedServiceItems = [...serviceItems].sort((a, b) => a.position - b.position)
     next()
   })

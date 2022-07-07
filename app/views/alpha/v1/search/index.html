@@ -20,7 +20,11 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds-from-desktop">
             <h1>Search</h1>
-
+            {% include '../includes/search.html' %}
         </div>
     </div>
+{% endblock %}
+
+{% block afterContent %}
+    {% include './includes/popular-searches.html' %}
 {% endblock %}
