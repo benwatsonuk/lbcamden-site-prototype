@@ -12,7 +12,7 @@
           {# clickable: true, #}
           {# popular: true #}
           {# }) }} #}
-          <div class="LBCamden-Card LBCamden-Card--clickable {% if categoryType === 'B' %}LBCamden-Card--alt{% endif %}"
+          <div class="LBCamden-Card LBCamden-Card--clickable {% if categoryType === 'B' %}LBCamden-Card--alt{% endif %}{% if categoryType === 'C' %} LBCamden-Card--alt2{% endif %}"
                data-module="lbcamden-card">
             <h3 class="govuk-heading-s">
               <a href="/alpha/{{ versionDirectory }}/grouped/{{ item.slug }}">
