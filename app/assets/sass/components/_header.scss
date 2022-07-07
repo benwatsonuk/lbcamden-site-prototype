@@ -51,7 +51,7 @@
   }
 
   &--sign-in {
-    a {
+    a:not(:focus) {
       color: lbcamden-colour("white");
     }
   }
