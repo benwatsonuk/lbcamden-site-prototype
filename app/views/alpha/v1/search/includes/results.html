@@ -1,0 +1,20 @@
+<section class="LBCamden-Row">
+    <div class="govuk-width-container">
+        <h2 class="govuk-heading-s">Searching on "food business" found 94 results.</h2>
+        <ul class="govuk-list">
+            {% for item in searchItems.results[0].items %}
+                <li class="govuk-!-margin-bottom-6">
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><a href="{{ item.slug }}">{{ item.title }}</a></h2>
+                    {{ item.content }}
+                    <p class="govuk-!-font-size-14">Updated: {{ item.date }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+        <p>Page 1 of 10</p>
+
+        {{ govukButton({
+            classes: 'LBCamden-Button',
+            text: 'Next'
+        }) }}
+    </div>
+</section>
