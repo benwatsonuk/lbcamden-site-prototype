@@ -1,8 +1,19 @@
+$brand-colour: lbcamden-colour("govuk-brand-teal-1-colour");
+
 .theme-1 {
   .LBCamden-Header {
-    background: lbcamden-colour("govuk-brand-teal-1-colour");
+    background: $brand-colour;
+    .gem-c-search__submit {
+      background: $brand-colour;
+    }
   }
   .LBCamden-Button {
-    background: lbcamden-colour("govuk-brand-teal-1-colour");
+    background: $brand-colour;
+  }
+  .LBCamden-Home--hero-text {
+    background: $brand-colour;
+    &:after {
+      box-shadow: -40px 40px 0px 10px $brand-colour;
+    }
   }
 }

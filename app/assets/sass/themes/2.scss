@@ -1,8 +1,19 @@
+$brand-colour: lbcamden-colour("dark-blue");
+
 .theme-2 {
   .LBCamden-Header {
-    background: lbcamden-colour("dark-blue");
+    background: $brand-colour;
+    .gem-c-search__submit {
+      background: $brand-colour;
+    }
   }
   .LBCamden-Button {
-    background: lbcamden-colour("dark-blue");
+    background: $brand-colour;
+  }
+  .LBCamden-Home--hero-text {
+    background: $brand-colour;
+    &:after {
+      box-shadow: -40px 40px 0px 10px $brand-colour;
+    }
   }
 }
