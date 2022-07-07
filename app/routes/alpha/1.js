@@ -118,8 +118,6 @@ module.exports = function (router) {
   // Search
   router.post(['/alpha/' + versionDirectory + '/search/'], (req, res) => {
     const theSearchTerm = req.body.q || false
-    // const theSearchSlug = searchItems.results.filter(x => (x.terms.contains(theSearchTerm)))
-    let searchResults = []
     let theSearchSlug = 'no-results'
     if (theSearchTerm !== false) {
       // split the query into array
@@ -139,7 +137,6 @@ module.exports = function (router) {
   router.get(['/alpha/' + versionDirectory + '/search', '/alpha/' + versionDirectory + '/search/:searchSlug'], (req, res) => {
     const theSearchSlug = req.params.searchSlug || false
     const theSearchTerm = req.query.searchTerm || false
-    console.log(theSearchTerm)
     const theSearchResults = searchItems.results.find(x => (x.slug === theSearchSlug))
     res.render('alpha/' + versionDirectory + '/search/index.html', {
       searchResults: theSearchResults,
