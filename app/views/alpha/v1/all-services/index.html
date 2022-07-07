@@ -6,52 +6,56 @@
 {% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
 
 {% block beforeContent %}
-    {{ govukBreadcrumbs({
-        items: [
-            {
-                text: "Home",
-                href: "/alpha/" + versionDirectory + "/home/"
-            }
-        ]
-    }) }}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/alpha/" + versionDirectory + "/home/"
+      }
+    ]
+  }) }}
 {% endblock %}
 {% block content %}
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-            <h1>Services</h1>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1>Services</h1>
 
-            <p class="govuk-body-lead">Services, information and guidance for residents and businesses in Camden.</p>
+      <p class="govuk-body-lead">Services, information and guidance for residents and businesses in Camden.</p>
 
-            <h2>Do it online</h2>
+      <h2>Do it online</h2>
 
-            <div class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--popular govuk-!-margin-bottom-6">
-                {% for item in groupedItems %}
-                    {{ LBCamdenCard({
-                        heading: {
-                            title: item.title,
-                            href: "/alpha/" + versionDirectory + "/grouped/" + item.slug,
-                            headingLevel: 3
-                        },
-                        cardBodyHtml: item.description
-                    }) }}
-                {% endfor %}
+      <div class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--popular govuk-!-margin-bottom-6">
+        {% for item in groupedItems %}
+          <div class="LBCamden-Card   LBCamden-Card--naked LBCamden-Card--clickable"
+               data-module="lbcamden-card">
+            <h3 class="govuk-heading-m">
+              <a href="/alpha/{{ versionDirectory }}/grouped/{{ item.slug }}"
+                 class="LBCamden-Button LBCamden-Button--action govuk-!-display-block">
+                {{ item.title }}
+              </a>
+            </h3>
+            <div class="LBCamden-Card__content">
+              <p>{{ item.description }}</p>
             </div>
+          </div>
+        {% endfor %}
+      </div>
 
-            <h2>All services A-Z</h2>
+      <h2>All services A-Z</h2>
 
-            <div class="LBCamden-Card_Wrapper">
-                {% for item in serviceItems %}
-                    {{ LBCamdenCard({
-                        naked: true,
-                        heading: {
-                            title: item.title,
-                            href: "/alpha/" + versionDirectory + "/category/" + item.slug,
-                            headingLevel: 3
-                        },
-                        cardBodyHtml: item.description
-                    }) }}
-                {% endfor %}
-            </div>
-        </div>
+      <div class="LBCamden-Card_Wrapper">
+        {% for item in serviceItems %}
+          {{ LBCamdenCard({
+            naked: true,
+            heading: {
+              title: item.title,
+              href: "/alpha/" + versionDirectory + "/category/" + item.slug,
+              headingLevel: 3
+            },
+            cardBodyHtml: item.description
+          }) }}
+        {% endfor %}
+      </div>
     </div>
+  </div>
 {% endblock %}
