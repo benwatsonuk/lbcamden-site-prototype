@@ -1,6 +1,19 @@
 .LBCamden-Header {
+  @import "search";
+
   &--nav {
-    background: lbcamden-colour("govuk-bg-bright1-colour");
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+
+    li {
+      margin: 0;
+      @include govuk-responsive-margin($lbc-default-spacing, "right");
+      a:not(:focus) {
+        color: lbcamden-colour("white");
+      }
+    }
   }
 
   &--upper,

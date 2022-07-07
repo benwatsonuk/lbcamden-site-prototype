@@ -1,0 +1,47 @@
+.gem-c-search__item {
+  position: relative;
+  display: table-cell;
+  vertical-align: top;
+
+  &-wrapper {
+    display: table;
+    width: 100%;
+    background: #fff;
+  }
+}
+
+.gem-c-search__submit {
+  background-color: $govuk-brand-colour;
+  color: lbcamden-colour("white");
+  //border: 0;
+  border-color: lbcamden-colour("white");
+  border-style: solid;
+  cursor: pointer;
+  appearance: none;
+  border-radius: 0;
+  position: relative;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  text-indent: -5000px;
+  overflow: hidden;
+
+  &-wrapper {
+    width: 1%;
+  }
+}
+
+.gem-c-search__input[type="search"] {
+  @extend .govuk-input;
+  border-color: lbcamden-colour("white");
+}
+
+.gem-c-search__icon {
+  display: block;
+  pointer-events: none;
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: 8px;
+  left: 8px;
+}
