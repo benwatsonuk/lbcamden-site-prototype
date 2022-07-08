@@ -1,0 +1,33 @@
+{% extends "../template.html" %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set pageTitle = "Multi-part Article" %}
+{% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBreadcrumbs({
+        items: [
+            {
+                text: "Home",
+                href: "/alpha/" + versionDirectory + "/home/"
+            },
+            {
+                text: theGroup.title,
+                href: "/alpha/" + versionDirectory + '/category/' + theGroup.slug + "/"
+            }
+        ]
+    }) }}
+{% endblock %}
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds-from-desktop">
+            <h1>{{ theArticle.title }}</h1>
+            {% if fileFound %}
+                {% include '../content/' + filePath %}
+            {% else %}
+                <p>There's nothing here for that right now</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

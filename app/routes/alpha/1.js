@@ -115,6 +115,16 @@ module.exports = function (router) {
     })
   })
 
+  // Multiple page article
+  router.get(['/alpha/' + versionDirectory + '/multi-part-article/:groupSlug/:articleSlug', '/alpha/' + versionDirectory + '/multi-part-article/:groupSlug/:group2Slug/:articleSlug'], (req, res) => {
+    const multiPageVariant = req.query.multiPageType || 'A'
+    const pageNumber = req.query.pageNumber || 1
+    res.render('alpha/' + versionDirectory + '/multi-part-article/index.html', {
+      variant: multiPageVariant,
+      pageNumber: pageNumber
+    })
+  })
+
   // Search
   router.post(['/alpha/' + versionDirectory + '/search/'], (req, res) => {
     const theSearchTerm = req.body.q || ''
