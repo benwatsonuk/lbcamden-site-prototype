@@ -18,13 +18,29 @@
 
 <p class="govuk-!-font-weight-bold govuk-!-margin-bottom-9 govuk-!-margin-top-9">Page updated on: 10 June 2022</p>
 
-{{ govukPagination({
-  previous: {
-    labelText: "1 of 3",
-    href: "#"
-  },
-  next: {
-    labelText: "3 of 3",
-    href: "#"
-  }
-}) }}
+{% if pageNumber == 1 %}
+  {{ govukPagination({
+    next: {
+      labelText: pageData.items[pageNumber].title,
+      href: "?multiPartType=C&pageNumber=" + (pageNumber + 1)
+    }
+  }) }}
+{% elseif pageNumber >= pageData.items.length %}
+  {{ govukPagination({
+    previous: {
+      labelText: pageData.items[pageNumber - 2].title,
+      href: "?multiPartType=C&pageNumber=" + (pageNumber - 1)
+    }
+  }) }}
+{% else %}
+  {{ govukPagination({
+    previous: {
+      labelText: pageData.items[pageNumber - 2].title,
+      href: "?multiPartType=C&pageNumber=" + (pageNumber - 1)
+    },
+    next: {
+      labelText: pageData.items[pageNumber].title,
+      href: "?multiPartType=C&pageNumber=" + (pageNumber + 1)
+    }
+  }) }}
+{% endif %}
