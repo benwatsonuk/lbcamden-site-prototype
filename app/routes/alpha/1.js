@@ -80,32 +80,14 @@ module.exports = function (router) {
   })
 
   // Common article and multi-part article function
-  async function getFirstLine (pathToFile) {
-    const readable = Fs.createReadStream(pathToFile)
-    const reader = readline.createInterface({ input: readable })
-    const line = await new Promise((resolve) => {
-      reader.on('line', (line) => {
-        reader.close()
-        resolve(line)
-      })
-    })
-    readable.close()
-    return line
-  }
-
-  function readFirstLine (filePath) {
-    const fileContent = Fs.readFileSync(filePath, 'utf-8')
-    return (fileContent.match(/(^.*)/) || [])[1] || ''
-    // return (fileContent.match((?s)(?<=<h1>)(.+?)(?=<\/h1>))
-  }
-
   function getPageData () {
+    // @todo - make this dynamic
     return require('../../views/alpha/' + versionDirectory + '/content/business/food-business/registering-as-a-food-business/data.js')
   }
 
   function getArticleDetails (theGroupSlug, theGroup2Slug, theArticleSlug, isMultiPartArticle) {
     const theGroup = serviceItems.find(x => (x.slug === theGroupSlug))
-    let theArticle = theGroup.items.find(x => (x.slug === theArticleSlug))
+    let theArticle = theGroup.items.find(x => (x.slug === theArticleSlug)) || theArticleSlug
     let theFilePath = null
     let fileFound = false
     let thePages = []
@@ -142,7 +124,7 @@ module.exports = function (router) {
     }
     let pageData = null
 
-    if (theGroup2Slug != null) {
+    if (theGroup2Slug != null && theGroup2Slug !== false) {
       const group2 = theGroup.items.find(x => (x.slug === theGroup2Slug))
       theArticle = group2.items.find(x => x.slug === theArticleSlug)
       // const filePath = theGroupSlug + '/' + theGroup2Slug + '/' + theArticleSlug + '.html'
@@ -165,7 +147,6 @@ module.exports = function (router) {
       if (Fs.existsSync(path)) {
         fileFound = true
         theFilePath = directoryPath + theArticleSlug + '.html'
-        console.log(getFirstLine(theFilePath))
         thePages.push(path)
       } else {
         pageData = getPageData()
@@ -187,9 +168,10 @@ module.exports = function (router) {
   // Article page
   router.get(['/alpha/' + versionDirectory + '/article/:groupSlug/:articleSlug', '/alpha/' + versionDirectory + '/article/:groupSlug/:group2Slug/:articleSlug'], (req, res) => {
     const theGroupSlug = req.params.groupSlug
-    const theGroup2Slug = req.params.group2Slug
+    const theGroup2Slug = req.params.group2Slug || false
     const theArticleSlug = req.params.articleSlug
     const theArticleDetails = getArticleDetails(theGroupSlug, theGroup2Slug, theArticleSlug)
+    console.log(theArticleDetails.fileFound)
     res.render('alpha/' + versionDirectory + '/article/index.html', {
       theGroup: theArticleDetails.theGroup,
       theArticle: theArticleDetails.theArticle,
@@ -197,7 +179,8 @@ module.exports = function (router) {
       theArticleSlug: theArticleSlug,
       fileFound: theArticleDetails.fileFound,
       filePath: theArticleDetails.theFilePath,
-      thePages: theArticleDetails.thePages
+      thePages: theArticleDetails.thePages,
+      pageData: theArticleDetails.pageData
     })
   })
 
@@ -209,7 +192,6 @@ module.exports = function (router) {
     const theGroup2Slug = req.params.group2Slug
     const theArticleSlug = req.params.articleSlug
     const theArticleDetails = getArticleDetails(theGroupSlug, theGroup2Slug, theArticleSlug, true)
-    console.log(theArticleDetails.theFilePath)
     res.render('alpha/' + versionDirectory + '/multi-part-article/index.html', {
       variant: multiPageVariant,
       pageNumber: pageNumber,
