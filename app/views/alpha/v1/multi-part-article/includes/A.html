@@ -1,0 +1,18 @@
+<h2 class="govuk-heading-s">Contents</h2>
+
+<ul class="LBCamden-List--dash">
+  {% for page in pageData.items %}
+  <li><a href="#{{ loop.index }}">{{ page.title }}</a></li>
+  {% endfor %}
+</ul>
+
+<!-- Actual content goes here -->
+{% for page in pageData.items %}
+  <section id="{{ loop.index }}">
+  {% include '../../content/' + filePath + '/' + page.file + '.html' %}
+  </section>
+{% endfor %}
+
+<p class="govuk-!-font-weight-bold govuk-!-margin-bottom-9 govuk-!-margin-top-9">Page updated on: 10 June 2022</p>
+
+<a href="#main-content">Back to contents</a>

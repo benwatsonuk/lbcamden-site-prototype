@@ -139,7 +139,8 @@ module.exports = [
         items: [
           {
             title: 'Registering a food business',
-            slug: ''
+            type: 'multi-part-article',
+            slug: 'registering-as-a-food-business'
           },
           {
             title: 'Food and hygiene information',

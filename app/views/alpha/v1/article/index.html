@@ -2,7 +2,7 @@
 
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
-{% set pageTitle = "Change you name by deed poll" %}
+{% set pageTitle = "Article" %}
 {% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
 
 {% block beforeContent %}
@@ -22,7 +22,6 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds-from-desktop">
-            <h1>{{ theArticle.title }}</h1>
             {% if fileFound %}
                 {% include '../content/' + filePath %}
             {% else %}

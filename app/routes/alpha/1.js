@@ -1,5 +1,6 @@
 const Fs = require('fs')
 const Path = require('path')
+const readline = require('readline')
 const version = '1'
 const versionDirectory = 'v' + version
 const serviceItems = require('../../views/alpha/' + versionDirectory + '/data/services')
@@ -78,40 +79,130 @@ module.exports = function (router) {
     })
   })
 
+  // Common article and multi-part article function
+  function getPageData () {
+    // @todo - make this dynamic
+    return require('../../views/alpha/' + versionDirectory + '/content/business/food-business/registering-as-a-food-business/data.js')
+  }
+
+  function getArticleDetails (theGroupSlug, theGroup2Slug, theArticleSlug, isMultiPartArticle) {
+    const theGroup = serviceItems.find(x => (x.slug === theGroupSlug))
+    let theArticle = theGroup.items.find(x => (x.slug === theArticleSlug)) || theArticleSlug
+    let theFilePath = null
+    let fileFound = false
+    let thePages = []
+
+    // Check if content file exists
+    function createPageArray (theDirectoryPath, theArray) {
+      if (!isMultiPartArticle) {
+        return theArray
+      } else {
+        let pageFiles = []
+        console.log('MPP' + ' ' + theDirectoryPath)
+        const theFullDirectoryPath = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + theDirectoryPath)
+        if (Fs.existsSync(theFullDirectoryPath)) {
+          console.log(123)
+          // Fs.readdirSync(theFullDirectoryPath, (err, files) => {
+          //   console.log("Files = " + files)
+          //   pageFiles = files
+          // })
+          try {
+            pageFiles = Fs.readdirSync(theFullDirectoryPath)
+
+            // files object contains all files names
+            // log them on console
+            // files.forEach(file => {
+            //   console.log(file);
+            // });
+          } catch (err) {
+            console.log(err)
+          }
+        }
+        console.log('PF = ' + pageFiles)
+        return pageFiles
+      }
+    }
+    let pageData = null
+
+    if (theGroup2Slug != null && theGroup2Slug !== false) {
+      const group2 = theGroup.items.find(x => (x.slug === theGroup2Slug))
+      theArticle = group2.items.find(x => x.slug === theArticleSlug)
+      // const filePath = theGroupSlug + '/' + theGroup2Slug + '/' + theArticleSlug + '.html'
+      const directoryPath = theGroupSlug + '/' + theGroup2Slug + '/'
+      const path = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + directoryPath + theArticleSlug + '.html')
+      if (Fs.existsSync(path)) {
+        fileFound = true
+        theFilePath = directoryPath + theArticleSlug + '.html'
+        thePages.push(path)
+      } else {
+        theFilePath = directoryPath + theArticleSlug
+        pageData = getPageData()
+        console.log(pageData)
+        thePages = createPageArray(directoryPath + theArticleSlug, thePages)
+      }
+    } else {
+      // const filePath = theGroupSlug + '/' + theArticleSlug + '.html'
+      const directoryPath = theGroupSlug + '/'
+      const path = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + directoryPath + theArticleSlug + '.html')
+      if (Fs.existsSync(path)) {
+        fileFound = true
+        theFilePath = directoryPath + theArticleSlug + '.html'
+        thePages.push(path)
+      } else {
+        pageData = getPageData()
+        console.log(pageData)
+        theFilePath = directoryPath + theArticleSlug
+        thePages = createPageArray(directoryPath + theArticleSlug, thePages)
+      }
+    }
+    return {
+      theGroup,
+      theArticle,
+      fileFound,
+      theFilePath,
+      thePages,
+      pageData
+    }
+  }
+
   // Article page
   router.get(['/alpha/' + versionDirectory + '/article/:groupSlug/:articleSlug', '/alpha/' + versionDirectory + '/article/:groupSlug/:group2Slug/:articleSlug'], (req, res) => {
     const theGroupSlug = req.params.groupSlug
-    const theGroup2Slug = req.params.group2Slug
+    const theGroup2Slug = req.params.group2Slug || false
     const theArticleSlug = req.params.articleSlug
-    let fileFound = false
-    const theGroup = serviceItems.find(x => (x.slug === theGroupSlug))
-    let theArticle = theGroup.items.find(x => (x.slug === theArticleSlug))
-    let theFilePath = null
-    // Check if content file exists
-    if (theGroup2Slug != null) {
-      const group2 = theGroup.items.find(x => (x.slug === theGroup2Slug))
-      theArticle = group2.items.find(x => x.slug === theArticleSlug)
-      const filePath = theGroupSlug + '/' + theGroup2Slug + '/' + theArticleSlug + '.html'
-      const path = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + filePath)
-      if (Fs.existsSync(path)) {
-        fileFound = true
-        theFilePath = filePath
-      }
-    } else {
-      const filePath = theGroupSlug + '/' + theArticleSlug + '.html'
-      const path = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + filePath)
-      if (Fs.existsSync(path)) {
-        fileFound = true
-        theFilePath = filePath
-      }
-    }
+    const theArticleDetails = getArticleDetails(theGroupSlug, theGroup2Slug, theArticleSlug)
+    console.log(theArticleDetails.fileFound)
     res.render('alpha/' + versionDirectory + '/article/index.html', {
-      theGroup: theGroup,
-      theArticle: theArticle,
+      theGroup: theArticleDetails.theGroup,
+      theArticle: theArticleDetails.theArticle,
       theGroupSlug: theGroupSlug,
       theArticleSlug: theArticleSlug,
-      fileFound: fileFound,
-      filePath: theFilePath
+      fileFound: theArticleDetails.fileFound,
+      filePath: theArticleDetails.theFilePath,
+      thePages: theArticleDetails.thePages,
+      pageData: theArticleDetails.pageData
+    })
+  })
+
+  // Multiple page article
+  router.get(['/alpha/' + versionDirectory + '/multi-part-article/:groupSlug/:articleSlug', '/alpha/' + versionDirectory + '/multi-part-article/:groupSlug/:group2Slug/:articleSlug'], (req, res) => {
+    const multiPageVariant = req.query.multiPartType || 'A'
+    const pageNumber = parseInt(req.query.pageNumber) || 1
+    const theGroupSlug = req.params.groupSlug
+    const theGroup2Slug = req.params.group2Slug
+    const theArticleSlug = req.params.articleSlug
+    const theArticleDetails = getArticleDetails(theGroupSlug, theGroup2Slug, theArticleSlug, true)
+    res.render('alpha/' + versionDirectory + '/multi-part-article/index.html', {
+      variant: multiPageVariant,
+      pageNumber: pageNumber,
+      theGroup: theArticleDetails.theGroup,
+      theArticle: theArticleDetails.theArticle,
+      theGroupSlug: theGroupSlug,
+      theArticleSlug: theArticleSlug,
+      fileFound: theArticleDetails.fileFound,
+      filePath: theArticleDetails.theFilePath,
+      thePages: theArticleDetails.thePages,
+      pageData: theArticleDetails.pageData
     })
   })
 
