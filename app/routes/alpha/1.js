@@ -1,5 +1,6 @@
 const Fs = require('fs')
 const Path = require('path')
+const readline = require('readline')
 const version = '1'
 const versionDirectory = 'v' + version
 const serviceItems = require('../../views/alpha/' + versionDirectory + '/data/services')
@@ -79,6 +80,25 @@ module.exports = function (router) {
   })
 
   // Common article and multi-part article function
+  async function getFirstLine (pathToFile) {
+    const readable = Fs.createReadStream(pathToFile)
+    const reader = readline.createInterface({ input: readable })
+    const line = await new Promise((resolve) => {
+      reader.on('line', (line) => {
+        reader.close()
+        resolve(line)
+      })
+    })
+    readable.close()
+    return line
+  }
+
+  function readFirstLine (filePath) {
+    const fileContent = Fs.readFileSync(filePath, 'utf-8')
+    return (fileContent.match(/(^.*)/) || [])[1] || ''
+    // return (fileContent.match((?s)(?<=<h1>)(.+?)(?=<\/h1>))
+  }
+
   function getArticleDetails (theGroupSlug, theGroup2Slug, theArticleSlug, isMultiPartArticle) {
     const theGroup = serviceItems.find(x => (x.slug === theGroupSlug))
     let theArticle = theGroup.items.find(x => (x.slug === theArticleSlug))
@@ -128,6 +148,7 @@ module.exports = function (router) {
         theFilePath = directoryPath + theArticleSlug + '.html'
         thePages.push(path)
       } else {
+        theFilePath = directoryPath + theArticleSlug
         thePages = createPageArray(directoryPath + theArticleSlug, thePages)
       }
     } else {
@@ -137,8 +158,10 @@ module.exports = function (router) {
       if (Fs.existsSync(path)) {
         fileFound = true
         theFilePath = directoryPath + theArticleSlug + '.html'
+        console.log(getFirstLine(theFilePath))
         thePages.push(path)
       } else {
+        theFilePath = directoryPath + theArticleSlug
         thePages = createPageArray(directoryPath + theArticleSlug, thePages)
       }
     }
@@ -176,7 +199,7 @@ module.exports = function (router) {
     const theGroup2Slug = req.params.group2Slug
     const theArticleSlug = req.params.articleSlug
     const theArticleDetails = getArticleDetails(theGroupSlug, theGroup2Slug, theArticleSlug, true)
-    console.log('22 ' + theArticleDetails.thePages)
+    console.log(theArticleDetails.theFilePath)
     res.render('alpha/' + versionDirectory + '/multi-part-article/index.html', {
       variant: multiPageVariant,
       pageNumber: pageNumber,

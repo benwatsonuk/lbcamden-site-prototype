@@ -1,0 +1,12 @@
+<h2 class="govuk-heading-s">Contents</h2>
+
+<ul class="LBCamden-List--dash">
+  {% for page in thePages %}
+  <li><a href="#{{ loop.index }}">Title</a></li>
+  {% endfor %}
+</ul>
+
+<!-- Actual content goes here -->
+{% for page in thePages %}
+  {% include '../../content/' + filePath + '/' + page %}
+{% endfor %}
