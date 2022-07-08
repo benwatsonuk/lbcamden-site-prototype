@@ -99,6 +99,10 @@ module.exports = function (router) {
     // return (fileContent.match((?s)(?<=<h1>)(.+?)(?=<\/h1>))
   }
 
+  function getPageData () {
+    return require('../../views/alpha/' + versionDirectory + '/content/business/food-business/registering-as-a-food-business/data.js')
+  }
+
   function getArticleDetails (theGroupSlug, theGroup2Slug, theArticleSlug, isMultiPartArticle) {
     const theGroup = serviceItems.find(x => (x.slug === theGroupSlug))
     let theArticle = theGroup.items.find(x => (x.slug === theArticleSlug))
@@ -136,6 +140,7 @@ module.exports = function (router) {
         return pageFiles
       }
     }
+    let pageData = null
 
     if (theGroup2Slug != null) {
       const group2 = theGroup.items.find(x => (x.slug === theGroup2Slug))
@@ -149,6 +154,8 @@ module.exports = function (router) {
         thePages.push(path)
       } else {
         theFilePath = directoryPath + theArticleSlug
+        pageData = getPageData()
+        console.log(pageData)
         thePages = createPageArray(directoryPath + theArticleSlug, thePages)
       }
     } else {
@@ -161,6 +168,8 @@ module.exports = function (router) {
         console.log(getFirstLine(theFilePath))
         thePages.push(path)
       } else {
+        pageData = getPageData()
+        console.log(pageData)
         theFilePath = directoryPath + theArticleSlug
         thePages = createPageArray(directoryPath + theArticleSlug, thePages)
       }
@@ -170,7 +179,8 @@ module.exports = function (router) {
       theArticle,
       fileFound,
       theFilePath,
-      thePages
+      thePages,
+      pageData
     }
   }
 
@@ -209,7 +219,8 @@ module.exports = function (router) {
       theArticleSlug: theArticleSlug,
       fileFound: theArticleDetails.fileFound,
       filePath: theArticleDetails.theFilePath,
-      thePages: theArticleDetails.thePages
+      thePages: theArticleDetails.thePages,
+      pageData: theArticleDetails.pageData
     })
   })
 
