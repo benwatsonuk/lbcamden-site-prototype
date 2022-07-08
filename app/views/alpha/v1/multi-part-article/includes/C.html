@@ -1,0 +1,19 @@
+<h2 class="">This will be the 'Universal Credit' example</h2>
+
+<div class="contents-for-type-c-article">
+  <h2 class="govuk-heading-s">Contents</h2>
+
+  <ul class="LBCamden-List--dash">
+    {% for page in pageData.items %}
+      {% if pageNumber == loop.index %}
+        <li>{{ page.title }}</li>
+      {% else %}
+        <li><a href="?multiPartType=C&pageNumber={{ loop.index }}">{{ page.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+{% set fileToUse = pageData.items[pageNumber - 1].file %}
+{% include '../../content/' + filePath + '/' + fileToUse + '.html' %}
+
+<p class="govuk-!-font-weight-bold govuk-!-margin-bottom-9 govuk-!-margin-top-9">Page updated on: 10 June 2022</p>

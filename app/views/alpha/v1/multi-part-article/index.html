@@ -24,13 +24,15 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <h1>{{ pageData.title }}</h1>
       {% if pageData.items %}
-        {% if variant === 'B' %}
-            <p>Variant B</p>
+        {% if variant === 'C' %}
+          {% include './includes/C.html' %}
+        {% elseif variant === 'B' %}
+          {% include './includes/B.html' %}
         {% else %}
           {% include './includes/A.html' %}
         {% endif %}
-      {% else %}
-        <p>There's nothing here for that right now</p>
+        {% else %}
+          <p>There's nothing here for that right now</p>
       {% endif %}
     </div>
   </div>
