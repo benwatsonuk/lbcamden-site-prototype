@@ -23,6 +23,7 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds-from-desktop">
             <h1>{{ theArticle.title }}</h1>
+            <p>PC: {{ thePages.length }}</p>
             {% if fileFound %}
                 {% include '../content/' + filePath %}
             {% else %}
