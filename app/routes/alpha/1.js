@@ -80,9 +80,13 @@ module.exports = function (router) {
   })
 
   // Common article and multi-part article function
-  function getPageData () {
+  function getPageData (article, group1, group2) {
     // @todo - make this dynamic
-    return require('../../views/alpha/' + versionDirectory + '/content/business/food-business/registering-as-a-food-business/data.js')
+    if (group2) {
+      return require('../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + article + '/data.js')
+    } else {
+      return require('../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + article + '/data.js')
+    }
   }
 
   function getArticleDetails (theGroupSlug, theGroup2Slug, theArticleSlug, isMultiPartArticle) {
@@ -136,7 +140,7 @@ module.exports = function (router) {
         thePages.push(path)
       } else {
         theFilePath = directoryPath + theArticleSlug
-        pageData = getPageData()
+        pageData = getPageData(theArticleSlug, theGroupSlug, theGroup2Slug)
         console.log(pageData)
         thePages = createPageArray(directoryPath + theArticleSlug, thePages)
       }
@@ -149,7 +153,7 @@ module.exports = function (router) {
         theFilePath = directoryPath + theArticleSlug + '.html'
         thePages.push(path)
       } else {
-        pageData = getPageData()
+        pageData = getPageData(theArticleSlug, theGroupSlug, false)
         console.log(pageData)
         theFilePath = directoryPath + theArticleSlug
         thePages = createPageArray(directoryPath + theArticleSlug, thePages)
