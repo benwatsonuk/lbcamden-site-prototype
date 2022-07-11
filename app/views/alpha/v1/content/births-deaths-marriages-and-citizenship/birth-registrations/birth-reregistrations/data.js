@@ -13,7 +13,11 @@ module.exports = {
   ],
   related: [
     {
-      title: 'Test',
+      title: 'Copies of birth, marriage and death certificates',
+      href: '#'
+    },
+    {
+      title: 'Children\'s centre services',
       href: '#'
     }
   ]

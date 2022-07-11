@@ -39,10 +39,16 @@
           <p>There's nothing here for that right now</p>
         {% endif %}
       </div>
-      {% if variant !== 'C' %}
-      <div class="govuk-grid-column-one-third-from-desktop">
-        {% include './includes/related.html' %}
-      </div>
+      {% if variant === 'A' %}
+        <div class="govuk-grid-column-one-third-from-desktop">
+          {% include './includes/related.html' %}
+        </div>
       {% endif %}
     </div>
+    {% endblock %}
+
+    {% block afterContent %}
+      {% if variant === 'B' %}
+        {% include './includes/related.html' %}
+      {% endif %}
     {% endblock %}

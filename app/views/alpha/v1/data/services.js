@@ -8,6 +8,7 @@ module.exports = [
   {
     title: 'Births, deaths, marriages and citizenship',
     slug: 'births-deaths-marriages-and-citizenship',
+    complex: true,
     description: 'Register a birth or a death. Apply for citizenship, and guidance on getting married',
     items: [
       {
@@ -15,8 +16,13 @@ module.exports = [
         slug: 'birth-registrations',
         items: [
           {
-            title: 'Visit Camden’s markets',
-            slug: 'visit-camdens-markets'
+            title: 'Register a birth',
+            slug: 'register-a-birth'
+          },
+          {
+            title: 'Re-register a birth',
+            slug: 'birth-reregistrations',
+            type: 'multi-part-article'
           }
         ]
       }
