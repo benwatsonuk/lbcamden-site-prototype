@@ -64,7 +64,7 @@ module.exports =
         items: [
           {
             title: 'Register a food business',
-            slug: '',
+            slug: 'multi-part-article/business/food-business/registering-as-a-food-business',
             content: 'Register your business for food operations.',
             date: '12 March 2022',
             category: ''
