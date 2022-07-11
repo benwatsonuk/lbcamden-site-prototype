@@ -30,7 +30,7 @@
   <div class="govuk-width-container">
     {% if service.items %}
       <h2 class="govuk-heading-l">Contents</h2>
-      <ul class="LBCamden-Card_Wrapper">
+      <ul class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--give-border">
         {% for item in service.items %}
           <li class="{{ widthClass }} LBCamden-Card--naked">
             <h3 class="govuk-heading-m">{{ item.title }}</h3>
