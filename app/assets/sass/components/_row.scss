@@ -3,3 +3,10 @@
     background: lbcamden-colour("govuk-bg-bright1-colour");
   }
 }
+
+.govuk-grid-column-one-third-from-desktop {
+  .LBCamden-Row--related {
+    margin: 0;
+    @include govuk-responsive-padding($lbc-default-spacing--small, "all");
+  }
+}

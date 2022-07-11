@@ -155,6 +155,7 @@ module.exports = function (router) {
         thePages = createPageArray(directoryPath + theArticleSlug, thePages)
       }
     }
+    console.log(pageData)
     return {
       theGroup,
       theArticle,

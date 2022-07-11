@@ -11,6 +11,9 @@
     {% endfor %}
   </ul>
 </div>
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
 {% set fileToUse = pageData.items[pageNumber - 1].file %}
 {% include '../../content/' + filePath + '/' + fileToUse + '.html' %}
 
@@ -42,3 +45,8 @@
     }
   }) }}
 {% endif %}
+</div>
+<div class="govuk-grid-column-one-third-from-desktop">
+  {% include '../includes/related.html' %}
+</div>
+</div>

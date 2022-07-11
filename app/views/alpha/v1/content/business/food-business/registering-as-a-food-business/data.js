@@ -25,7 +25,15 @@ module.exports = {
   ],
   related: [
     {
-      title: '123',
+      title: 'Food premises approval',
+      href: '#'
+    },
+    {
+      title: 'Register a food business',
+      href: '#'
+    },
+    {
+      title: 'Food safety training',
       href: '#'
     }
   ]
