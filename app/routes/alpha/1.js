@@ -82,10 +82,16 @@ module.exports = function (router) {
   // Common article and multi-part article function
   function getPageData (article, group1, group2) {
     // @todo - make this dynamic
+    console.log(group1, group2, article)
+    console.log('file found: ' + Fs.existsSync(Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + article + '/data.js')))
     if (group2) {
-      return require('../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + article + '/data.js')
+      if (Fs.existsSync(Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + article + '/data.js'))) {
+        return require('../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + article + '/data.js')
+      }
     } else {
-      return require('../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + article + '/data.js')
+      if (Fs.existsSync(Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + article + '/data.js'))) {
+        return require('../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + article + '/data.js')
+      }
     }
   }
 
@@ -102,10 +108,10 @@ module.exports = function (router) {
         return theArray
       } else {
         let pageFiles = []
-        console.log('MPP' + ' ' + theDirectoryPath)
+        // console.log('MPP' + ' ' + theDirectoryPath)
         const theFullDirectoryPath = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + theDirectoryPath)
         if (Fs.existsSync(theFullDirectoryPath)) {
-          console.log(123)
+          // console.log(123)
           // Fs.readdirSync(theFullDirectoryPath, (err, files) => {
           //   console.log("Files = " + files)
           //   pageFiles = files
@@ -122,7 +128,7 @@ module.exports = function (router) {
             console.log(err)
           }
         }
-        console.log('PF = ' + pageFiles)
+        // console.log('PF = ' + pageFiles)
         return pageFiles
       }
     }
@@ -141,7 +147,7 @@ module.exports = function (router) {
       } else {
         theFilePath = directoryPath + theArticleSlug
         pageData = getPageData(theArticleSlug, theGroupSlug, theGroup2Slug)
-        console.log(pageData)
+        // console.log(pageData)
         thePages = createPageArray(directoryPath + theArticleSlug, thePages)
       }
     } else {
@@ -154,12 +160,12 @@ module.exports = function (router) {
         thePages.push(path)
       } else {
         pageData = getPageData(theArticleSlug, theGroupSlug, false)
-        console.log(pageData)
+        // console.log(pageData)
         theFilePath = directoryPath + theArticleSlug
         thePages = createPageArray(directoryPath + theArticleSlug, thePages)
       }
     }
-    console.log(pageData)
+    // console.log(pageData)
     return {
       theGroup,
       theArticle,
@@ -176,7 +182,7 @@ module.exports = function (router) {
     const theGroup2Slug = req.params.group2Slug || false
     const theArticleSlug = req.params.articleSlug
     const theArticleDetails = getArticleDetails(theGroupSlug, theGroup2Slug, theArticleSlug)
-    console.log(theArticleDetails.fileFound)
+    // console.log(theArticleDetails.fileFound)
     res.render('alpha/' + versionDirectory + '/article/index.html', {
       theGroup: theArticleDetails.theGroup,
       theArticle: theArticleDetails.theArticle,
