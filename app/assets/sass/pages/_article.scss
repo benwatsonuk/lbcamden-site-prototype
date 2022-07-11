@@ -1,7 +1,11 @@
 .contents-for-type-c-article {
-  @include govuk-responsive-padding($lbc-default-spacing, "bottom");
   @include govuk-responsive-margin($lbc-default-spacing, "bottom");
-  border-bottom: 1px solid lbcamden-colour("govuk-bg-dark1-colour");
+  //@include govuk-responsive-padding($lbc-default-spacing--small, "bottom");
+
+  + .govuk-grid-row .govuk-grid-column-two-thirds {
+    @include govuk-responsive-padding($lbc-default-spacing, "top");
+    border-top: 1px solid lbcamden-colour("govuk-bg-dark1-colour");
+  }
 }
 
 // Linear nav from Universal Credit

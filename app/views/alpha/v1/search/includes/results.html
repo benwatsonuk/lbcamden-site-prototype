@@ -3,7 +3,7 @@
     <ul class="govuk-list">
       {% for item in searchResults.items %}
         <li class="govuk-!-margin-bottom-6">
-          <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><a href="{{ item.slug }}">{{ item.title }}</a></h2>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><a href="/alpha/{{ versionDirectory }}/{{ item.slug }}">{{ item.title }}</a></h2>
           {{ item.content }}
           <p class="govuk-!-font-size-14">Updated: {{ item.date }}</p>
         </li>

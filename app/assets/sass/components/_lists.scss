@@ -1,0 +1,7 @@
+.LBCamden-List {
+  &--dash {
+    li {
+      @include govuk-responsive-margin($lbc-default-spacing--small, "bottom");
+    }
+  }
+}
