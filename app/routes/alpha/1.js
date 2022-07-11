@@ -47,8 +47,10 @@ module.exports = function (router) {
 
   // Home
   router.get(['/alpha/' + versionDirectory + '/home'], (req, res) => {
+    const heroVariant = req.query.heroVariant || 'A'
     res.render('alpha/' + versionDirectory + '/home/index.html', {
-      homePage: true
+      homePage: true,
+      heroVariant: heroVariant
     })
   })
 

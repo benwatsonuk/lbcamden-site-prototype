@@ -1,12 +1,34 @@
-<div class='govuk-grid-row LBCamden-Home--hero govuk-width-container'>
-  <div class='govuk-grid-column-one-third LBCamden-Home--hero-text'>
-    <h1>Camden’s Youth MP election 2022</h1>
-    <p>Young people across Camden will go to the polls from 27 June to 10 July 2022 to vote for their new Camden
-            Youth MPs and Deputy Youth MPs.
-    </p>
-    <a href='#'>Read more</a>
+{% if heroVariant === 'B' %}
+
+  <div class='govuk-grid-row LBCamden-Home--hero govuk-width-container LBCamden-Home--hero-b'>
+    <div class='govuk-grid-column-one-half LBCamden-Home--hero-text'>
+      <h1>Welcome to Camden</h1>
+      <p>Something why Camden is such a good place to live, work, and visit. Like a product statement. Brief and clear.</p>
+      <div class="LBCamden-Header--search">
+        <h2 class="govuk-heading-s">Search</h2>
+        {% include '../../includes/search.html' %}
+      </div>
+    </div>
+    <div class='govuk-grid-column-one-half LBCamden-Home--hero-image'>
+      <div class="LBCamden-Home--hero-caption">
+        <h2 class="govuk-heading-m"><a href="#">Camden’s Youth MP election 2022</a></h2>
+      </div>
+      <img src='/public/images/homepage/1.png' alt='Homepage image'/>
+    </div>
   </div>
-  <div class='govuk-grid-column-two-thirds LBCamden-Home--hero-image'>
-    <img src='/public/images/homepage/1.png' alt='Homepage image' />
+
+{% else %}
+
+  <div class='govuk-grid-row LBCamden-Home--hero govuk-width-container'>
+    <div class='govuk-grid-column-one-third LBCamden-Home--hero-text'>
+      <h1>Camden’s Youth MP election 2022</h1>
+      <p>Young people across Camden will go to the polls from 27 June to 10 July 2022 to vote for their new Camden
+        Youth MPs and Deputy Youth MPs.
+      </p>
+      <a href='#'>Read more</a>
+    </div>
+    <div class='govuk-grid-column-two-thirds LBCamden-Home--hero-image'>
+      <img src='/public/images/homepage/1.png' alt='Homepage image'/>
+    </div>
   </div>
-</div>
+{% endif %}

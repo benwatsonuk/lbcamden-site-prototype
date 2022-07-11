@@ -20,35 +20,59 @@ $border-curve: 4rem;
     }
 
     @include govuk-media-query($from: desktop) {
-      order: 1;
+      &:not(.LBCamden-Home--hero-b &) {
+        order: 1;
+      }
+      position: relative;
+      @include govuk-responsive-margin($lbc-default-spacing, "left");
+
       img {
         height: 100%;
-        border-bottom-left-radius: $border-curve;
-        @include govuk-responsive-margin($lbc-default-spacing, "left");
+        &:not(.LBCamden-Home--hero-b &) {
+          border-bottom-left-radius: $border-curve;
+        }
       }
     }
   }
 
+  &-caption {
+    @include govuk-responsive-padding($lbc-default-spacing--small, "all");
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: lbcamden-colour("white");
+  }
+
   &-text {
-    order: 1;
+    &:not(.LBCamden-Home--hero-b &) {
+      order: 1;
+    }
     @include govuk-responsive-padding($lbc-default-spacing, "all");
     background: $govuk-brand-colour;
     color: lbcamden-colour("white") !important;
+
     @include govuk-media-query($from: desktop) {
       order: 0;
       position: relative;
-      &:after {
-        content: "";
-        position: absolute;
-        right: -4rem;
-        bottom: 0;
-        display: block;
-        height: 4rem;
-        width: 4rem;
-        background: transparent;
-        box-shadow: -40px 40px 0px 10px $govuk-brand-colour;
-        border-radius: $border-curve;
+      &:not(.LBCamden-Home--hero-b &) {
+        &:after {
+          content: "";
+          position: absolute;
+          right: -4rem;
+          bottom: 0;
+          display: block;
+          height: 4rem;
+          width: 4rem;
+          background: transparent;
+          box-shadow: -40px 40px 0px 10px $govuk-brand-colour;
+          border-radius: $border-curve;
+        }
       }
+    }
+
+    .gem-c-search__input,
+    .gem-c-search__submit {
+      border: 2px solid lbcamden-colour("white");
     }
 
     *:not(:focus) {
