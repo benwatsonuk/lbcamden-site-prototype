@@ -1,13 +1,4 @@
 .LBCamden-Card_Wrapper {
-  &--two-columns {
-    grid-template-columns: fractions(2);
-  }
 
-  &--four-columns-from-desktop,
-  &--popular {
-    @include govuk-media-query($from: "desktop") {
-      grid-template-columns: fractions(4);
-    }
-  }
 }
 
