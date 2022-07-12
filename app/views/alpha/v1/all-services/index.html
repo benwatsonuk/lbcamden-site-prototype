@@ -2,6 +2,8 @@
 
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
+{% set mainClasses = "govuk-main-wrapper govuk-main-wrapper--auto-spacing" %}
+
 {% set pageTitle = "All services" %}
 {% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
 
@@ -15,47 +17,26 @@
     ]
   }) }}
 {% endblock %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      <h1>Services</h1>
+      <div class="govuk-width-container">
+        <h1>Services</h1>
 
-      <p class="govuk-body-lead">Services, information and guidance for residents and businesses in Camden.</p>
-
-      <h2>Do it online</h2>
-
-      <div class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--two-columns LBCamden-Card_Wrapper--four-columns-from-desktop govuk-!-margin-bottom-6">
-        {% for item in groupedItems %}
-          <div class="LBCamden-Card   LBCamden-Card--naked LBCamden-Card--clickable"
-               data-module="lbcamden-card">
-            <h3 class="govuk-heading-m">
-              <a href="/alpha/{{ versionDirectory }}/grouped/{{ item.slug }}"
-                 class="LBCamden-Button LBCamden-Button--action govuk-!-display-block">
-                {{ item.title }}
-              </a>
-            </h3>
-            <div class="LBCamden-Card__content">
-              <p>{{ item.description }}</p>
-            </div>
-          </div>
-        {% endfor %}
+        <p class="govuk-body-lead">Services, information and guidance for residents and businesses in Camden.</p>
       </div>
 
-      <h2>All services A-Z</h2>
+      {% include './includes/grouped-services.html' %}
 
-      <div class="LBCamden-Card_Wrapper">
-        {% for item in serviceItems %}
-          {{ LBCamdenCard({
-            naked: true,
-            heading: {
-              title: item.title,
-              href: "/alpha/" + versionDirectory + "/category/" + item.slug,
-              headingLevel: 3
-            },
-            cardBodyHtml: item.description
-          }) }}
-        {% endfor %}
-      </div>
+      {% include './includes/featured.html' %}
+
+      {% include './includes/near-you.html' %}
+
+      {% include './includes/services.html' %}
+
+      {% include './includes/still-looking.html' %}
+
     </div>
   </div>
 {% endblock %}
