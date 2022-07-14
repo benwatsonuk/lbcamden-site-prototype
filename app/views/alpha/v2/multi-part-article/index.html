@@ -1,0 +1,53 @@
+{% extends "../template.html" %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set pageTitle = "Multi-part Article" %}
+{% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/alpha/" + versionDirectory + "/home/"
+      },
+      {
+        text: theGroup.title,
+        href: "/alpha/" + versionDirectory + '/category/' + theGroup.slug + "/"
+      }
+    ]
+  }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+  {% if pageData.items %}
+  {% if variant === 'C' %}
+  <div class="govuk-grid-column-full">
+
+    {% include './includes/C.html' %}
+    {% elseif variant === 'B' %}
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      {% include './includes/B.html' %}
+      {% else %}
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+
+        {% include './includes/A.html' %}
+        {% endif %}
+        {% else %}
+          <p>There's nothing here for that right now</p>
+        {% endif %}
+      </div>
+      {% if variant === 'A' %}
+        <div class="govuk-grid-column-one-third-from-desktop">
+          {% include './includes/related.html' %}
+        </div>
+      {% endif %}
+    </div>
+    {% endblock %}
+
+    {% block afterContent %}
+      {% if variant === 'B' %}
+        {% include './includes/related.html' %}
+      {% endif %}
+    {% endblock %}

@@ -1,0 +1,21 @@
+{% extends '../../template.html' %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+
+            {{ govukPanel({
+                titleText: "Your complaint has been received",
+                html: "Your reference number is <strong>2057180/4</strong>"
+            }) }}
+
+            <p>Confirmation has been sent to <strong>{{ data['phone'] | default('0782746492', true) }}</strong> and <strong>{{ data['email'] | default('sam.rafiq@email.com', true) }}</strong></p>
+
+            <h2>What happens next </h2>
+
+            <p>We’ll call you within 24 hours on <strong>{{ data['phone'] | default('0782746492', true) }}</strong> once we’ve reviewed what you’ve told us.</p>
+
+        </div>
+    </div>
+
+{% endblock %}

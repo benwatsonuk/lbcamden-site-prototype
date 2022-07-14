@@ -1,0 +1,167 @@
+{% extends '../../../../template.html' %}
+
+{% block beforeContent %}
+    <div class="govuk-width-container">
+        {{ govukBackLink({
+            text: "Back",
+            href: "javascript:history.back(-1)"
+        }) }}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+            <h1>Check you answers</h1>
+
+            {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: [
+                    {
+                        key: {
+                        text: "Repair address"
+                    },
+                        value: {
+                        html: "Flat 20b Church Road <br /> Camden <br /> London <br /> NW1 9NN"
+                    },
+                        actions: {
+                        items: [
+                            {
+                                href: "./address",
+                                text: "Change",
+                                visuallyHiddenText: "address"
+                            }
+                        ]
+                    }
+                },
+                    {
+                        key: {
+                        text: "In communal area"
+                    },
+                        value: {
+                        html: data['communal'] | default('No', true)
+                    },
+                        actions: {
+                        items: [
+                            {
+                                href: "./communal",
+                                text: "Change",
+                                visuallyHiddenText: "address"
+                            }
+                        ]
+                    }
+                    },
+                {
+                    key: {
+                        text: "Repair location"
+                    },
+                    value: {
+                        html: "Bathroom"
+                    },
+                    actions: {
+                    items: [
+                        {
+                            href: "./where-is-the-issue",
+                            text: "Change",
+                            visuallyHiddenText: "location"
+                        }
+                    ]
+                    }
+                },
+                {
+                    key: {
+                        text: "What is the problem?"
+                    },
+                    value: {
+                        html: "Toilet"
+                    },
+                    actions: {
+                        items: [
+                            {
+                                href: "./what-is-the-issue",
+                                text: "Change",
+                                visuallyHiddenText: "problem"
+                            }
+                        ]
+                    }
+                },
+                {
+                    key: {
+                        text: "Part"
+                    },
+                    value: {
+                        html: "Something else / I'm not sure"
+                    },
+                    actions: {
+                    items: [
+                        {
+                            href: "./part",
+                            text: "Change",
+                            visuallyHiddenText: "part"
+                        }
+                    ]
+                    }
+                },
+                {
+                    key: {
+                        text: "Risk of flooding"
+                    },
+                    value: {
+                    html: data['flooding'] | default('No', true)
+                    },
+                    actions: {
+                    items: [
+                        {
+                            href: "./flooding",
+                            text: "Change",
+                            visuallyHiddenText: "flooding response"
+                        }
+                    ]
+                    }
+                },
+                {
+                    key: {
+                        text: "Additional details"
+                    },
+                    value: {
+                        html: data['more-detail'] | default('Water is continuously trickling into the toilet. It’s a small constant stream. Like its not really stopped flushing', true)
+                    },
+                    actions: {
+                    items: [
+                        {
+                            href: "./more",
+                            text: "Change",
+                            visuallyHiddenText: "details"
+                        }
+                    ]
+                }
+                },
+                {
+                    key: {
+                       text: "Your details"
+                    },
+                    value: {
+                       html: data['first-name'] | default('Sam Rafiq', true) + "<br />" + data['phone'] | default('0782746492', true) + "<br />" + data['email'] | default('sam.rafiq@email.com', true)
+                    },
+                    actions: {
+                    items: [
+                        {
+                            href: "./personal-details",
+                            text: "Change",
+                            visuallyHiddenText: "personal details"
+                        }
+                    ]
+                    }
+                }
+                ]
+            }) }}
+
+            {{ govukButton({
+                text: 'Submit',
+                classes: 'LBCamden-Button',
+                href: './complete'
+            }) }}
+        </div>
+    </div>
+
+{% endblock %}
