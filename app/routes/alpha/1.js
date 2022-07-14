@@ -1,6 +1,5 @@
 const Fs = require('fs')
 const Path = require('path')
-const readline = require('readline')
 const version = '1'
 const versionDirectory = 'v' + version
 const serviceItems = require('../../views/alpha/' + versionDirectory + '/data/services')
