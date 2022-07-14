@@ -1,0 +1,62 @@
+{% extends '../../../../template.html' %}
+
+{% block beforeContent %}
+    <div class="govuk-width-container">
+        {{ govukBackLink({
+            text: "Back",
+            href: "javascript:history.back(-1)"
+        }) }}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+            <form method="get" action="./communal">
+
+                {{ govukRadios({
+                    idPrefix: "correct",
+                    name: "correct",
+                    classes: "govuk-radios--inline",
+                    fieldset: {
+                        legend: {
+                            text: "Is this the correct address?",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--xl"
+                        }
+                    },
+                    hint: {
+                        html: "Flat 20b Church Road <br /> Camden <br /> London <br /> NW1 9NN"
+                    },
+                    items: [
+                        {
+                            value: "yes",
+                            text: "Yes",
+                            checked: checked('positive', 'yes'),
+                            hint: {
+                            text: ""
+                        }
+                        },
+                        {
+                            value: "no",
+                            text: "No",
+                            checked: checked('positive', 'no'),
+                            hint: {
+                            text: ""
+                        }
+                        }
+                    ]
+                }) }}
+
+                <p><a href="#">I can't find my address in the list</a></p>
+
+                {{ govukButton({
+                    classes: 'LBCamden-Button',
+                    text: 'Continue'
+                }) }}
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

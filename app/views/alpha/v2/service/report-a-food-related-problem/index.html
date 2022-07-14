@@ -1,0 +1,58 @@
+{% extends '../../template.html' %}
+
+{% block beforeContent %}
+    <div class="govuk-width-container">
+        {{ govukBackLink({
+            text: "Back",
+            href: "javascript:history.back(-1)"
+        }) }}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-xl">Report a food related problem</h1>
+            <form method='get' action='./2'>
+                {{ govukRadios({
+                    idPrefix: "theme",
+                    name: "theme",
+                    classes: "",
+                    fieldset: {
+                        legend: {
+                            text: "What would you like to report?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    hint: {
+                       stext: "Emergency repairs are when there is an immediate threat to your (or other residents’) health, safety, security or to your home."
+                    },
+                    items: [
+                        {
+                            value: "1",
+                            text: "Complain about food safety",
+                            checked: checked('theme', '1'),
+                            hint: {
+                            text: ""
+                        }
+                        },
+                        {
+                            value: "2",
+                            text: "Report an issue regarding food labelling and/or composition",
+                            checked: checked('theme', '2'),
+                            hint: {
+                            text: ""
+                        }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    classes: 'LBCamden-Button',
+                    text: 'Continue'
+                }) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

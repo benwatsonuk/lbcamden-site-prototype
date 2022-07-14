@@ -1,0 +1,71 @@
+{% extends '../../../../template.html' %}
+
+{% block beforeContent %}
+    <div class="govuk-width-container">
+        {{ govukBackLink({
+            text: "Back",
+            href: "javascript:history.back(-1)"
+        }) }}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+            <form method="get" action="./part">
+                {{ govukRadios({
+                    idPrefix: "what",
+                    name: "what",
+                    classes: "govuk-radios--small",
+                    fieldset: {
+                        legend: {
+                            text: "What is the problem?",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--xl"
+                        }
+                    },
+                    hint: {
+                        stext: ""
+                    },
+                    items: [
+                        {
+                            value: "1",
+                            text: "Bath"
+                        },
+                        {
+                            value: "2",
+                            text: "Electricals"
+                        },
+                        {
+                            value: "3",
+                            text: "Flooring"
+                        },
+                        {
+                            value: "4",
+                            text: "Shower"
+                        },
+                        {
+                            value: "5",
+                            text: "Toilet"
+                        },
+                        {
+                            value: "6",
+                            text: "Wash basin / sink"
+                        },
+                        {
+                            value: "7",
+                            text: "Window"
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    classes: 'LBCamden-Button',
+                    text: 'Continue'
+                }) }}
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

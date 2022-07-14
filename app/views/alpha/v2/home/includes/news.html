@@ -1,0 +1,53 @@
+<section class="LBCamden-Row">
+  <div class="govuk-width-container">
+
+    <h2>News and events</h2>
+
+    <div class="LBCamden-Card_Wrapper">
+
+      {% set items = [
+        {
+          title: 'Leader confirms new Cabinet appointments',
+          date: '25 May 2022',
+          href: '#',
+          image: 'B1.png'
+        },
+        {
+          title: 'Think & Do Talk',
+          date: '1 July 2022, 18:30',
+          event: 'Camden Arts Centre',
+          href: '#',
+          image: 'B2.png'
+        },
+        {
+          title: 'Children\'s book club',
+          date: '2 July 2022, 15:00',
+          event: 'Holborn Library',
+          href: '#',
+          image: 'B3.png'
+        }
+      ] %}
+      {% for item in items %}
+        <div class="LBCamden-Card LBCamden-Card--naked LBCamden-Card--clickable"
+             data-module="lbcamden-card">
+          <img src="/public/images/homepage/{{ item.image }}" alt=""/>
+          <p class="govuk-!-font-size-14 govuk-!-margin-bottom-0">{{ item.date }}</p>
+          <h2 class="govuk-heading-m">
+            <a href="{{ item.href }}">
+              {{ item.title }}
+            </a>
+          </h2>
+          <div class="LBCamden-Card__content">
+            <p>{{ item.content }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {{ govukButton({
+      classes: 'LBCamden-Button LBCamden-Button--action',
+      text: 'All news and events',
+      href: '#'
+    }) }}
+  </div>
+</section>

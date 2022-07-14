@@ -1,0 +1,49 @@
+{% extends "../template.html" %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set mainClasses = "govuk-main-wrapper govuk-main-wrapper--auto-spacing LBCamden-Category" %}
+
+{% set pageTitle = "Category" %}
+{% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/alpha/" + versionDirectory + "/home/"
+      },
+      {
+        text: "Services",
+        href: "/alpha/" + versionDirectory + "/all-services/"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+
+        <h1 class="govuk-heading-xl">{{ service.title }}</h1>
+
+        <p class="govuk-body-l">{{ service.description }}</p>
+
+      </div>
+    </div>
+  </div>
+  {% if service.complex %}
+    {% include './includes/complex.html' %}
+  {% else %}
+    {% include './includes/simple.html' %}
+  {% endif %}
+
+{% endblock %}
+
+{% block afterContent %}
+  {% if service.related %}
+    {% include './includes/related.html' %}
+  {% endif %}
+{% endblock %}

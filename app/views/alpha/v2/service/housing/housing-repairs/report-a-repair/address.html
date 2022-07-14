@@ -1,0 +1,52 @@
+{% extends '../../../../template.html' %}
+
+{% block beforeContent %}
+    <div class="govuk-width-container">
+        {{ govukBackLink({
+            text: "Back",
+            href: "javascript:history.back(-1)"
+        }) }}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+            <form method="get" action="./address-2">
+            <h1>What’s the property address?</h1>
+
+                <p>Enter the address of the council property needing a repair.</p>
+
+                {{ govukInput({
+                    label: {
+                        text: 'Building number or name'
+                    },
+                    hint: {
+                        text: 'For example, Flat 20A'
+                    },
+                    id: "address-line-1",
+                    name: "address-line-1",
+                    autocomplete: "address-line1"
+                }) }}
+
+                {{ govukInput({
+                    label: {
+                        text: "Postcode"
+                    },
+                    classes: "govuk-input--width-10",
+                    id: "address-postcode",
+                    name: "address-postcode",
+                    autocomplete: "postal-code"
+                }) }}
+
+                {{ govukButton({
+                    classes: 'LBCamden-Button',
+                    text: 'Continue'
+                }) }}
+
+                <p><a href="#">Enter the address manually</a></p>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

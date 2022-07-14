@@ -1,0 +1,42 @@
+{% extends "../template.html" %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set mainClasses = "govuk-main-wrapper govuk-main-wrapper--auto-spacing" %}
+
+{% set pageTitle = "All services" %}
+{% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/alpha/" + versionDirectory + "/home/"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <div class="govuk-width-container">
+        <h1>Services</h1>
+
+        <p class="govuk-body-lead">Services, information and guidance for residents and businesses in Camden.</p>
+      </div>
+
+      {% include './includes/grouped-services.html' %}
+
+      {% include './includes/featured.html' %}
+
+      {% include './includes/near-you.html' %}
+
+      {% include './includes/services.html' %}
+
+      {% include './includes/still-looking.html' %}
+
+    </div>
+  </div>
+{% endblock %}

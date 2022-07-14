@@ -1,0 +1,53 @@
+<section class="LBCamden-Row LBCamden-Row--alt">
+  <div class="govuk-width-container">
+
+    <h2>What we do</h2>
+
+    <p><a href="#">Find your councilor</a>, have your say in <a href="#">public consultations</a>, read about the <a href="#">Council’s vision</a> for Camden’s future,
+      <a href="#">and more</a>.</p>
+
+    <div class="LBCamden-Card_Wrapper">
+
+      {% set items = [
+        {
+          title: 'We Make Camden',
+          href: '#',
+          content: 'lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet',
+          image: 'A1.png'
+        },
+        {
+          title: 'Community investment programme',
+          href: '#',
+          content: 'lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet',
+          image: 'A2.png'
+        },
+        {
+          title: 'STEAM: Creating Camden’s 21st Century Talent',
+          href: '#',
+          content: 'lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet',
+          image: 'A3.png'
+        }
+      ] %}
+      {% for item in items %}
+        <div class="LBCamden-Card LBCamden-Card--naked LBCamden-Card--clickable"
+             data-module="lbcamden-card">
+          <img src="/public/images/homepage/{{ item.image }}" alt=""/>
+          <h2 class="govuk-heading-m">
+            <a href="{{ item.href }}">
+              {{ item.title }}
+            </a>
+          </h2>
+          <div class="LBCamden-Card__content">
+            <p>{{ item.content }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {{ govukButton({
+      classes: 'LBCamden-Button LBCamden-Button--action',
+      text: 'What we do',
+      href: '#'
+    }) }}
+  </div>
+</section>

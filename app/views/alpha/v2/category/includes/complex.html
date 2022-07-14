@@ -1,0 +1,52 @@
+<section class="LBCamden-Row {% if categoryType === 'B' %}LBCamden-Row--alt{% endif %}">
+  <div class="govuk-width-container">
+    {% if service.popular %}
+      <h2 class="govuk-heading-l">Popular</h2>
+      <div class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--popular govuk-!-margin-bottom-6">
+        {% for item in service.popular %}
+          {# {{ LBCamdenCard({ #}
+          {# heading: { #}
+          {# title: item.title, #}
+          {# href: "#" #}
+          {# }, #}
+          {# clickable: true, #}
+          {# popular: true #}
+          {# }) }} #}
+          <div class="LBCamden-Card LBCamden-Card--clickable {% if categoryType === 'B' %}LBCamden-Card--alt{% endif %}{% if categoryType === 'C' %} LBCamden-Card--alt2{% endif %}"
+               data-module="lbcamden-card">
+            <h3 class="govuk-heading-s">
+              <a href="/alpha/{{ versionDirectory }}/grouped/{{ item.slug }}">
+                {{ item.title }}
+              </a>
+            </h3>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="LBCamden-Row {% if categoryType === 'C' %}LBCamden-Row--alt LBCamden-Row--related{% endif %}">
+  <div class="govuk-width-container">
+    {% if service.items %}
+      <h2 class="govuk-heading-l">Contents</h2>
+      <ul class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--give-border">
+        {% for item in service.items %}
+          <li class="{{ widthClass }} LBCamden-Card--naked">
+            <h3 class="govuk-heading-m">{{ item.title }}</h3>
+            {% if item.items %}
+              <ul class="govuk-list LBCamden-List--dash">
+                {% for link in item.items %}
+                  <li>
+                    <a href="/alpha/{{ versionDirectory }}/{{ link.type | default('article') }}/{{ service.slug }}/{{ item.slug }}/{{ link.slug }}">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            <a href="#" class="LBCamden-Link--action">View all</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</section>

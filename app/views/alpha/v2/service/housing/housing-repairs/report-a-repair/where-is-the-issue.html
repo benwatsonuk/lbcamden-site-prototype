@@ -1,0 +1,79 @@
+{% extends '../../../../template.html' %}
+
+{% block beforeContent %}
+    <div class="govuk-width-container">
+        {{ govukBackLink({
+            text: "Back",
+            href: "javascript:history.back(-1)"
+        }) }}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+            <form method="get" action="./what-is-the-issue">
+                {{ govukRadios({
+                    idPrefix: "communcal",
+                    name: "communcal",
+                    classes: "govuk-radios--small",
+                    fieldset: {
+                        legend: {
+                            text: "Where is the problem?",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--xl"
+                        }
+                    },
+                    hint: {
+                        stext: ""
+                    },
+                    items: [
+                        {
+                            value: "1",
+                            text: "More than one room"
+                        },
+                        {
+                            value: "2",
+                            text: "Balcony"
+                        },
+                        {
+                            value: "3",
+                            text: "Bathroom and toilet"
+                        },
+                        {
+                            value: "4",
+                            text: "Bedroom"
+                        },
+                        {
+                            value: "5",
+                            text: "Doors"
+                        },
+                        {
+                            value: "6",
+                            text: "Gutters and roofs"
+                        },
+                        {
+                            value: "7",
+                            text: "Hallway, landing and stairs"
+                        },
+                        {
+                            value: "8",
+                            text: "Kitchen"
+                        },
+                        {
+                            value: "9",
+                            text: "Living room"
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    classes: 'LBCamden-Button',
+                    text: 'Continue'
+                }) }}
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
