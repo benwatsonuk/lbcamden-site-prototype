@@ -34,10 +34,10 @@
       </div>
     </div>
   </div>
-  {% if service.complex %}
-    {% include './includes/complex.html' %}
-  {% else %}
+  {% if service.simple %}
     {% include './includes/simple.html' %}
+  {% else %}
+    {% include './includes/complex.html' %}
   {% endif %}
 
 {% endblock %}

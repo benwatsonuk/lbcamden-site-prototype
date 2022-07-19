@@ -54,11 +54,23 @@ module.exports = function (router) {
   })
 
   // Category
-  router.get(['/alpha/' + versionDirectory + '/category/:serviceSlug'], (req, res) => {
+  router.get(['/alpha/' + versionDirectory + '/category/:serviceSlug', '/alpha/' + versionDirectory + '/category/:serviceSlug/'], (req, res) => {
     const theServiceSlug = req.params.serviceSlug
     const theService = serviceItems.find(x => (x.slug === theServiceSlug))
     res.render('alpha/' + versionDirectory + '/category/index.html', {
       service: theService
+    })
+  })
+
+  // Sub-category
+  router.get(['/alpha/' + versionDirectory + '/category/:serviceSlug/:subCategory', '/alpha/' + versionDirectory + '/category/:serviceSlug/:subCategory/'], (req, res) => {
+    const theServiceSlug = req.params.serviceSlug
+    const theSubCategorySlug = req.params.subCategory
+    const theService = serviceItems.find(x => (x.slug === theServiceSlug))
+    const theSubCategory = theService.items.find(x => (x.slug === theSubCategorySlug))
+    res.render('alpha/' + versionDirectory + '/category/sub-category.html', {
+      service: theService,
+      subCategory: theSubCategory
     })
   })
 
@@ -71,7 +83,7 @@ module.exports = function (router) {
     })
   })
 
-  // Colections - these tend to be simpler versions of the grouped example above and have no nesting (maybe possible to consolidate in future)
+  // Collections - these tend to be simpler versions of the grouped example above and have no nesting (maybe possible to consolidate in future)
   router.get(['/alpha/' + versionDirectory + '/collection/:groupSlug'], (req, res) => {
     const theGroupSlug = req.params.groupSlug
     const theGroup = collectionItems.find(x => (x.slug === theGroupSlug))
@@ -82,9 +94,8 @@ module.exports = function (router) {
 
   // Common article and multi-part article function
   function getPageData (article, group1, group2) {
-    // @todo - make this dynamic
-    console.log(group1, group2, article)
-    console.log('file found: ' + Fs.existsSync(Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + article + '/data.js')))
+    // console.log(group1, group2, article)
+    // console.log('file found: ' + Fs.existsSync(Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + article + '/data.js')))
     if (group2) {
       if (Fs.existsSync(Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + article + '/data.js'))) {
         return require('../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + article + '/data.js')

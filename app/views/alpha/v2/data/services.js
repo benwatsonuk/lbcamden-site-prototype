@@ -303,6 +303,117 @@ module.exports = [
     title: 'Sports and leisure',
     slug: 'sports-and-leisure',
     description: 'Take part in local activities,  put on events, visit green spaces and parks',
-    items: []
+    popular: [
+      {
+        title: 'Find a park in Camden',
+        href: 'parks-and-green-spaces/find-a-park-in-camden'
+      },
+      {
+        title: 'Trees',
+        href: 'parks-and-green-spaces/trees'
+      },
+      {
+        title: 'About Camden Arts and Events',
+        href: 'parks-and-green-spaces/about-camden-arts-and-events'
+      },
+      {
+        title: 'Halls for hire',
+        href: 'parks-and-green-spaces/halls-for-hire'
+      },
+      {
+        title: 'Hold an event in a park',
+        href: 'parks-and-green-spaces/hold-an-event-in-a-park'
+      },
+      {
+        title: 'Outdoor Gyms',
+        href: 'parks-and-green-spaces/outdoor-gyms'
+      }
+    ],
+    items: [
+      {
+        title: 'Sport and physical activity',
+        slug: 'sport-and-physical-activity',
+        items: [
+          {
+            title: 'Activities for children and young people',
+            slug: 'activities-for-children-and-young-people'
+          },
+          {
+            title: 'Activities for older people',
+            slug: 'activities-for-older-people'
+          },
+          {
+            title: 'Outdoor gyms',
+            slug: 'outdoor-gyms'
+          },
+          {
+            title: 'Keep active and healthy',
+            slug: 'keep-active-and-healthy'
+          },
+          {
+            title: 'Rebalance and exercise on referral programmes',
+            slug: 'rebalance-and-exercise-on-referral-programmes'
+          },
+          {
+            title: 'Wellbeing walks',
+            slug: 'wellbeing-walks'
+          },
+          {
+            title: 'Sports directory',
+            slug: 'sports-directory'
+          }
+        ]
+      },
+      {
+        title: 'Parks and green spaces',
+        slug: 'parks-and-green-spaces',
+        popular: [
+          {
+            title: 'Visit Camden\'s parks',
+            href: 'visit-camdens-parks'
+          },
+          {
+            title: 'Tree maintenance',
+            href: 'tree-maintenance'
+          },
+          {
+            title: 'Community festivals',
+            href: 'community-festivals'
+          }
+        ],
+        items: [
+          {
+            title: 'Visit Camden\'s parks',
+            slug: 'visit-camdens-parks'
+          },
+          {
+            title: 'Trees and tree maintenance',
+            slug: 'trees-and-tree-maintenance'
+          },
+          {
+            title: 'Biodiversity in Camden',
+            slug: 'biodiversity-in-camden'
+          }
+        ]
+      },
+      {
+        title: 'Arts and events',
+        slug: 'arts-and-events',
+        items: [
+          {
+            title: 'About Camden Arts and Events',
+            slug: 'about-camden-arts-and-events'
+          },
+          {
+            title: 'Put on an event in Camden',
+            slug: 'put-on-an-event-in-camden'
+          },
+          {
+            title: 'Public art in Camden',
+            slug: 'public-art-in-camden'
+          }
+        ]
+      }
+    ]
   }
 ]
