@@ -105,6 +105,11 @@ module.exports = [
             title: 'Leaf fall',
             href: '#',
             description: 'Tell us about a leaf-fall problem.'
+          },
+          {
+            title: 'Trees',
+            href: '#',
+            description: 'Tell us about a tree problem.'
           }
         ]
       },

@@ -227,6 +227,16 @@ module.exports = [
             slug: 'report-an-issue-with-noise'
           }
         ]
+      },
+      {
+        title: 'Environmental and Street issues',
+        slug: 'environmental-and-street-issues',
+        items: [
+          {
+            title: 'Trees',
+            slug: 'trees'
+          }
+        ]
       }
     ]
   },
