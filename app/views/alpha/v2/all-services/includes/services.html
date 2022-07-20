@@ -11,7 +11,7 @@
             href: "/alpha/" + versionDirectory + "/category/" + item.slug,
             headingLevel: 3
           },
-          cardBodyHtml: item.description
+          cardBodyHtml: '<p class="govuk-body-s">' + item.description + '</p>'
         }) }}
       {% endfor %}
     </div>
