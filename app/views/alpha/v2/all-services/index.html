@@ -2,7 +2,7 @@
 
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
-{% set mainClasses = "govuk-main-wrapper govuk-main-wrapper--auto-spacing" %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing" %}
 
 {% set pageTitle = "All services" %}
 {% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
@@ -20,23 +20,26 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
       <div class="govuk-width-container">
-        <h1>Services</h1>
+        <h1 class="govuk-!-margin-bottom-6">Services</h1>
 
         <p class="govuk-body-lead">Services, information and guidance for residents and businesses in Camden.</p>
       </div>
-
-      {% include './includes/grouped-services.html' %}
-
-      {% include './includes/featured.html' %}
-
-      {% include './includes/near-you.html' %}
-
-      {% include './includes/services.html' %}
-
-      {% include './includes/still-looking.html' %}
-
     </div>
   </div>
+
+  {% include './includes/grouped-services.html' %}
+
+  {% include './includes/featured.html' %}
+
+  {% include './includes/near-you.html' %}
+
+  {% include './includes/services.html' %}
+
+  </div>
+{% endblock %}
+
+{% block afterContent %}
+  {% include './includes/still-looking.html' %}
 {% endblock %}

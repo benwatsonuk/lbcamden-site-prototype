@@ -2,7 +2,7 @@
 
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
-{% set mainClasses = "govuk-main-wrapper govuk-main-wrapper--auto-spacing LBCamden-Category" %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing LBCamden-Category" %}
 
 {% set pageTitle = "Category" %}
 {% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
@@ -27,7 +27,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds-from-desktop">
 
-        <h1 class="govuk-heading-xl">{{ service.title }}</h1>
+        <h1 class="govuk-!-margin-bottom-6">{{ service.title }}</h1>
 
         <p class="govuk-body-l">{{ service.description }}</p>
 
