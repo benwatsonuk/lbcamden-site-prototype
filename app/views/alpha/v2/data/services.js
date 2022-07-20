@@ -309,8 +309,8 @@ module.exports = [
         href: 'parks-and-green-spaces/find-a-park-in-camden'
       },
       {
-        title: 'Trees',
-        href: 'parks-and-green-spaces/trees'
+        title: 'Trees and tree maintenance',
+        href: 'parks-and-green-spaces/trees-and-tree-maintenance'
       },
       {
         title: 'About Camden Arts and Events',
@@ -388,7 +388,30 @@ module.exports = [
           },
           {
             title: 'Trees and tree maintenance',
-            slug: 'trees-and-tree-maintenance'
+            slug: 'trees-and-tree-maintenance',
+            items: [
+              {
+                title: 'Tree maintenance',
+                slug: 'tree-maintenance',
+                type: 'multi-part-article'
+              },
+              {
+                title: 'Commemorative trees',
+                slug: 'commemorative-trees'
+              },
+              {
+                title: 'Flowers in street tree pits',
+                slug: 'flowers-in-street-tree-pits'
+              },
+              {
+                title: 'Tree statistics',
+                slug: 'tree-statistics'
+              },
+              {
+                title: 'Contact the Trees team',
+                slug: 'contact-the-trees-team'
+              }
+            ]
           },
           {
             title: 'Biodiversity in Camden',
