@@ -200,12 +200,11 @@ function checkCategoryForChildren (item) {
 }
 
 function getPageData (article, group1, group2, group3) {
- if (group3) {
+  if (group3) {
     if (Fs.existsSync(Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + group3 + '/' + article + '/data.js'))) {
-      return require('../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + group2 + '/' + article + '/data.js')
+      return require('../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + group3 + '/' + article + '/data.js')
     }
-  }
-  else if (group2) {
+  } else if (group2) {
     if (Fs.existsSync(Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + article + '/data.js'))) {
       return require('../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + article + '/data.js')
     }
@@ -243,7 +242,24 @@ function getArticleDetails (theGroupSlug, theGroup2Slug, theArticleSlug, isMulti
 
   let pageData = null
 
-  if (theGroup2Slug != null && theGroup2Slug !== false) {
+  if (theGroup3Slug != null && theGroup3Slug !== false) {
+    const group2 = theGroup.items.find(x => (x.slug === theGroup2Slug))
+    const group3 = group2.items.find(x => (x.slug === theGroup3Slug))
+    theArticle = group3.items.find(x => x.slug === theArticleSlug)
+    // const filePath = theGroupSlug + '/' + theGroup2Slug + '/' + theArticleSlug + '.html'
+    const directoryPath = theGroupSlug + '/' + theGroup2Slug + '/' + theGroup3Slug + '/'
+    const path = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + directoryPath + theArticleSlug + '.html')
+    if (Fs.existsSync(path)) {
+      fileFound = true
+      theFilePath = directoryPath + theArticleSlug + '.html'
+      thePages.push(path)
+    } else {
+      theFilePath = directoryPath + theArticleSlug
+      pageData = getPageData(theArticleSlug, theGroupSlug, theGroup2Slug, theGroup3Slug)
+      // console.log(pageData)
+      thePages = createPageArray(directoryPath + theArticleSlug, thePages)
+    }
+  } else if (theGroup2Slug != null && theGroup2Slug !== false) {
     const group2 = theGroup.items.find(x => (x.slug === theGroup2Slug))
     theArticle = group2.items.find(x => x.slug === theArticleSlug)
     // const filePath = theGroupSlug + '/' + theGroup2Slug + '/' + theArticleSlug + '.html'

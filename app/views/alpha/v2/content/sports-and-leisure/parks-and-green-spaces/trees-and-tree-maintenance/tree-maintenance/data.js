@@ -24,5 +24,14 @@ module.exports = {
     }
   ],
   related: [
+    {
+      title: 'Biodiversity in Camden'
+    },
+    {
+      title: 'Air quality'
+    },
+    {
+      title: 'Contact the Trees team'
+    }
   ]
 }
