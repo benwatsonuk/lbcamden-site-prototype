@@ -3,7 +3,7 @@
         <h2 class="govuk-heading-l">Related</h2>
         <ul class="govuk-list LBCamden-List--dash">
             {% for item in service.related %}
-                <li><a href="{{ item.slug }}">{{ item.title }}</a></li>
+                <li><a href="/alpha/{{ versionDirectory }}{{ item.href }}">{{ item.title }}</a></li>
             {% endfor %}
         </ul>
     </div>

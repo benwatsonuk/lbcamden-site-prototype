@@ -217,16 +217,110 @@ module.exports = [
     title: 'Environmental issues',
     slug: 'environmental-issues',
     description: 'Advice on climate change and pollution, and how to report environmental issues',
-    items: [
+    popular: [
       {
         title: 'Noise',
-        slug: 'noise',
+        href: '#'
+      },
+      {
+        title: 'Report street damage or a cleaning issue',
+        href: '#'
+      },
+      {
+        title: 'Noisy building works',
+        href: '#'
+      },
+      {
+        title: 'Public toilets',
+        href: '#'
+      },
+      {
+        title: 'Fly-tipping and street obstructions',
+        href: '#'
+      },
+      {
+        title: 'Pest control',
+        href: '#'
+      }
+    ],
+    items: [
+      {
+        title: 'Air quality',
+        slug: 'air-quality',
         items: [
           {
-            title: 'Report an issue with noise',
-            slug: 'report-an-issue-with-noise'
+            title: 'Air quality in Camden',
+            slug: 'air-quality-in-camden'
+          },
+          {
+            title: 'Climate crisis',
+            slug: 'climate-crisis'
+          },
+          {
+            title: 'Clean air for Camden',
+            slug: 'clean-air-for-camden'
           }
         ]
+      },
+      {
+        title: 'Protecting Camden\'s environment',
+        slug: 'protecting-camdens-environment',
+        items: [
+          {
+            title: 'Flooding',
+            slug: 'flooding'
+          },
+          {
+            title: 'Pest control',
+            slug: 'pest-control'
+          },
+          {
+            title: 'Contaminated land',
+            slug: 'contaminated-land'
+          }
+        ]
+      },
+      {
+        title: 'Green and energy-efficient homes',
+        slug: 'green-and-energy-efficient-homes',
+        items: [
+          {
+            title: 'Energy efficiency grants and services',
+            slug: 'energy-efficiency-grants-and-services'
+          },
+          {
+            title: 'Save energy and keep warm',
+            slug: 'save-energy-and-keep-warm'
+          },
+          {
+            title: 'Green Camden Helpline',
+            slug: 'green-camden-helpline'
+          }
+        ]
+      },
+      {
+        title: 'Report an environmental issue',
+        slug: 'report-an-environmental-issue',
+        items: [
+          {
+            title: 'Report street damage or a cleaning issue',
+            slug: 'report-street-damage-or-a-cleaning-issue'
+          },
+          {
+            title: 'Report graffiti',
+            slug: 'report-graffiti'
+          },
+          {
+            title: 'Dog fouling and dog control',
+            slug: 'dog-fouling-and-dog-control'
+          }
+        ]
+      }
+    ],
+    related: [
+      {
+        title: 'Trees and tree maintenance',
+        href: '/category/sports-and-leisure/parks-and-green-spaces/trees-and-tree-maintenance'
       }
     ]
   },
@@ -281,7 +375,130 @@ module.exports = [
     title: 'Roads and travel',
     slug: 'roads-and-travel',
     description: 'Report an issue with a street or road. Find out about disabled and older persons\' travel. Keep informed on transport strategies and projects',
-    items: []
+    popular: [
+      {
+        title: 'Blue Badge parking for disabled people',
+        href: ''
+      },
+      {
+        title: 'Green Badge parking for disabled people',
+        href: ''
+      },
+      {
+        title: 'Electric vehicles',
+        href: ''
+      },
+      {
+        title: 'Yellow lines',
+        href: ''
+      },
+      {
+        title: 'Cycle skills and bike maintenance courses',
+        href: ''
+      },
+      {
+        title: 'Healthy School Streets',
+        href: ''
+      }
+    ],
+    items: [
+      {
+        title: 'Cycling',
+        slug: 'cycling',
+        items: [
+          {
+            title: 'Cycle skills and bike maintenance courses',
+            slug: 'cycle-skills-and-bike-maintenance-courses'
+          },
+          {
+            title: 'Protect your bike',
+            slug: 'protect-your-bike'
+          },
+          {
+            title: 'Try a bicycle for 4 weeks',
+            slug: 'try-a-bicycle-for-4-weeks'
+          }
+        ]
+      },
+      {
+        title: 'Disabled and older persons travel',
+        slug: 'disabled-and-older-persons-travel',
+        items: [
+          {
+            title: 'Blue Badge parking for disabled people',
+            slug: 'blue-Badge-parking-for-disabled-people'
+          },
+          {
+            title: 'Disabled Persons Freedom Pass',
+            slug: 'disabled-Persons-Freedom-Pass'
+          },
+          {
+            title: 'Older persons Freedom Pass',
+            slug: 'older-persons-freedom-pass'
+          }
+        ]
+      },
+      {
+        title: 'Road and footway works',
+        slug: 'road-and-footway-works',
+        items: [
+          {
+            title: 'Road and footway works',
+            slug: 'road-and-footway-works'
+          },
+          {
+            title: 'Road Adoption',
+            slug: 'road-adoption'
+          },
+          {
+            title: 'Road Signs and Street Name Plates',
+            slug: 'road-signs-and-street-name-plates'
+          }
+        ]
+      },
+      {
+        title: 'School travel and road safety',
+        slug: 'school-travel-and-road-safety',
+        items: [
+          {
+            title: 'School travel and child road safety',
+            slug: 'school-travel-and-child-road-safety'
+          },
+          {
+            title: 'Healthy School Streets',
+            slug: 'healthy-school-streets'
+          },
+          {
+            title: 'Road Safety - Motorcyclists',
+            slug: 'road-safety-motorcyclists'
+          }
+        ]
+      },
+      {
+        title: 'Transport strategy',
+        slug: 'transport-strategy',
+        items: [
+          {
+            title: 'West End project',
+            slug: 'west-end-project'
+          },
+          {
+            title: 'Torrington-Tavistock project',
+            slug: 'torrington-tavistock-project'
+          },
+          {
+            title: 'Traffic management orders',
+            slug: 'traffic-management-orders'
+          }
+        ]
+      }
+    ],
+    related: [
+      {
+        title: 'Trees and tree maintenance',
+        href: '/category/sports-and-leisure/parks-and-green-spaces/trees-and-tree-maintenance'
+      }
+    ]
   },
   {
     title: 'Social care and health',
@@ -293,6 +510,148 @@ module.exports = [
     title: 'Sports and leisure',
     slug: 'sports-and-leisure',
     description: 'Take part in local activities,  put on events, visit green spaces and parks',
-    items: []
+    popular: [
+      {
+        title: 'Find a park in Camden',
+        href: ''
+      },
+      {
+        title: 'Trees and tree maintenance',
+        href: 'category/sports-and-leisure/parks-and-green-spaces/trees-and-tree-maintenance'
+      },
+      {
+        title: 'About Camden Arts and Events',
+        href: ''
+      },
+      {
+        title: 'Halls for hire',
+        href: ''
+      },
+      {
+        title: 'Hold an event in a park',
+        href: ''
+      },
+      {
+        title: 'Outdoor Gyms',
+        href: 'article/sports-and-leisure/sport-and-physical-activity/outdoor-gyms'
+      }
+    ],
+    items: [
+      {
+        title: 'Sport and physical activity',
+        slug: 'sport-and-physical-activity',
+        items: [
+          {
+            title: 'Activities for children and young people',
+            slug: 'activities-for-children-and-young-people'
+          },
+          {
+            title: 'Activities for older people',
+            slug: 'activities-for-older-people'
+          },
+          {
+            title: 'Outdoor gyms',
+            slug: 'outdoor-gyms',
+            related: [
+              {
+                title: 'Keep active and healthy'
+              },
+              {
+                title: 'Book a tennis court'
+              }
+            ]
+          },
+          {
+            title: 'Keep active and healthy',
+            slug: 'keep-active-and-healthy'
+          },
+          {
+            title: 'Rebalance and exercise on referral programmes',
+            slug: 'rebalance-and-exercise-on-referral-programmes'
+          },
+          {
+            title: 'Wellbeing walks',
+            slug: 'wellbeing-walks'
+          },
+          {
+            title: 'Sports directory',
+            slug: 'sports-directory'
+          }
+        ]
+      },
+      {
+        title: 'Parks and green spaces',
+        slug: 'parks-and-green-spaces',
+        popular: [
+          {
+            title: 'Visit Camden\'s parks',
+            href: 'visit-camdens-parks'
+          },
+          {
+            title: 'Tree maintenance',
+            href: 'tree-maintenance'
+          },
+          {
+            title: 'Community festivals',
+            href: 'community-festivals'
+          }
+        ],
+        items: [
+          {
+            title: 'Visit Camden\'s parks',
+            slug: 'visit-camdens-parks'
+          },
+          {
+            title: 'Trees and tree maintenance',
+            slug: 'trees-and-tree-maintenance',
+            items: [
+              {
+                title: 'Tree maintenance',
+                slug: 'tree-maintenance',
+                type: 'multi-part-article'
+              },
+              {
+                title: 'Commemorative trees',
+                slug: 'commemorative-trees'
+              },
+              {
+                title: 'Flowers in street tree pits',
+                slug: 'flowers-in-street-tree-pits'
+              },
+              {
+                title: 'Tree statistics',
+                slug: 'tree-statistics'
+              },
+              {
+                title: 'Contact the Trees team',
+                slug: 'contact-the-trees-team'
+              }
+            ]
+          },
+          {
+            title: 'Biodiversity in Camden',
+            slug: 'biodiversity-in-camden'
+          }
+        ]
+      },
+      {
+        title: 'Arts and events',
+        slug: 'arts-and-events',
+        items: [
+          {
+            title: 'About Camden Arts and Events',
+            slug: 'about-camden-arts-and-events'
+          },
+          {
+            title: 'Put on an event in Camden',
+            slug: 'put-on-an-event-in-camden'
+          },
+          {
+            title: 'Public art in Camden',
+            slug: 'public-art-in-camden'
+          }
+        ]
+      }
+    ]
   }
 ]

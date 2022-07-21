@@ -54,11 +54,43 @@ module.exports = function (router) {
   })
 
   // Category
-  router.get(['/alpha/' + versionDirectory + '/category/:serviceSlug'], (req, res) => {
+  router.get(['/alpha/' + versionDirectory + '/category/:serviceSlug', '/alpha/' + versionDirectory + '/category/:serviceSlug/'], (req, res) => {
     const theServiceSlug = req.params.serviceSlug
     const theService = serviceItems.find(x => (x.slug === theServiceSlug))
     res.render('alpha/' + versionDirectory + '/category/index.html', {
       service: theService
+    })
+  })
+
+  // Sub-category
+  router.get(['/alpha/' + versionDirectory + '/category/:serviceSlug/:subCategory', '/alpha/' + versionDirectory + '/category/:serviceSlug/:subCategory/'], (req, res) => {
+    const theServiceSlug = req.params.serviceSlug
+    const theSubCategorySlug = req.params.subCategory
+    const theService = serviceItems.find(x => (x.slug === theServiceSlug))
+    const theSubCategory = theService.items.find(x => (x.slug === theSubCategorySlug))
+    res.render('alpha/' + versionDirectory + '/category/sub-category.html', {
+      service: theService,
+      subCategory: theSubCategory,
+      hasChildren: checkCategoryForChildren(theSubCategory)
+    })
+  })
+
+  // Further sub-categories
+  router.get(['/alpha/' + versionDirectory + '/category/:serviceSlug/:subCategory/:subCategory2', '/alpha/' + versionDirectory + '/category/:serviceSlug/:subCategory/:subCategory2/'], (req, res) => {
+    const theServiceSlug = req.params.serviceSlug
+    const theSubCategorySlug = req.params.subCategory
+    const theSubCategory2Slug = req.params.subCategory2
+    const theService = serviceItems.find(x => (x.slug === theServiceSlug))
+    const theSubCategory = theService.items.find(x => (x.slug === theSubCategorySlug))
+    const theSubCategory2 = theSubCategory.items.find(x => (x.slug === theSubCategory2Slug))
+    // const hasChildren = theSubCategory2.items
+    // const template = hasChildren ? 'no-children' : 'sub-category2'
+    // res.render('alpha/' + versionDirectory + '/category/' + template + '.html', {
+    res.render('alpha/' + versionDirectory + '/category/sub-category2.html', {
+      service: theService,
+      subCategory: theSubCategory,
+      subCategory2: theSubCategory2,
+      hasChildren: checkCategoryForChildren(theSubCategory2)
     })
   })
 
@@ -71,7 +103,7 @@ module.exports = function (router) {
     })
   })
 
-  // Colections - these tend to be simpler versions of the grouped example above and have no nesting (maybe possible to consolidate in future)
+  // Collections - these tend to be simpler versions of the grouped example above and have no nesting (maybe possible to consolidate in future)
   router.get(['/alpha/' + versionDirectory + '/collection/:groupSlug'], (req, res) => {
     const theGroupSlug = req.params.groupSlug
     const theGroup = collectionItems.find(x => (x.slug === theGroupSlug))
@@ -80,109 +112,13 @@ module.exports = function (router) {
     })
   })
 
-  // Common article and multi-part article function
-  function getPageData (article, group1, group2) {
-    // @todo - make this dynamic
-    console.log(group1, group2, article)
-    console.log('file found: ' + Fs.existsSync(Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + article + '/data.js')))
-    if (group2) {
-      if (Fs.existsSync(Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + article + '/data.js'))) {
-        return require('../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + article + '/data.js')
-      }
-    } else {
-      if (Fs.existsSync(Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + article + '/data.js'))) {
-        return require('../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + article + '/data.js')
-      }
-    }
-  }
-
-  function getArticleDetails (theGroupSlug, theGroup2Slug, theArticleSlug, isMultiPartArticle) {
-    const theGroup = serviceItems.find(x => (x.slug === theGroupSlug))
-    let theArticle = theGroup.items.find(x => (x.slug === theArticleSlug)) || theArticleSlug
-    let theFilePath = null
-    let fileFound = false
-    let thePages = []
-
-    // Check if content file exists
-    function createPageArray (theDirectoryPath, theArray) {
-      if (!isMultiPartArticle) {
-        return theArray
-      } else {
-        let pageFiles = []
-        // console.log('MPP' + ' ' + theDirectoryPath)
-        const theFullDirectoryPath = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + theDirectoryPath)
-        if (Fs.existsSync(theFullDirectoryPath)) {
-          // console.log(123)
-          // Fs.readdirSync(theFullDirectoryPath, (err, files) => {
-          //   console.log("Files = " + files)
-          //   pageFiles = files
-          // })
-          try {
-            pageFiles = Fs.readdirSync(theFullDirectoryPath)
-
-            // files object contains all files names
-            // log them on console
-            // files.forEach(file => {
-            //   console.log(file);
-            // });
-          } catch (err) {
-            console.log(err)
-          }
-        }
-        // console.log('PF = ' + pageFiles)
-        return pageFiles
-      }
-    }
-    let pageData = null
-
-    if (theGroup2Slug != null && theGroup2Slug !== false) {
-      const group2 = theGroup.items.find(x => (x.slug === theGroup2Slug))
-      theArticle = group2.items.find(x => x.slug === theArticleSlug)
-      // const filePath = theGroupSlug + '/' + theGroup2Slug + '/' + theArticleSlug + '.html'
-      const directoryPath = theGroupSlug + '/' + theGroup2Slug + '/'
-      const path = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + directoryPath + theArticleSlug + '.html')
-      if (Fs.existsSync(path)) {
-        fileFound = true
-        theFilePath = directoryPath + theArticleSlug + '.html'
-        thePages.push(path)
-      } else {
-        theFilePath = directoryPath + theArticleSlug
-        pageData = getPageData(theArticleSlug, theGroupSlug, theGroup2Slug)
-        // console.log(pageData)
-        thePages = createPageArray(directoryPath + theArticleSlug, thePages)
-      }
-    } else {
-      // const filePath = theGroupSlug + '/' + theArticleSlug + '.html'
-      const directoryPath = theGroupSlug + '/'
-      const path = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + directoryPath + theArticleSlug + '.html')
-      if (Fs.existsSync(path)) {
-        fileFound = true
-        theFilePath = directoryPath + theArticleSlug + '.html'
-        thePages.push(path)
-      } else {
-        pageData = getPageData(theArticleSlug, theGroupSlug, false)
-        // console.log(pageData)
-        theFilePath = directoryPath + theArticleSlug
-        thePages = createPageArray(directoryPath + theArticleSlug, thePages)
-      }
-    }
-    // console.log(pageData)
-    return {
-      theGroup,
-      theArticle,
-      fileFound,
-      theFilePath,
-      thePages,
-      pageData
-    }
-  }
-
   // Article page
-  router.get(['/alpha/' + versionDirectory + '/article/:groupSlug/:articleSlug', '/alpha/' + versionDirectory + '/article/:groupSlug/:group2Slug/:articleSlug'], (req, res) => {
+  router.get(['/alpha/' + versionDirectory + '/article/:groupSlug/:articleSlug', '/alpha/' + versionDirectory + '/article/:groupSlug/:group2Slug/:articleSlug', '/alpha/' + versionDirectory + '/article/:groupSlug/:group2Slug/:group3Slug/:articleSlug'], (req, res) => {
     const theGroupSlug = req.params.groupSlug
     const theGroup2Slug = req.params.group2Slug || false
+    const theGroup3Slug = req.params.group3Slug || false
     const theArticleSlug = req.params.articleSlug
-    const theArticleDetails = getArticleDetails(theGroupSlug, theGroup2Slug, theArticleSlug)
+    const theArticleDetails = getArticleDetails(theGroupSlug, theGroup2Slug, theArticleSlug, false, theGroup3Slug)
     // console.log(theArticleDetails.fileFound)
     res.render('alpha/' + versionDirectory + '/article/index.html', {
       theGroup: theArticleDetails.theGroup,
@@ -192,18 +128,20 @@ module.exports = function (router) {
       fileFound: theArticleDetails.fileFound,
       filePath: theArticleDetails.theFilePath,
       thePages: theArticleDetails.thePages,
-      pageData: theArticleDetails.pageData
+      pageData: theArticleDetails.pageData,
+      breadcrumbs: theArticleDetails.breadcrumbs
     })
   })
 
   // Multiple page article
-  router.get(['/alpha/' + versionDirectory + '/multi-part-article/:groupSlug/:articleSlug', '/alpha/' + versionDirectory + '/multi-part-article/:groupSlug/:group2Slug/:articleSlug'], (req, res) => {
+  router.get(['/alpha/' + versionDirectory + '/multi-part-article/:groupSlug/:articleSlug', '/alpha/' + versionDirectory + '/multi-part-article/:groupSlug/:group2Slug/:articleSlug', '/alpha/' + versionDirectory + '/multi-part-article/:groupSlug/:group2Slug/:group3Slug/:articleSlug'], (req, res) => {
     const multiPageVariant = req.query.multiPartType || 'A'
     const pageNumber = parseInt(req.query.pageNumber) || 1
     const theGroupSlug = req.params.groupSlug
     const theGroup2Slug = req.params.group2Slug
+    const theGroup3Slug = req.params.group3Slug || false
     const theArticleSlug = req.params.articleSlug
-    const theArticleDetails = getArticleDetails(theGroupSlug, theGroup2Slug, theArticleSlug, true)
+    const theArticleDetails = getArticleDetails(theGroupSlug, theGroup2Slug, theArticleSlug, true, theGroup3Slug)
     res.render('alpha/' + versionDirectory + '/multi-part-article/index.html', {
       variant: multiPageVariant,
       pageNumber: pageNumber,
@@ -214,7 +152,8 @@ module.exports = function (router) {
       fileFound: theArticleDetails.fileFound,
       filePath: theArticleDetails.theFilePath,
       thePages: theArticleDetails.thePages,
-      pageData: theArticleDetails.pageData
+      pageData: theArticleDetails.pageData,
+      breadcrumbs: theArticleDetails.breadcrumbs
     })
   })
 
@@ -247,4 +186,133 @@ module.exports = function (router) {
       searchTerm: theSearchTerm
     })
   })
+}
+
+// Functions
+function checkCategoryForChildren (item) {
+  let children = false
+  if (item.items != null) {
+    item.items.forEach(x => {
+      if (x.items != null) {
+        children = true
+      }
+    })
+  }
+  return children
+}
+
+function getPageData (article, group1, group2, group3) {
+  if (group3) {
+    if (Fs.existsSync(Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + group3 + '/' + article + '/data.js'))) {
+      return require('../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + group3 + '/' + article + '/data.js')
+    }
+  } else if (group2) {
+    if (Fs.existsSync(Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + article + '/data.js'))) {
+      return require('../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + group2 + '/' + article + '/data.js')
+    }
+  } else {
+    if (Fs.existsSync(Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + article + '/data.js'))) {
+      return require('../../views/alpha/' + versionDirectory + '/content/' + group1 + '/' + article + '/data.js')
+    }
+  }
+}
+
+function getArticleDetails (theGroupSlug, theGroup2Slug, theArticleSlug, isMultiPartArticle, theGroup3Slug) {
+  const theGroup = serviceItems.find(x => (x.slug === theGroupSlug))
+  let theArticle = theGroup.items.find(x => (x.slug === theArticleSlug)) || theArticleSlug
+  let theFilePath = null
+  let fileFound = false
+  let thePages = []
+
+  // Check if content file exists
+  function createPageArray (theDirectoryPath, theArray) {
+    if (!isMultiPartArticle) {
+      return theArray
+    } else {
+      let pageFiles = []
+      const theFullDirectoryPath = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + theDirectoryPath)
+      if (Fs.existsSync(theFullDirectoryPath)) {
+        try {
+          pageFiles = Fs.readdirSync(theFullDirectoryPath)
+        } catch (err) {
+          console.log(err)
+        }
+      }
+      return pageFiles
+    }
+  }
+
+  let pageData = null
+  let breadcrumbs = null
+
+  if (theGroup3Slug != null && theGroup3Slug !== false) {
+    const group2 = theGroup.items.find(x => (x.slug === theGroup2Slug))
+    const group3 = group2.items.find(x => (x.slug === theGroup3Slug))
+    theArticle = group3.items.find(x => x.slug === theArticleSlug)
+    breadcrumbs = [
+      {
+        text: group2.title,
+        href: '/alpha/' + versionDirectory + '/category/' + theGroupSlug + '/' + theGroup2Slug + '/'
+      },
+      {
+        text: group3.title,
+        href: '/alpha/' + versionDirectory + '/category/' + theGroupSlug + '/' + theGroup2Slug + '/' + theGroup3Slug + '/'
+      }]
+    // const filePath = theGroupSlug + '/' + theGroup2Slug + '/' + theArticleSlug + '.html'
+    const directoryPath = theGroupSlug + '/' + theGroup2Slug + '/' + theGroup3Slug + '/'
+    const path = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + directoryPath + theArticleSlug + '.html')
+    if (Fs.existsSync(path)) {
+      fileFound = true
+      theFilePath = directoryPath + theArticleSlug + '.html'
+      thePages.push(path)
+      pageData = { related: theArticle.related }
+    } else {
+      theFilePath = directoryPath + theArticleSlug
+      pageData = getPageData(theArticleSlug, theGroupSlug, theGroup2Slug, theGroup3Slug)
+      // console.log(pageData)
+      thePages = createPageArray(directoryPath + theArticleSlug, thePages)
+    }
+  } else if (theGroup2Slug != null && theGroup2Slug !== false) {
+    const group2 = theGroup.items.find(x => (x.slug === theGroup2Slug))
+    theArticle = group2.items.find(x => x.slug === theArticleSlug)
+    // const filePath = theGroupSlug + '/' + theGroup2Slug + '/' + theArticleSlug + '.html'
+    const directoryPath = theGroupSlug + '/' + theGroup2Slug + '/'
+    const path = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + directoryPath + theArticleSlug + '.html')
+    if (Fs.existsSync(path)) {
+      fileFound = true
+      theFilePath = directoryPath + theArticleSlug + '.html'
+      thePages.push(path)
+      pageData = { related: theArticle.related }
+    } else {
+      theFilePath = directoryPath + theArticleSlug
+      pageData = getPageData(theArticleSlug, theGroupSlug, theGroup2Slug)
+      // console.log(pageData)
+      thePages = createPageArray(directoryPath + theArticleSlug, thePages)
+    }
+  } else {
+    // const filePath = theGroupSlug + '/' + theArticleSlug + '.html'
+    const directoryPath = theGroupSlug + '/'
+    const path = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + directoryPath + theArticleSlug + '.html')
+    if (Fs.existsSync(path)) {
+      fileFound = true
+      theFilePath = directoryPath + theArticleSlug + '.html'
+      thePages.push(path)
+      pageData = { related: theArticle.related }
+    } else {
+      pageData = getPageData(theArticleSlug, theGroupSlug, false)
+      // console.log(pageData)
+      theFilePath = directoryPath + theArticleSlug
+      thePages = createPageArray(directoryPath + theArticleSlug, thePages)
+    }
+  }
+  // console.log(pageData)
+  return {
+    theGroup,
+    theArticle,
+    fileFound,
+    theFilePath,
+    thePages,
+    pageData,
+    breadcrumbs
+  }
 }
