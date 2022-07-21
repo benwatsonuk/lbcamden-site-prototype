@@ -253,6 +253,7 @@ function getArticleDetails (theGroupSlug, theGroup2Slug, theArticleSlug, isMulti
       fileFound = true
       theFilePath = directoryPath + theArticleSlug + '.html'
       thePages.push(path)
+      pageData = { related: theArticle.related }
     } else {
       theFilePath = directoryPath + theArticleSlug
       pageData = getPageData(theArticleSlug, theGroupSlug, theGroup2Slug, theGroup3Slug)
@@ -269,6 +270,8 @@ function getArticleDetails (theGroupSlug, theGroup2Slug, theArticleSlug, isMulti
       fileFound = true
       theFilePath = directoryPath + theArticleSlug + '.html'
       thePages.push(path)
+      console.log(theArticle)
+      pageData = { related: theArticle.related }
     } else {
       theFilePath = directoryPath + theArticleSlug
       pageData = getPageData(theArticleSlug, theGroupSlug, theGroup2Slug)
@@ -283,6 +286,7 @@ function getArticleDetails (theGroupSlug, theGroup2Slug, theArticleSlug, isMulti
       fileFound = true
       theFilePath = directoryPath + theArticleSlug + '.html'
       thePages.push(path)
+      pageData = { related: theArticle.related }
     } else {
       pageData = getPageData(theArticleSlug, theGroupSlug, false)
       // console.log(pageData)
