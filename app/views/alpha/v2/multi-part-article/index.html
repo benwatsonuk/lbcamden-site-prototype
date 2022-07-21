@@ -6,18 +6,30 @@
 {% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
 
 {% block beforeContent %}
+
+  {% set breadcrumbArray = [
+    {
+      text: "Home",
+      href: "/alpha/" + versionDirectory + "/home/"
+    },
+    {
+      text: "Services",
+      href: "/alpha/" + versionDirectory + "/all-services/"
+    },
+    {
+      text: theGroup.title,
+      href: "/alpha/" + versionDirectory + '/category/' + theGroup.slug + "/"
+    }
+  ] %}
+
+  {% for item in breadcrumbs %}
+    {% set breadcrumbArray = (breadcrumbArray.push(item), breadcrumbArray) %}
+  {% endfor %}
+
   {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "/alpha/" + versionDirectory + "/home/"
-      },
-      {
-        text: theGroup.title,
-        href: "/alpha/" + versionDirectory + '/category/' + theGroup.slug + "/"
-      }
-    ]
+    items: breadcrumbArray
   }) }}
+
 {% endblock %}
 {% block content %}
 <div class="govuk-grid-row">

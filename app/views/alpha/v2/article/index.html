@@ -6,30 +6,42 @@
 {% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
 
 {% block beforeContent %}
-    {{ govukBreadcrumbs({
-        items: [
-            {
-                text: "Home",
-                href: "/alpha/" + versionDirectory + "/home/"
-            },
-            {
-                text: theGroup.title,
-                href: "/alpha/" + versionDirectory + '/category/' + theGroup.slug + "/"
-            }
-        ]
-    }) }}
+
+  {% set breadcrumbArray = [
+    {
+      text: "Home",
+      href: "/alpha/" + versionDirectory + "/home/"
+    },
+    {
+      text: "Services",
+      href: "/alpha/" + versionDirectory + "/all-services/"
+    },
+    {
+      text: theGroup.title,
+      href: "/alpha/" + versionDirectory + '/category/' + theGroup.slug + "/"
+    }
+  ] %}
+
+  {% for item in breadcrumbs %}
+    {% set breadcrumbArray = (breadcrumbArray.push(item), breadcrumbArray) %}
+  {% endfor %}
+
+  {{ govukBreadcrumbs({
+    items: breadcrumbArray
+  }) }}
+
 {% endblock %}
-{% block content %}
-    <div class="govuk-grid-row">
+    {% block content %}
+      <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds-from-desktop">
-            {% if fileFound %}
-                {% include '../content/' + filePath %}
-            {% else %}
-                <p>There's nothing here for that right now</p>
-            {% endif %}
+          {% if fileFound %}
+            {% include '../content/' + filePath %}
+          {% else %}
+            <p>There's nothing here for that right now</p>
+          {% endif %}
         </div>
         <div class="govuk-grid-column-one-third-from-desktop">
-            {% include './includes/related.html' %}
+          {% include './includes/related.html' %}
         </div>
-    </div>
-{% endblock %}
+      </div>
+    {% endblock %}

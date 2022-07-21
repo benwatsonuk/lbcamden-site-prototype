@@ -128,7 +128,8 @@ module.exports = function (router) {
       fileFound: theArticleDetails.fileFound,
       filePath: theArticleDetails.theFilePath,
       thePages: theArticleDetails.thePages,
-      pageData: theArticleDetails.pageData
+      pageData: theArticleDetails.pageData,
+      breadcrumbs: theArticleDetails.breadcrumbs
     })
   })
 
@@ -151,7 +152,8 @@ module.exports = function (router) {
       fileFound: theArticleDetails.fileFound,
       filePath: theArticleDetails.theFilePath,
       thePages: theArticleDetails.thePages,
-      pageData: theArticleDetails.pageData
+      pageData: theArticleDetails.pageData,
+      breadcrumbs: theArticleDetails.breadcrumbs
     })
   })
 
@@ -241,11 +243,21 @@ function getArticleDetails (theGroupSlug, theGroup2Slug, theArticleSlug, isMulti
   }
 
   let pageData = null
+  let breadcrumbs = null
 
   if (theGroup3Slug != null && theGroup3Slug !== false) {
     const group2 = theGroup.items.find(x => (x.slug === theGroup2Slug))
     const group3 = group2.items.find(x => (x.slug === theGroup3Slug))
     theArticle = group3.items.find(x => x.slug === theArticleSlug)
+    breadcrumbs = [
+      {
+        text: group2.title,
+        href: '/alpha/' + versionDirectory + '/category/' + theGroupSlug + '/' + theGroup2Slug + '/'
+      },
+      {
+        text: group3.title,
+        href: '/alpha/' + versionDirectory + '/category/' + theGroupSlug + '/' + theGroup2Slug + '/' + theGroup3Slug + '/'
+      }]
     // const filePath = theGroupSlug + '/' + theGroup2Slug + '/' + theArticleSlug + '.html'
     const directoryPath = theGroupSlug + '/' + theGroup2Slug + '/' + theGroup3Slug + '/'
     const path = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + directoryPath + theArticleSlug + '.html')
@@ -270,7 +282,6 @@ function getArticleDetails (theGroupSlug, theGroup2Slug, theArticleSlug, isMulti
       fileFound = true
       theFilePath = directoryPath + theArticleSlug + '.html'
       thePages.push(path)
-      console.log(theArticle)
       pageData = { related: theArticle.related }
     } else {
       theFilePath = directoryPath + theArticleSlug
@@ -301,6 +312,7 @@ function getArticleDetails (theGroupSlug, theGroup2Slug, theArticleSlug, isMulti
     fileFound,
     theFilePath,
     thePages,
-    pageData
+    pageData,
+    breadcrumbs
   }
 }
