@@ -7,7 +7,7 @@
           <div class="LBCamden-Card LBCamden-Card--clickable {% if categoryType === 'B' %}LBCamden-Card--alt{% endif %}{% if categoryType === 'C' %} LBCamden-Card--alt2{% endif %}"
                data-module="lbcamden-card">
             <h3 class="govuk-heading-s">
-                <a href="/alpha/{{ versionDirectory }}/{{ item.href }}">{{ item.title }}</a>
+              <a href="/alpha/{{ versionDirectory }}/{{ item.href }}">{{ item.title }}</a>
             </h3>
           </div>
         {% endfor %}
@@ -27,13 +27,14 @@
             {% if item.items %}
               <ul class="govuk-list LBCamden-List--dash">
                 {% for link in item.items %}
-
-                  <li>
+                  {% if loop.index <= 3 %}
+                    <li>
                     {% if link.items.length %}
                       <a href="/alpha/{{ versionDirectory }}/category/{{ service.slug }}/{{ item.slug }}/{{ link.slug }}">{{ link.title }}</a>
                     {% else %}
                       <a href="/alpha/{{ versionDirectory }}/{{ link.type | default('article') }}/{{ service.slug }}/{{ item.slug }}/{{ link.slug }}">{{ link.title }}</a>
                     {% endif %}
+                  {% endif %}
                   </li>
                 {% endfor %}
               </ul>

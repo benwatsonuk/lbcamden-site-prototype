@@ -51,13 +51,16 @@
               {% if item.items %}
                 <ul class="govuk-list LBCamden-List--dash">
                   {% for link in item.items %}
-                    <li>
-                      <a href="/alpha/{{ versionDirectory }}/{{ link.type | default('article') }}/{{ service.slug }}/{{ subCategory.slug }}/{{ item.slug }}/{{ link.slug }}">{{ link.title }}</a>
-                    </li>
+                    {% if loop.index <= 3 %}
+                      <li>
+                        <a href="/alpha/{{ versionDirectory }}/{{ link.type | default('article') }}/{{ service.slug }}/{{ subCategory.slug }}/{{ item.slug }}/{{ link.slug }}">{{ link.title }}</a>
+                      </li>
+                    {% endif %}
                   {% endfor %}
                 </ul>
               {% endif %}
-              <a href="/alpha/{{ versionDirectory }}/category/{{ service.slug }}/{{ subCategory.slug }}/{{ item.slug }}/" class="LBCamden-Link--action">View all</a>
+              <a href="/alpha/{{ versionDirectory }}/category/{{ service.slug }}/{{ subCategory.slug }}/{{ item.slug }}/"
+                 class="LBCamden-Link--action">View all</a>
             </li>
           {% endfor %}
         </ul>
@@ -65,7 +68,9 @@
         <h2 class="govuk-heading-l">Contents</h2>
         <ul class="LBCamden-List LBCamden-List--dash">
           {% for item in subCategory.items %}
-            <li><a href="/alpha/{{ versionDirectory }}/{{ item.type | default('article') }}/{{ service.slug }}/{{ subCategory.slug }}/{{ item.slug }}">{{ item.title }}</a></li>
+            <li>
+              <a href="/alpha/{{ versionDirectory }}/{{ item.type | default('article') }}/{{ service.slug }}/{{ subCategory.slug }}/{{ item.slug }}">{{ item.title }}</a>
+            </li>
           {% endfor %}
         </ul>
       {% endif %}
