@@ -219,24 +219,82 @@ module.exports = [
     description: 'Advice on climate change and pollution, and how to report environmental issues',
     items: [
       {
-        title: 'Noise',
-        slug: 'noise',
+        title: 'Air quality',
+        slug: 'air-quality',
         items: [
           {
-            title: 'Report an issue with noise',
-            slug: 'report-an-issue-with-noise'
+            title: 'Air quality in Camden',
+            slug: 'air-quality-in-camden'
+          },
+          {
+            title: 'Climate crisis',
+            slug: 'climate-crisis'
+          },
+          {
+            title: 'Clean air for Camden',
+            slug: 'clean-air-for-camden'
           }
         ]
       },
       {
-        title: 'Environmental and Street issues',
-        slug: 'environmental-and-street-issues',
+        title: 'Protecting Camden\'s environment',
+        slug: 'protecting-camdens-environment',
         items: [
           {
-            title: 'Trees',
-            slug: 'trees'
+            title: 'Flooding',
+            slug: 'flooding'
+          },
+          {
+            title: 'Pest control',
+            slug: 'pest-control'
+          },
+          {
+            title: 'Contaminated land',
+            slug: 'contaminated-land'
           }
         ]
+      },
+      {
+        title: 'Green and energy-efficient homes',
+        slug: 'green-and-energy-efficient-homes',
+        items: [
+          {
+            title: 'Energy efficiency grants and services',
+            slug: 'energy-efficiency-grants-and-services'
+          },
+          {
+            title: 'Save energy and keep warm',
+            slug: 'save-energy-and-keep-warm'
+          },
+          {
+            title: 'Green Camden Helpline',
+            slug: 'green-camden-helpline'
+          }
+        ]
+      },
+      {
+        title: 'Report an environmental issue',
+        slug: 'report-an-environmental-issue',
+        items: [
+          {
+            title: 'Report street damage or a cleaning issue',
+            slug: 'report-street-damage-or-a-cleaning-issue'
+          },
+          {
+            title: 'Report graffiti',
+            slug: 'report-graffiti'
+          },
+          {
+            title: 'Dog fouling and dog control',
+            slug: 'dog-fouling-and-dog-control'
+          }
+        ]
+      }
+    ],
+    related: [
+      {
+        title: 'Trees and tree maintenance',
+        href: '/category/sports-and-leisure/parks-and-green-spaces/trees-and-tree-maintenance'
       }
     ]
   },
@@ -411,8 +469,8 @@ module.exports = [
     ],
     related: [
       {
-        title: 'Tree maintenance',
-        href: '#'
+        title: 'Trees and tree maintenance',
+        href: '/category/sports-and-leisure/parks-and-green-spaces/trees-and-tree-maintenance'
       }
     ]
   },
