@@ -4,7 +4,7 @@
 
 {% set mainClasses = "govuk-main-wrapper govuk-main-wrapper--auto-spacing LBCamden-Category" %}
 
-{% set pageTitle = "Sub Category" %}
+{% set pageTitle = "Sub Category 2" %}
 {% block pageTitle %}{{ pageTitle }} - CAMDEN.GOV.UK{% endblock %}
 
 {% block beforeContent %}
@@ -21,6 +21,10 @@
       {
         text: service.title,
         href: "/alpha/" + versionDirectory + "/category/" + service.slug + "/"
+      },
+      {
+        text: subCategory.title,
+        href: "/alpha/" + versionDirectory + "/category/" + service.slug + "/" + subCategory.slug + "/"
       }
     ]
   }) }}
@@ -31,9 +35,9 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds-from-desktop">
 
-        <h1 class="govuk-heading-xl">{{ subCategory.title }}</h1>
+        <h1 class="govuk-heading-xl">{{ subCategory2.title }}</h1>
 
-        <p class="govuk-body-l">{{ subCategory.description }}</p>
+        <p class="govuk-body-l">{{ subCategory2.description }}</p>
 
       </div>
     </div>
@@ -42,23 +46,30 @@
 
   <section class="LBCamden-Row {% if categoryType === 'C' %}LBCamden-Row--alt LBCamden-Row--related{% endif %}">
     <div class="govuk-width-container">
-      {% if subCategory.items %}
+      {% if hasChildren %}
         <h2 class="govuk-heading-l">Contents</h2>
         <ul class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--give-border">
-          {% for item in subCategory.items %}
+          {% for item in subCategory2.items %}
             <li class="{{ widthClass }} LBCamden-Card--naked">
               <h3 class="govuk-heading-m">{{ item.title }}</h3>
               {% if item.items %}
                 <ul class="govuk-list LBCamden-List--dash">
                   {% for link in item.items %}
                     <li>
-                      <a href="/alpha/{{ versionDirectory }}/{{ link.type | default('article') }}/{{ service.slug }}/{{ subCategory.slug }}/{{ item.slug }}/{{ link.slug }}">{{ link.title }}</a>
+                      <a href="/alpha/{{ versionDirectory }}/{{ link.type | default('article') }}/{{ service.slug }}/{{ item.slug }}/{{ link.slug }}">{{ link.title }}</a>
                     </li>
                   {% endfor %}
                 </ul>
               {% endif %}
-              <a href="/alpha/{{ versionDirectory }}/category/{{ service.slug }}/{{ subCategory.slug }}/{{ item.slug }}/" class="LBCamden-Link--action">View all</a>
+              <a href="/alpha/{{ versionDirectory }}/category/{{ service.slug }}/{{ item.slug }}/" class="LBCamden-Link--action">View all</a>
             </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <h2 class="govuk-heading-l">Contents</h2>
+        <ul class="LBCamden-List LBCamden-List--dash">
+          {% for item in subCategory2.items %}
+            <li><a href="/alpha/{{ versionDirectory }}/{{ item.type | default('article') }}/{{ service.slug }}/{{ subCategory.slug }}/{{ subCategory2.slug }}/{{ item.slug }}">{{ item.title }}</a></li>
           {% endfor %}
         </ul>
       {% endif %}

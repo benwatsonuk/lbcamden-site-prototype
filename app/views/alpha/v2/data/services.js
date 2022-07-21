@@ -344,7 +344,15 @@ module.exports = [
           },
           {
             title: 'Outdoor gyms',
-            slug: 'outdoor-gyms'
+            slug: 'outdoor-gyms',
+            related: [
+              {
+                title: 'Keep active and healthy'
+              },
+              {
+                title: 'Book a tennis court'
+              }
+            ]
           },
           {
             title: 'Keep active and healthy',
