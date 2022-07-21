@@ -306,27 +306,27 @@ module.exports = [
     popular: [
       {
         title: 'Find a park in Camden',
-        href: 'parks-and-green-spaces/find-a-park-in-camden'
+        href: ''
       },
       {
         title: 'Trees and tree maintenance',
-        href: 'parks-and-green-spaces/trees-and-tree-maintenance'
+        href: 'category/sports-and-leisure/parks-and-green-spaces/trees-and-tree-maintenance'
       },
       {
         title: 'About Camden Arts and Events',
-        href: 'parks-and-green-spaces/about-camden-arts-and-events'
+        href: ''
       },
       {
         title: 'Halls for hire',
-        href: 'parks-and-green-spaces/halls-for-hire'
+        href: ''
       },
       {
         title: 'Hold an event in a park',
-        href: 'parks-and-green-spaces/hold-an-event-in-a-park'
+        href: ''
       },
       {
         title: 'Outdoor Gyms',
-        href: 'parks-and-green-spaces/outdoor-gyms'
+        href: 'article/sports-and-leisure/sport-and-physical-activity/outdoor-gyms'
       }
     ],
     items: [

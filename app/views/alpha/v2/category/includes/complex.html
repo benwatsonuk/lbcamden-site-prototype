@@ -4,20 +4,10 @@
       <h2 class="govuk-heading-l">Popular</h2>
       <div class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--popular govuk-!-margin-bottom-6">
         {% for item in service.popular %}
-          {# {{ LBCamdenCard({ #}
-          {# heading: { #}
-          {# title: item.title, #}
-          {# href: "#" #}
-          {# }, #}
-          {# clickable: true, #}
-          {# popular: true #}
-          {# }) }} #}
           <div class="LBCamden-Card LBCamden-Card--clickable {% if categoryType === 'B' %}LBCamden-Card--alt{% endif %}{% if categoryType === 'C' %} LBCamden-Card--alt2{% endif %}"
                data-module="lbcamden-card">
             <h3 class="govuk-heading-s">
-              <a href="/alpha/{{ versionDirectory }}/grouped/{{ item.slug }}">
-                {{ item.title }}
-              </a>
+                <a href="/alpha/{{ versionDirectory }}/{{ item.href }}">{{ item.title }}</a>
             </h3>
           </div>
         {% endfor %}
