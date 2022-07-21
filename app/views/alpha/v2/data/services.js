@@ -291,7 +291,130 @@ module.exports = [
     title: 'Roads and travel',
     slug: 'roads-and-travel',
     description: 'Report an issue with a street or road. Find out about disabled and older persons\' travel. Keep informed on transport strategies and projects',
-    items: []
+    popular: [
+      {
+        title: 'Blue Badge parking for disabled people',
+        href: ''
+      },
+      {
+        title: 'Green Badge parking for disabled people',
+        href: ''
+      },
+      {
+        title: 'Electric vehicles',
+        href: ''
+      },
+      {
+        title: 'Yellow lines',
+        href: ''
+      },
+      {
+        title: 'Cycle skills and bike maintenance courses',
+        href: ''
+      },
+      {
+        title: 'Healthy School Streets',
+        href: ''
+      }
+    ],
+    items: [
+      {
+        title: 'Cycling',
+        slug: 'cycling',
+        items: [
+          {
+            title: 'Cycle skills and bike maintenance courses',
+            slug: 'cycle-skills-and-bike-maintenance-courses'
+          },
+          {
+            title: 'Protect your bike',
+            slug: 'protect-your-bike'
+          },
+          {
+            title: 'Try a bicycle for 4 weeks',
+            slug: 'try-a-bicycle-for-4-weeks'
+          }
+        ]
+      },
+      {
+        title: 'Disabled and older persons travel',
+        slug: 'disabled-and-older-persons-travel',
+        items: [
+          {
+            title: 'Blue Badge parking for disabled people',
+            slug: 'blue-Badge-parking-for-disabled-people'
+          },
+          {
+            title: 'Disabled Persons Freedom Pass',
+            slug: 'disabled-Persons-Freedom-Pass'
+          },
+          {
+            title: 'Older persons Freedom Pass',
+            slug: 'older-persons-freedom-pass'
+          }
+        ]
+      },
+      {
+        title: 'Road and footway works',
+        slug: 'road-and-footway-works',
+        items: [
+          {
+            title: 'Road and footway works',
+            slug: 'road-and-footway-works'
+          },
+          {
+            title: 'Road Adoption',
+            slug: 'road-adoption'
+          },
+          {
+            title: 'Road Signs and Street Name Plates',
+            slug: 'road-signs-and-street-name-plates'
+          }
+        ]
+      },
+      {
+        title: 'School travel and road safety',
+        slug: 'school-travel-and-road-safety',
+        items: [
+          {
+            title: 'School travel and child road safety',
+            slug: 'school-travel-and-child-road-safety'
+          },
+          {
+            title: 'Healthy School Streets',
+            slug: 'healthy-school-streets'
+          },
+          {
+            title: 'Road Safety - Motorcyclists',
+            slug: 'road-safety-motorcyclists'
+          }
+        ]
+      },
+      {
+        title: 'Transport strategy',
+        slug: 'transport-strategy',
+        items: [
+          {
+            title: 'West End project',
+            slug: 'west-end-project'
+          },
+          {
+            title: 'Torrington-Tavistock project',
+            slug: 'torrington-tavistock-project'
+          },
+          {
+            title: 'Traffic management orders',
+            slug: 'traffic-management-orders'
+          }
+        ]
+      }
+    ],
+    related: [
+      {
+        title: 'Tree maintenance',
+        href: '#'
+      }
+    ]
   },
   {
     title: 'Social care and health',
