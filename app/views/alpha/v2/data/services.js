@@ -217,6 +217,32 @@ module.exports = [
     title: 'Environmental issues',
     slug: 'environmental-issues',
     description: 'Advice on climate change and pollution, and how to report environmental issues',
+    popular: [
+      {
+        title: 'Noise',
+        href: '#'
+      },
+      {
+        title: 'Report street damage or a cleaning issue',
+        href: '#'
+      },
+      {
+        title: 'Noisy building works',
+        href: '#'
+      },
+      {
+        title: 'Public toilets',
+        href: '#'
+      },
+      {
+        title: 'Fly-tipping and street obstructions',
+        href: '#'
+      },
+      {
+        title: 'Pest control',
+        href: '#'
+      }
+    ],
     items: [
       {
         title: 'Air quality',
