@@ -275,6 +275,11 @@ function getArticleDetails (theGroupSlug, theGroup2Slug, theArticleSlug, isMulti
   } else if (theGroup2Slug != null && theGroup2Slug !== false) {
     const group2 = theGroup.items.find(x => (x.slug === theGroup2Slug))
     theArticle = group2.items.find(x => x.slug === theArticleSlug)
+    breadcrumbs = [
+      {
+        text: group2.title,
+        href: '/alpha/' + versionDirectory + '/category/' + theGroupSlug + '/' + theGroup2Slug + '/'
+      }]
     // const filePath = theGroupSlug + '/' + theGroup2Slug + '/' + theArticleSlug + '.html'
     const directoryPath = theGroupSlug + '/' + theGroup2Slug + '/'
     const path = Path.join(__dirname, '../../views/alpha/' + versionDirectory + '/content/' + directoryPath + theArticleSlug + '.html')

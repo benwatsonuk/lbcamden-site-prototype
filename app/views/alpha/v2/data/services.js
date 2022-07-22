@@ -412,7 +412,18 @@ module.exports = [
           },
           {
             title: 'Protect your bike',
-            slug: 'protect-your-bike'
+            slug: 'protect-your-bike',
+            related: [
+              {
+                title: 'Cycle skills and bike maintenance courses'
+              },
+              {
+                title: 'Try a bicycle for 4 weeks'
+              },
+              {
+                title: 'Cycle lanes and routes\n'
+              }
+            ]
           },
           {
             title: 'Try a bicycle for 4 weeks',
