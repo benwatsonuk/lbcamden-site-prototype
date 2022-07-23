@@ -1,5 +1,10 @@
 .LBCamden-List {
   &--dash {
-
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }

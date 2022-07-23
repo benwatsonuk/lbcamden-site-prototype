@@ -4,6 +4,15 @@
     @include govuk-responsive-margin($lbc-default-spacing, "bottom");
   }
 
+  h2, h3 {
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
   .LBCamden-Card_Wrapper--popular & {
     border-bottom-right-radius: 1rem;
 
@@ -31,7 +40,7 @@
     &--naked {
       @include govuk-responsive-padding($lbc-default-spacing, "bottom");
       @include govuk-responsive-margin($lbc-default-spacing--small, "bottom");
-      border-bottom: 3px solid lbcamden-colour("govuk-bg-bright1-colour");
+      //border-bottom: 3px solid lbcamden-colour("govuk-bg-bright1-colour");
 
       .LBCamden-Row--alt & {
         border-bottom: 3px solid lbcamden-colour("white");
