@@ -1,20 +1,22 @@
 .LBCamden-Button {
   &--action {
+    font-size: 24px;
     border-bottom-right-radius: 0.75rem;
     position: relative;
     text-align: left;
     font-weight: bold;
-    @include govuk-responsive-padding(3, "all");
+    @include govuk-responsive-padding(4, "all");
+    @include govuk-responsive-padding(3, "left");
     @include govuk-responsive-padding(8, "right");
 
     &:after {
       content: "";
       position: absolute;
-      top: 20px;
+      top: 50%;
       right: 15px;
       width: 7px;
       height: 7px;
-      transform: rotate(45deg);
+      transform: rotate(45deg) translateY(-50%);
       border-top: 3px solid lbcamden-colour("white");
       border-right: 3px solid lbcamden-colour("white");
     }

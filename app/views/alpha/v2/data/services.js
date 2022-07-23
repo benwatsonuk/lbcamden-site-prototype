@@ -609,8 +609,19 @@ module.exports = [
         ],
         items: [
           {
-            title: 'Visit Camden\'s parks',
-            slug: 'visit-camdens-parks'
+            title: 'Camden\'s parks and open spaces',
+            slug: 'camdens-parks-and-open-spaces',
+            items: [
+              {
+                title: 'Visit Camden\'s parks'
+              },
+              {
+                title: 'Hold an event in a park'
+              },
+              {
+                title: 'Community festivals'
+              }
+            ]
           },
           {
             title: 'Trees and tree maintenance',
@@ -641,7 +652,18 @@ module.exports = [
           },
           {
             title: 'Biodiversity in Camden',
-            slug: 'biodiversity-in-camden'
+            slug: 'biodiversity-in-camden',
+            items: [
+              {
+                title: 'Designated Sites'
+              },
+              {
+                title: 'The Ecological Emergency'
+              },
+              {
+                title: 'Biodiversity Action Plan'
+              }
+            ]
           }
         ]
       },
