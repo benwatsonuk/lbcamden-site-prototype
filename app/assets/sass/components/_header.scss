@@ -2,7 +2,7 @@
   @import "search";
 
   &--nav {
-    margin: 0;
+    margin: 0 !important;
     padding: 0;
     display: flex;
     list-style: none;
@@ -10,7 +10,7 @@
     //justify-content: space-evenly;
 
     li {
-      margin: 0;
+      margin-bottom: 0 !important;
 
       &:not(:last-child) {
         @include govuk-responsive-margin($lbc-default-spacing, "right");
