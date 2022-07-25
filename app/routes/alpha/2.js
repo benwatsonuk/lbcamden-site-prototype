@@ -135,7 +135,7 @@ module.exports = function (router) {
 
   // Multiple page article
   router.get(['/alpha/' + versionDirectory + '/multi-part-article/:groupSlug/:articleSlug', '/alpha/' + versionDirectory + '/multi-part-article/:groupSlug/:group2Slug/:articleSlug', '/alpha/' + versionDirectory + '/multi-part-article/:groupSlug/:group2Slug/:group3Slug/:articleSlug'], (req, res) => {
-    const multiPageVariant = req.query.multiPartType || 'A'
+    const multiPageVariant = req.query.multiPartType || 'C'
     const pageNumber = parseInt(req.query.pageNumber) || 1
     const theGroupSlug = req.params.groupSlug
     const theGroup2Slug = req.params.group2Slug
