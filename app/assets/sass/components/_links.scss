@@ -2,5 +2,10 @@
   &--promo {
     //@extend .govuk-body-l;
     font-size: 24px;
+
+    &--small {
+      @include govuk-responsive-padding(3, "top");
+      @include govuk-responsive-padding(3, "bottom");
+    }
   }
 }
