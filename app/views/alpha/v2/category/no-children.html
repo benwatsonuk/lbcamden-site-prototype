@@ -44,21 +44,21 @@
   </div>
 
 
-  <section class="LBCamden-Row {% if categoryType === 'C' %}LBCamden-Row--alt LBCamden-Row--related{% endif %}">
+  <section class="lbcamden-row {% if categoryType === 'C' %}lbcamden-row--alt lbcamden-row--related{% endif %}">
     <div class="govuk-width-container">
       {% if subCategory.items %}
         <h2 class="govuk-heading-l">Contents</h2>
-        <ul class="LBCamden-List LBCamden-List--dash">
+        <ul class="lbcamden-list lbcamden-list--dash">
           {% for item in subCategory2.items %}
           <li><a href="">{{ item.title }}</a></li>
           {% endfor %}
         </ul>
-{#        <ul class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--give-border">#}
+{#        <ul class="lbcamden-card-grid lbcamden-card-grid--give-border">#}
 {#          {% for item in subCategory.items %}#}
-{#            <li class="{{ widthClass }} LBCamden-Card--naked">#}
+{#            <li class="{{ widthClass }} lbcamden-card--naked">#}
 {#              <h3 class="govuk-heading-m">{{ item.title }}</h3>#}
 {#              {% if item.items %}#}
-{#                <ul class="govuk-list LBCamden-List--dash">#}
+{#                <ul class="govuk-list lbcamden-list--dash">#}
 {#                  {% for link in item.items %}#}
 {#                    <li>#}
 {#                      <a href="/alpha/{{ versionDirectory }}/{{ link.type | default('article') }}/{{ service.slug }}/{{ item.slug }}/{{ link.slug }}">{{ link.title }}</a>#}
@@ -66,7 +66,7 @@
 {#                  {% endfor %}#}
 {#                </ul>#}
 {#              {% endif %}#}
-{#              <a href="/alpha/{{ versionDirectory }}/category/{{ service.slug }}/{{ item.slug }}/" class="LBCamden-Link--action">View all</a>#}
+{#              <a href="/alpha/{{ versionDirectory }}/category/{{ service.slug }}/{{ item.slug }}/" class="lbcamden-link--action">View all</a>#}
 {#            </li>#}
 {#          {% endfor %}#}
 {#        </ul>#}

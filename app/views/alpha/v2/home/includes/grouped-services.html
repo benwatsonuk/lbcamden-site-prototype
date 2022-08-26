@@ -1,18 +1,18 @@
-<section class="LBCamden-Row">
+<section class="lbcamden-row">
   <div class="govuk-width-container">
     <h2>Services</h2>
 
-    <div class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--grouped-services LBCamden-Card_Wrapper--four-columns-from-desktop LBCamden-Card_Wrapper--two-columns govuk-!-margin-bottom-0">
+    <ul class="lbcamden-card-grid lbcamden-card-grid-four-columns-from-desktop govuk-!-margin-bottom-6">
       {% for item in groupedItems %}
-        <div class="LBCamden-Card   LBCamden-Card--naked LBCamden-Card--clickable"
+        <li class="lbcamden-card  lbcamden-card--naked"
              data-module="lbcamden-card">
           <h3 class="govuk-heading-m">
-            <a href="/alpha/{{ versionDirectory }}/grouped/{{ item.slug }}" class="LBCamden-Button LBCamden-Button--action LBCamden-Link--promo--small govuk-!-display-block">
+            <a href="/alpha/{{ versionDirectory }}/grouped/{{ item.slug }}" class="lbcamden-link--promo">
               {{ item.title }}
             </a>
-          </h3>  <div class="LBCamden-Card__content">
+          </h3>  <div class="lbcamden-card__content">
             <p>{{ item.description }}</p>
-          </div></div>
+          </div></li>
       {% endfor %}
     </div>
 

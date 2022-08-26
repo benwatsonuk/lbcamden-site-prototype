@@ -1,14 +1,14 @@
-<section class="LBCamden-Row">
+<section class="lbcamden-row">
 
   <div class="govuk-width-container">
 
     <h2>Popular</h2>
-    <div class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--popular govuk-!-margin-bottom-6">
+    <div class="lbcamden-card-grid lbcamden-card-grid-four-columns-from-desktop govuk-!-margin-bottom-6">
       {% for item in popularItems %}
-         <div class="LBCamden-Card LBCamden-Card--clickable"
+        <div class="lbcamden-card lbcamden-card--promo-link--alt lbcamden-card--clickable"
              data-module="lbcamden-card">
           <h3 class="govuk-heading-s">
-            <a href="/alpha/{{ versionDirectory }}/grouped/{{ item.slug }}" >
+            <a href="/alpha/{{ versionDirectory }}/grouped/{{ item.slug }}">
               {{ item.title }}
             </a>
           </h3>
@@ -16,10 +16,9 @@
       {% endfor %}
     </div>
 
-    {{ govukButton({
-      classes: 'LBCamden-Button LBCamden-Button--action',
-      text: 'All services',
-      href: '/alpha/' + versionDirectory + '/all-services'
-    }) }}
+    <a href="/alpha/{{ versionDirectory }}/all-services" class="lbcamden-link--promo
+    lbcamden-link--promo--large">All
+    services</a>
+
   </div>
 </section>

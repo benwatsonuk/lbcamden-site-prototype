@@ -1,7 +1,7 @@
 $brand-colour: lbcamden-colour("dark-blue");
 
 .theme-2 {
-  .LBCamden-Header {
+  .lbcamden-header {
     background: $brand-colour;
     .gem-c-search__submit {
       background: $brand-colour;
@@ -10,7 +10,7 @@ $brand-colour: lbcamden-colour("dark-blue");
   .LBCamden-Button {
     background: $brand-colour;
   }
-  .LBCamden-Home--hero-text {
+  .lbcamden-home--hero-text {
     background: $brand-colour;
     &:after {
       box-shadow: -40px 40px 0px 10px $brand-colour;

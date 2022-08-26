@@ -30,7 +30,7 @@
 
             <h2>Do it online</h2>
 
-            <div class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--popular govuk-!-margin-bottom-6">
+            <div class="lbcamden-card-grid lbcamden-card-grid--popular govuk-!-margin-bottom-6">
                 {% for item in groupedItems %}
                     {{ LBCamdenCard({
                         heading: {
@@ -45,7 +45,7 @@
 
             <h2>All services A-Z</h2>
 
-            <div class="LBCamden-Card_Wrapper">
+            <div class="lbcamden-card-grid">
                 {% for item in serviceItems %}
                     {{ LBCamdenCard({
                         naked: true,

@@ -1,9 +1,9 @@
-<section class="LBCamden-Row">
+<section class="lbcamden-row">
   <div class="govuk-width-container">
 
     <h2>News and events</h2>
 
-    <div class="LBCamden-Card_Wrapper">
+    <div class="lbcamden-card-grid govuk-!-margin-bottom-6">
 
       {% set items = [
         {
@@ -28,7 +28,7 @@
         }
       ] %}
       {% for item in items %}
-        <div class="LBCamden-Card LBCamden-Card--naked LBCamden-Card--clickable"
+        <div class="lbcamden-card lbcamden-card--naked lbcamden-card--image lbcamden-card--clickable"
              data-module="lbcamden-card">
           <img src="/public/images/homepage/{{ item.image }}" alt=""/>
           <p class="govuk-!-font-size-14 govuk-!-margin-bottom-0">{{ item.date }}</p>
@@ -37,17 +37,14 @@
               {{ item.title }}
             </a>
           </h2>
-          <div class="LBCamden-Card__content">
+          <div class="lbcamden-card__content">
             <p>{{ item.content }}</p>
           </div>
         </div>
       {% endfor %}
     </div>
 
-    {{ govukButton({
-      classes: 'LBCamden-Button LBCamden-Button--action',
-      text: 'All news and events',
-      href: '#'
-    }) }}
+    <a href="/alpha/{{ versionDirectory }}/#" class="lbcamden-link--promo
+    lbcamden-link--promo--large">All news and events</a>
   </div>
 </section>

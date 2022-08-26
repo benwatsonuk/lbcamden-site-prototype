@@ -1,11 +1,11 @@
 {% if headerType === 'B' %}
   <header
-          class="LBCamden-Header {% if headerType %}LBCamden-Header--type-{{ headerType }}{% endif %}"
+          class="lbcamden-header {% if headerType %}lbcamden-header--type-{{ headerType }}{% endif %}"
           role="banner" data-module="lbcamden-header">
-    <div class="govuk-width-container LBCamden-Header--upper">
-      <div class="LBCamden-Header__logo">
+    <div class="govuk-width-container lbcamden-header--upper">
+      <div class="lbcamden-header__logo">
         <a href="/alpha/{{ versionDirectory }}/{% if homePage %}{% else %}home{% endif %}"
-           class="LBCamden-Header__link">
+           class="lbcamden-header__link">
           <!--[if gt IE 8]><!-->
           <svg class="LBCamden-Logo "
                viewBox="0 0 150 31"
@@ -26,25 +26,25 @@
           <span class="govuk-visually-hidden">Camden.gov.uk</span>
         </a>
       </div>
-      <div class="LBCamden-Header--sign-in">
+      <div class="lbcamden-header--sign-in">
         <a href="#">Sign in / Register</a>
       </div>
     </div>
-    <div class="LBCamden-Header--toggles">
+    <div class="lbcamden-header--toggles">
       <div class="govuk-width-container">
-        <a href="#" class="LBCamden-Header--menu-toggle" id="menu-toggle">Menu</a>
-        <a href="#" class="LBCamden-Header--menu-toggle" id="search-toggle">Search</a>
+        <a href="#" class="lbcamden-header--menu-toggle" id="menu-toggle">Menu</a>
+        <a href="#" class="lbcamden-header--menu-toggle" id="search-toggle">Search</a>
       </div>
     </div>
-    <div class="LBCamden-Header--lower govuk-width-container">
+    <div class="lbcamden-header--lower govuk-width-container">
 {#      <div class="govuk-width-container ">#}
-        <ul class="LBCamden-Header--nav">
+        <ul class="lbcamden-header--nav">
           <li><a href="/alpha/{{ versionDirectory }}/all-services">Services</a></li>
           <li><a href="#">Your council</a></li>
           <li><a href="#">News and events</a></li>
         </ul>
         {% if heroVariant !== 'B' %}
-          <div class="LBCamden-Header--search">
+          <div class="lbcamden-header--search">
 
             {% include './search.html' %}
           </div>
@@ -54,12 +54,12 @@
   </header>
 {% else %}
   <header
-          class="LBCamden-Header {% if headerType %}LBCamden-Header--type-{{ headerType }}{% endif %}"
+          class="lbcamden-header {% if headerType %}lbcamden-header--type-{{ headerType }}{% endif %}"
           role="banner" data-module="lbcamden-header">
-    <div class="govuk-width-container LBCamden-Header--upper">
-      <div class="LBCamden-Header__logo">
+    <div class="govuk-width-container lbcamden-header--upper">
+      <div class="lbcamden-header__logo">
         <a href="/alpha/{{ versionDirectory }}/{% if homePage %}{% else %}home{% endif %}"
-           class="LBCamden-Header__link">
+           class="lbcamden-header__link">
 
           <!--[if gt IE 8]><!-->
           <svg class="LBCamden-Logo "
@@ -81,18 +81,18 @@
           <span class="govuk-visually-hidden">Camden.gov.uk</span>
         </a>
       </div>
-      <div class="LBCamden-Header--sign-in">
+      <div class="lbcamden-header--sign-in">
         <a href="#">Sign in / Register</a>
       </div>
     </div>
-    <div class="govuk-width-container LBCamden-Header--lower">
-      <ul class="LBCamden-Header--nav">
+    <div class="govuk-width-container lbcamden-header--lower">
+      <ul class="lbcamden-header--nav">
         <li><a href="/alpha/{{ versionDirectory }}/all-services">Services</a></li>
         <li><a href="#">Your council</a></li>
         <li><a href="#">News and events</a></li>
       </ul>
       {% if heroVariant !== 'B' %}
-        <div class="LBCamden-Header--search">
+        <div class="lbcamden-header--search">
           {% include './search.html' %}
         </div>
       {% endif %}

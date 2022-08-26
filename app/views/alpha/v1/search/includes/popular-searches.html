@@ -1,7 +1,7 @@
-<section class="LBCamden-Row LBCamden-Row--related">
+<section class="lbcamden-row lbcamden-row--related">
     <div class="govuk-width-container">
         <h2 class="govuk-heading-l">Popular searches</h2>
-        <ul class="govuk-list LBCamden-List--dash">
+        <ul class="govuk-list lbcamden-list--dash">
             {% for item in searchItems.popular %}
                 <li><a href="/alpha/{{ versionDirectory }}/{{ item.slug }}">{{ item.title }}</a></li>
             {% endfor %}

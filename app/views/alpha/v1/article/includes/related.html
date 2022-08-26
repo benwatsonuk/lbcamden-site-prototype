@@ -1,8 +1,8 @@
 {% if pagedata.related.length > 0 %}
-<section class="LBCamden-Row LBCamden-Row--related">
+<section class="lbcamden-row lbcamden-row--related">
     <div class="govuk-width-container">
         <h2 class="govuk-heading-l">Related</h2>
-        <ul class="govuk-list LBCamden-List--dash">
+        <ul class="govuk-list lbcamden-list--dash">
             {% for item in pagedata.related %}
                 <li><a href="{{ item.href }}">{{ item.title }}</a></li>
             {% endfor %}

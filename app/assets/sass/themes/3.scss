@@ -1,10 +1,10 @@
 .theme-3 {
-  .LBCamden-Header {
+  .lbcamden-header {
     background: lbcamden-colour("white");
     margin-bottom: 0;
 
-    .LBCamden-Header__logo {
-      .LBCamden-Header__link {
+    .lbcamden-header__logo {
+      .lbcamden-header__link {
         color: lbcamden-colour("black");
       }
     }
@@ -17,10 +17,10 @@
     }
   }
 
-  .LBCamden-Card_Wrapper--popular {
+  .lbcamden-card-grid--popular {
     background: #ecece7;
     @include govuk-responsive-padding($lbc-default-spacing, "all");
-    .LBCamden-Card {
+    .lbcamden-card {
       background: lbcamden-colour("white");
       border-radius: 5px;
       box-shadow: 0 1px 2px rgb(0 0 0 / 40%);
