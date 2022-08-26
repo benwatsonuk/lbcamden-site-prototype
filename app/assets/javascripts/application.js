@@ -6,13 +6,13 @@ if (window.console && window.console.info) {
 }
 
 $('#menu-toggle').click(() => {
-  $('.LBCamden-Header--nav').toggle()
-  $('.LBCamden-Header--search').hide()
+  $('.lbcamden-header--nav').toggle()
+  $('.lbcamden-header--search').hide()
 })
 
 $('#search-toggle').click(() => {
-  $('.LBCamden-Header--search').toggle()
-  $('.LBCamden-Header--nav').hide()
+  $('.lbcamden-header--search').toggle()
+  $('.lbcamden-header--nav').hide()
   $('#search-main-b48c4de8').focus()
 })
 

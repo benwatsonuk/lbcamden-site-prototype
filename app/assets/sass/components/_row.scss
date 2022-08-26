@@ -1,15 +1,5 @@
-.LBCamden-Row {
-  &--alt {
-    background: lbcamden-colour("govuk-bg-bright1-colour");
-  }
-
-  &--alt2 {
-    background: lbcamden-colour("govuk-brand1-7-colour");
-  }
-}
-
 .govuk-grid-column-one-third-from-desktop {
-  .LBCamden-Row--related {
+  .lbcamden-row--related {
     margin: 0;
     @include govuk-responsive-padding($lbc-default-spacing--small, "all");
   }

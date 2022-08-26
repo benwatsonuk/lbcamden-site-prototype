@@ -3,20 +3,20 @@
 
 {#  <p>Find online services from across the council</p>#}
 
-  <div class="LBCamden-Card_Wrapper LBCamden-Card_Wrapper--two-columns LBCamden-Card_Wrapper--four-columns-from-desktop govuk-!-margin-bottom-6">
+  <ul class="lbcamden-card-grid lbcamden-card-grid-four-columns-from-desktop govuk-!-margin-bottom-6">
     {% for item in groupedItems %}
-      <div class="LBCamden-Card LBCamden-Card--naked LBCamden-Card--clickable"
+      <li class="lbcamden-card lbcamden-card--naked"
            data-module="lbcamden-card">
         <h3 class="govuk-heading-m">
           <a href="/alpha/{{ versionDirectory }}/grouped/{{ item.slug }}"
-             class="LBCamden-Link--promo govuk-!-display-block">
+             class="lbcamden-link--promo">
             {{ item.title }}
           </a>
         </h3>
-        <div class="LBCamden-Card__content">
+        <div class="lbcamden-card__content">
           <p>{{ item.description }}</p>
         </div>
-      </div>
+      </li>
     {% endfor %}
-  </div>
+  </ul>
 </div>

@@ -1,6 +1,6 @@
 $border-curve: 4rem;
 
-.LBCamden-Home--hero {
+.lbcamden-home--hero {
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -20,7 +20,7 @@ $border-curve: 4rem;
     }
 
     @include govuk-media-query($from: desktop) {
-      &:not(.LBCamden-Home--hero-b &) {
+      &:not(.lbcamden-home--hero-b &) {
         order: 1;
       }
       position: relative;
@@ -28,7 +28,7 @@ $border-curve: 4rem;
 
       img {
         height: 100%;
-        &:not(.LBCamden-Home--hero-b &) {
+        &:not(.lbcamden-home--hero-b &) {
           border-bottom-left-radius: $border-curve;
         }
       }
@@ -44,7 +44,7 @@ $border-curve: 4rem;
   }
 
   &-text {
-    &:not(.LBCamden-Home--hero-b &) {
+    &:not(.lbcamden-home--hero-b &) {
       order: 1;
     }
     @include govuk-responsive-padding($lbc-default-spacing, "all");
@@ -54,7 +54,7 @@ $border-curve: 4rem;
     @include govuk-media-query($from: desktop) {
       order: 0;
       position: relative;
-      &:not(.LBCamden-Home--hero-b &) {
+      &:not(.lbcamden-home--hero-b &) {
         &:after {
           content: "";
           position: absolute;
